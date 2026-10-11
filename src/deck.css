@@ -23,6 +23,9 @@
 }
 
 :root {
+  /* the school logo lives here once, as a background image, so it is not
+     base64-duplicated into the favicon, the top bar and every hero slide */
+  --logo: url(data:image/png;base64,__LOGO__);
   /* ── brand (from the logo) ── */
   --orange:    #EC671A;
   --orange-dk: #C14E0C;
@@ -351,7 +354,11 @@ table.t small { display: block; font-size: 15px; color: var(--navy-soft); font-w
 
 /* ══════════ HERO / CLOSE ══════════ */
 .slide.hero { align-items: center; justify-content: center; text-align: center; padding: 40px 60px; }
-.hero-logo { height: 210px; width: auto; margin-bottom: 18px; }
+.hero-logo {
+  height: 210px; aspect-ratio: 879 / 1000; flex: none;
+  background: var(--logo) center / contain no-repeat;
+  margin: 0 auto 18px;
+}
 .hero h1 {
   font-family: 'Baloo 2', Nunito, sans-serif;
   font-size: 62px; font-weight: 800; line-height: 1.04;
@@ -485,6 +492,10 @@ body.awake .chrome { opacity: 1; }
   pointer-events: auto;
 }
 .chrome .mark img { height: 34px; width: auto; }
+.chrome .mark .markimg {
+  height: 34px; aspect-ratio: 879 / 1000; flex: none;
+  background: var(--logo) center / contain no-repeat;
+}
 body.on-hero .chrome .mark { display: none; }
 .chrome .mark span {
   font-size: 12px; font-weight: 800; letter-spacing: .12em;
@@ -551,6 +562,219 @@ body.on-hero .chrome .mark { display: none; }
 .lb[hidden] { display: none; }
 .lb img { max-width: 100%; max-height: 92vh; border-radius: 10px; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
 .lb .x { position: absolute; top: 20px; right: 24px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE MODE
+   Every rule below is scoped to body[data-mode="mobile"], so the
+   presentation view is byte-for-byte the same CSS as before. JS sets
+   the attribute; nothing here can leak into deck mode.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* the mobile chrome is inert until the mode flips */
+.mtop, .mbar { display: none; }
+body[data-mode="mobile"] .chrome { display: none !important; }
+
+/* Escape hatch: if someone forces deck mode on a phone-sized screen the slide
+   is unreadable, so offer a way back. Never shown at real desktop widths. */
+.fbtn {
+  display: none;
+  position: fixed; right: 12px; top: calc(12px + env(safe-area-inset-top)); z-index: 79;
+  align-items: center; gap: 7px;
+  height: 40px; padding: 0 14px; border: none; border-radius: 999px; cursor: pointer;
+  background: var(--orange); color: #fff;
+  font: inherit; font-size: 13px; font-weight: 800;
+  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5);
+}
+.fbtn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 859px) {
+  body[data-mode="deck"] .fbtn { display: inline-flex; }
+}
+
+body[data-mode="mobile"] .stage { position: static; display: block; }
+body[data-mode="mobile"] .canvas {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  transform: none !important;
+  border-radius: 0; box-shadow: none;
+  background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%;
+}
+body[data-mode="mobile"] .deco .ring1 { width: 340px; height: 340px; border-width: 44px; right: -140px; top: -160px; }
+body[data-mode="mobile"] .deco .dotgrid { display: none; }
+
+/* a slide is a scrollable page between the two bars */
+body[data-mode="mobile"] .slide {
+  padding: calc(52px + env(safe-area-inset-top)) 18px calc(74px + env(safe-area-inset-bottom));
+  overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+}
+body[data-mode="mobile"] .slide.hero,
+body[data-mode="mobile"] .slide.close {
+  justify-content: flex-start;
+  padding-top: calc(70px + env(safe-area-inset-top));
+  text-align: center;
+}
+/* centre the hero block without ever clipping the top (auto margins collapse) */
+body[data-mode="mobile"] .slide.hero .slide-inner,
+body[data-mode="mobile"] .slide.close .slide-inner { margin-top: auto; margin-bottom: auto; }
+body[data-mode="mobile"] .s-foot { display: none; }
+body[data-mode="mobile"] .slide.hero::after,
+body[data-mode="mobile"] .slide.close::after,
+body[data-mode="mobile"] .slide.sect::after { width: 520px; height: 520px; border-width: 80px; right: -200px; bottom: -250px; }
+body[data-mode="mobile"] .slide.sect::before { background: radial-gradient(520px 300px at 100% 0%, rgba(236,103,26,0.10), transparent 64%); }
+
+/* typography: scaled for a phone, still comfortable */
+body[data-mode="mobile"] .s-kick { font-size: 12px; letter-spacing: .11em; margin-bottom: 6px; }
+body[data-mode="mobile"] .s-kick::before { width: 18px; height: 3px; }
+body[data-mode="mobile"] .s-title { font-size: 26px; line-height: 1.18; margin-bottom: 6px; }
+body[data-mode="mobile"] .s-sub { font-size: 15.5px; line-height: 1.5; }
+body[data-mode="mobile"] .slide.hero { padding-left: 22px; padding-right: 22px; }
+body[data-mode="mobile"] .hero-logo { height: 116px; margin-bottom: 10px; }
+body[data-mode="mobile"] .hero h1 { font-size: 33px; }
+body[data-mode="mobile"] .slide.close h1 { font-size: 38px; }
+body[data-mode="mobile"] .hero .tagline { font-size: 18px; margin-bottom: 12px; }
+body[data-mode="mobile"] .hero .meta { font-size: 14.5px; }
+body[data-mode="mobile"] .hero .rule { margin: 16px auto; }
+body[data-mode="mobile"] .sect .no { font-size: 68px; }
+body[data-mode="mobile"] .sect h2 { font-size: 32px; margin: 4px 0 10px; }
+body[data-mode="mobile"] .sect p { font-size: 17px; }
+
+/* everything stacks */
+body[data-mode="mobile"] .grid,
+body[data-mode="mobile"] .grid.g2,
+body[data-mode="mobile"] .grid.g3,
+body[data-mode="mobile"] .grid.g4 { grid-template-columns: 1fr !important; gap: 12px !important; }
+body[data-mode="mobile"] ul.list[style*="grid"] { grid-template-columns: 1fr !important; gap: 10px !important; }
+body[data-mode="mobile"] .dd { grid-template-columns: 1fr; gap: 12px; }
+body[data-mode="mobile"] .card { padding: 14px 16px; border-radius: 15px; }
+body[data-mode="mobile"] .card h3 { font-size: 18px; }
+body[data-mode="mobile"] .card p { font-size: 15.5px; line-height: 1.5; }
+body[data-mode="mobile"] .card .big { font-size: 26px; }
+body[data-mode="mobile"] .card.num { padding-left: 60px; }
+body[data-mode="mobile"] .card.num > .n { left: 14px; top: 14px; width: 34px; height: 34px; font-size: 18px; border-radius: 11px; }
+body[data-mode="mobile"] ul.list li { font-size: 15.5px; line-height: 1.45; padding-left: 26px; }
+body[data-mode="mobile"] ul.list li::before { width: 9px; height: 9px; top: 8px; }
+body[data-mode="mobile"] .big-list li { font-size: 16.5px; }
+body[data-mode="mobile"] .dd li { font-size: 15px; }
+body[data-mode="mobile"] .ans { font-size: 15px; padding: 11px 14px; gap: 10px; border-radius: 12px; flex-wrap: wrap; }
+body[data-mode="mobile"] .ans .tag { font-size: 14px; padding: 4px 10px; }
+body[data-mode="mobile"] .card.code, body[data-mode="mobile"] .tape { font-size: 14.5px; line-height: 1.55; padding: 12px 14px; }
+body[data-mode="mobile"] .tape .brk { font-size: 13px; }
+body[data-mode="mobile"] .stat .v { font-size: 40px; }
+body[data-mode="mobile"] .stat .k { font-size: 14px; }
+body[data-mode="mobile"] .stats { grid-template-columns: 1fr 1fr !important; gap: 10px; }   /* 2x2 stays compact */
+body[data-mode="mobile"] .match { grid-template-columns: 1fr 1fr !important; gap: 9px; }
+body[data-mode="mobile"] .pill { font-size: 13px; padding: 3px 9px; }
+
+/* exam paper crops and players go full width */
+body[data-mode="mobile"] .shot { padding: 8px; border-radius: 12px; }
+body[data-mode="mobile"] .shot img { max-height: none; width: 100%; height: auto; }
+body[data-mode="mobile"] .player { padding: 12px 14px 18px 12px; gap: 12px; border-radius: 14px; }
+body[data-mode="mobile"] .player .pp { width: 48px; height: 48px; }
+body[data-mode="mobile"] .player .pt .l1 { font-size: 16px; }
+body[data-mode="mobile"] .player .pt .l2 { font-size: 13px; }
+body[data-mode="mobile"] .player .dur { font-size: 15px; }
+body[data-mode="mobile"] .player .track { height: 26px; }
+body[data-mode="mobile"] .player .track .line { height: 6px; }
+body[data-mode="mobile"] .player .track .knob { transform: scale(1); width: 18px; height: 18px; margin: -9px 0 0 -9px; }
+body[data-mode="mobile"] .shot img, body[data-mode="mobile"] .slide img { cursor: default; }
+
+body[data-mode="mobile"] .reveal-hint { position: static; display: inline-flex; margin-bottom: 12px; font-size: 12px; }
+body[data-mode="mobile"] .slide.revealed .reveal-hint { display: none; }
+body[data-mode="mobile"] .footnote { font-size: 13px; }
+body[data-mode="mobile"] .callout { font-size: 14.5px; }
+
+/* tables become stacked rows with the column name as a label */
+body[data-mode="mobile"] table.t { display: block; table-layout: auto; font-size: 15px; }
+body[data-mode="mobile"] table.t colgroup,
+body[data-mode="mobile"] table.t thead { display: none; }
+body[data-mode="mobile"] table.t tbody,
+body[data-mode="mobile"] table.t tr { display: block; width: auto; }
+body[data-mode="mobile"] table.t tr {
+  background: #fff !important;
+  border: 2px solid var(--line); border-radius: 14px;
+  margin-bottom: 10px; padding: 11px 14px;
+  box-shadow: 0 1px 2px rgba(27,29,62,0.045), 0 8px 18px -14px rgba(27,29,62,0.22);
+}
+/* label above value: a side-by-side label column always wraps badly on a phone */
+body[data-mode="mobile"] table.t td {
+  display: block; width: auto; border: none; padding: 7px 0 0;
+  background: transparent !important;
+  text-align: left !important; font-size: 15.5px; line-height: 1.45;
+}
+body[data-mode="mobile"] table.t td:first-child { padding-top: 0; }
+body[data-mode="mobile"] table.t td + td { border-top: 1px solid var(--line); margin-top: 7px; }
+body[data-mode="mobile"] table.t td::before {
+  content: attr(data-th);
+  display: block; margin-bottom: 3px;
+  font-size: 10.5px; font-weight: 800; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--navy-soft);
+}
+body[data-mode="mobile"] table.t td:not([data-th])::before,
+body[data-mode="mobile"] table.t td[data-th=""]::before { content: none; }
+body[data-mode="mobile"] table.t .n { font-size: 21px; }
+body[data-mode="mobile"] table.t .time { font-size: 22px; white-space: normal; }
+body[data-mode="mobile"] table.t .time small { font-size: 12.5px; }
+body[data-mode="mobile"] table.t .says { font-size: 15.5px; }
+
+/* top bar */
+body[data-mode="mobile"] .mtop {
+  display: flex; align-items: center; gap: 9px;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 78;
+  height: calc(46px + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 14px 0;
+  background: rgba(15,17,38,0.96);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+body[data-mode="mobile"] .mtop img { height: 26px; width: auto; }
+body[data-mode="mobile"] .mtop .mark {
+  height: 26px; aspect-ratio: 879 / 1000; flex: none;
+  background: var(--logo) center / contain no-repeat;
+}
+body[data-mode="mobile"] .mtop span {
+  font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* bottom action bar — doubled as the thumb-reachable nav */
+body[data-mode="mobile"] .mbar {
+  display: flex; align-items: center; gap: 6px;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 78;
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+  background: rgba(15,17,38,0.96);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+body[data-mode="mobile"] .mbtn {
+  -webkit-appearance: none; appearance: none; border: none; cursor: pointer;
+  min-width: 46px; height: 46px; padding: 0 10px; border-radius: 13px;
+  background: rgba(255,255,255,0.10); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font: inherit; font-size: 15px; font-weight: 800;
+}
+body[data-mode="mobile"] .mbtn:active { background: var(--orange); }
+body[data-mode="mobile"] .mbtn.on { background: var(--orange); }
+body[data-mode="mobile"] .mbtn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+body[data-mode="mobile"] .mbtn.wide { min-width: 0; }
+body[data-mode="mobile"] .mcount {
+  flex: 1; text-align: center; color: rgba(255,255,255,0.8);
+  font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums;
+}
+
+/* sheets: notes and overview fill the screen */
+body[data-mode="mobile"] .notes { max-height: 62vh; }
+body[data-mode="mobile"] .notes .bd { font-size: 15px; padding: 14px 16px 20px; }
+body[data-mode="mobile"] .ov { padding: 14px 14px calc(14px + env(safe-area-inset-bottom)); }
+body[data-mode="mobile"] .ov .g { grid-template-columns: 1fr 1fr; gap: 10px; }
+body[data-mode="mobile"] .ov .th { width: 100% !important; }
+body[data-mode="mobile"] .lb { padding: 12px; }
+
+/* when the on-screen keyboard is up (rare) or the phone is tiny, keep bars usable */
+@media (max-height: 420px) {
+  body[data-mode="mobile"] .slide { padding-top: calc(46px + env(safe-area-inset-top)); padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
+}
 
 /* ══════════ PRINT ══════════ */
 @media print {

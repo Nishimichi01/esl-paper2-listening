@@ -62,18 +62,20 @@ function expand(html = '') {
 }
 
 /* ── slide renderers ────────────────────────────────────────── */
-const logo = 'data:image/png;base64,' + readFileSync(p('assets/img/logo.png')).toString('base64');
+const logo = 'data:image/png;base64,' + readFileSync(p('assets/img/logo-embed.png')).toString('base64');
 const notes = (s) => (s.notes ? `<div class="slide__notes">${s.notes}</div>` : '');
 
 function renderHero(s, i) {
   return `
       <section class="slide hero" id="${s.id}" aria-label="Slide ${i + 1}: ${attr(s.title)}">
-        ${s.logo ? `<img class="hero-logo" src="${logo}" alt="Falih Junior International Academy">` : ''}
+        <div class="slide-inner title-wrap">
+        ${s.logo ? '<div class="hero-logo" role="img" aria-label="Falih Junior International Academy"></div>' : ''}
         <h1>${s.title}</h1>
         ${s.tagline ? `<p class="tagline">${s.tagline}</p>` : ''}
         <div class="rule"></div>
         ${s.meta ? `<p class="meta">${s.meta}</p>` : ''}
         ${s.body ? `<div style="margin-top:22px">${expand(s.body)}</div>` : ''}
+        </div>
         ${notes(s)}
       </section>`;
 }
@@ -122,6 +124,7 @@ const body = slides.map(render).join('\n');
 let css = readFileSync(p('src/deck.css'), 'utf8');
 css = css.replace('__FONT_HEAD__', readFileSync(p('assets/fonts/Baloo2-latin.woff2')).toString('base64'));
 css = css.replace('__FONT_BODY__', readFileSync(p('assets/fonts/Nunito-latin.woff2')).toString('base64'));
+css = css.replace('__LOGO__', readFileSync(p('assets/img/logo-embed.png')).toString('base64'));
 
 const js = readFileSync(p('src/deck.js'), 'utf8');
 
@@ -132,18 +135,27 @@ const I = {
   grid: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
   fs: '<svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
   print: '<svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></svg>',
+  desktop: '<svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="12.5" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>',
+  phone: '<svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>',
 };
 
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#1B1D3E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Paper 2 Listening">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/icon-192.png">
 <title>Paper 2 Listening — Answering Techniques Workshop | Falih Junior International Academy</title>
 <meta name="description" content="A concise step-by-step workshop on Cambridge IGCSE English as a Second Language 0511 Paper 2 (Listening), using the October/November 2025 paper. Falih Junior International Academy.">
 <meta name="color-scheme" content="light">
-<link rel="icon" href="${logo}">
+<link rel="icon" href="img/icon-192.png">
 <style>
 ${css}
 </style>
@@ -155,7 +167,7 @@ ${body}
 </div></div>
 
 <div class="chrome">
-  <div class="mark"><img src="${logo}" alt=""><span>Paper 2 · Listening</span></div>
+  <div class="mark"><span class="markimg" role="img" aria-label="Falih Junior International Academy"></span><span>Paper 2 · Listening</span></div>
   <div class="ctr">
     <button class="btn" id="b-prev" aria-label="Previous" title="Previous (←)">${I.prev}</button>
     <span class="count" id="count" aria-live="polite"><b>1</b> / ${slides.length}</span>
@@ -183,6 +195,19 @@ ${body}
 
 <div class="lb" id="lb" hidden><img id="lb-img" alt="Exam paper detail"></div>
 
+<div class="mtop" aria-hidden="true"><span class="mark"></span><span class="sub">IGCSE ESL 0511 &nbsp;·&nbsp; Paper 2 Listening</span></div>
+
+<nav class="mbar" aria-label="Slide controls">
+  <button class="mbtn" data-m="prev" aria-label="Previous slide">${I.prev}</button>
+  <span class="mcount" id="mcount">1 / ${slides.length}</span>
+  <button class="mbtn" data-m="next" aria-label="Next slide">${I.next}</button>
+  <button class="mbtn" data-m="notes" aria-label="Speaker notes">${I.notes}</button>
+  <button class="mbtn" data-m="ov" aria-label="Overview">${I.grid}</button>
+  <button class="mbtn" data-m="mode" aria-label="Switch to presentation view" title="Presentation view">${I.desktop}</button>
+</nav>
+
+<button class="fbtn" data-m="mode" aria-label="Switch to phone view" title="Phone view">${I.phone}<span>Phone view</span></button>
+
 <script>
 ${js}
 </script>
@@ -192,6 +217,8 @@ ${js}
 
 mkdirSync(p('dist'), { recursive: true });
 mkdirSync(p('dist/audio'), { recursive: true });
+mkdirSync(p('dist/img'), { recursive: true });
+mkdirSync(p('img'), { recursive: true });
 writeFileSync(p('dist/index.html'), html, 'utf8');
 writeFileSync(p('index.html'), html, 'utf8');
 const audioFiles = readdirSync(p('assets/audio'));
@@ -201,8 +228,91 @@ if (!INLINE_AUDIO) {
     copyFileSync(p('assets/audio', f), p('audio', f));
   }
 }
+
+/* ── PWA: installable + offline ─────────────────────────────── */
+const iconFiles = ['icon-192.png', 'icon-512.png'];
+for (const f of iconFiles) {
+  copyFileSync(p('assets/img', f), p('dist/img', f));
+  copyFileSync(p('assets/img', f), p('img', f));
+}
+
+const manifest = {
+  name: 'Paper 2 Listening — Answering Techniques Workshop',
+  short_name: 'Paper 2 Listening',
+  description: 'Cambridge IGCSE English as a Second Language 0511, Paper 2 Listening. Falih Junior International Academy.',
+  start_url: './',
+  scope: './',
+  display: 'standalone',
+  orientation: 'any',
+  background_color: '#FDF8F3',
+  theme_color: '#1B1D3E',
+  icons: [
+    { src: 'img/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+    { src: 'img/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+    { src: 'img/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+  ],
+};
+writeFileSync(p('dist/manifest.webmanifest'), JSON.stringify(manifest, null, 2), 'utf8');
+writeFileSync(p('manifest.webmanifest'), JSON.stringify(manifest, null, 2), 'utf8');
+
+/* Network-first for the page so a rebuild shows up, cache-first for the audio
+   clips so a lesson works with no signal. Bump SW_VERSION to invalidate. */
+const SW_VERSION = 'v2';
+const sw = `/* generated by build.mjs — do not edit */
+const V = '${SW_VERSION}';
+const CACHE = 'esl0511-' + V;
+const CORE = ['./', './index.html', './manifest.webmanifest', './img/icon-192.png', './img/icon-512.png'];
+const AUDIO_PREFIX = './audio/';
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+
+  // audio: cache-first (clips never change, and a lesson must work offline)
+  if (url.pathname.includes('/audio/') || url.pathname.startsWith(AUDIO_PREFIX)) {
+    e.respondWith(
+      caches.match(req, { ignoreSearch: true }).then((hit) =>
+        hit || fetch(req).then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(req, copy));
+          return res;
+        })
+      )
+    );
+    return;
+  }
+
+  // everything else: network-first, fall back to cache
+  e.respondWith(
+    fetch(req)
+      .then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, copy));
+        return res;
+      })
+      .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html')))
+  );
+});
+`;
+writeFileSync(p('dist/sw.js'), sw, 'utf8');
+writeFileSync(p('sw.js'), sw, 'utf8');
+
 const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
-console.log(`✓ ${slides.length} slides · ${kb} KB html — ${imgCache.size} paper crops, ${audioFiles.length} audio clips${INLINE_AUDIO ? ' (inlined)' : ' (./audio/)'}, fonts embedded`);
+console.log(`✓ ${slides.length} slides · ${kb} KB html — ${imgCache.size} paper crops, ${audioFiles.length} audio clips${INLINE_AUDIO ? ' (inlined)' : ' (./audio/)'}, fonts embedded, PWA manifest + service worker`);
 
 const warn = [];
 slides.forEach((s, i) => {
