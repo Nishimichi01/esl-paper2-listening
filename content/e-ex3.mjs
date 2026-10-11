@@ -23,12 +23,12 @@ export const e = [
         <div class="s-card tint-g"><h3><span class="ico">🧩</span>The gap is a clue, not a gap</h3>
           <p>Because you can see the sentence around the gap, you can use <b>grammar, collocation and word class</b> to narrow three options to one before the audio begins.</p></div>
       </div>
-      <div class="callout ok mt-14"><b>Two gifts in this exercise.</b> First, the statements <b>follow the order of the talk</b> — so the sentences are a map of the monologue's structure. Second, the options must fit <b>into a written sentence</b>, so grammar alone sometimes identifies the answer. No other exercise gives you either.</div>
+      <div class="callout ok mt-14"><b>Two gifts in this exercise.</b> First, the sentences normally <b>follow the order of the talk</b> — in practice they act as a map of the monologue's structure (check the rubric and the items on the day rather than assuming it). Second, the options must fit <b>into a written sentence</b>, so grammar alone sometimes identifies the answer. No other exercise gives you either.</div>
       <div class="callout warn mt-10"><b>The one thing Exercise 3 never tests:</b> implied meaning (L4). The syllabus lists L1, L2 and L3 only. So do not hunt for hidden meanings here — listen for <b>information and main ideas</b>, stated plainly.</div>`,
     notes:
       '<span class="ntime">3 min</span>Exercise 3 is the second of the two "easy 16 marks" — 8 marks, and per the syllabus it tests <b>L1, L2 and L3 only</b>. No L4. Tell them that plainly: this exercise rewards clear hearing and grammatical reasoning, not inference. ' +
       'Describe the format precisely from the syllabus: candidates listen to <b>one monologue</b> (e.g. a talk or presentation) and <b>complete eight sentences</b> by selecting from three written options — each a word or a short phrase. The sentences test "understanding of information and main ideas". ' +
-      'Then introduce the two structural gifts: the items run in the same order as the talk, so the sentences act as a <b>structural map</b>; and because the options must slot into a written sentence, <b>grammar can do elimination work</b> before the audio starts. ' +
+      'Then introduce the two structural gifts: in practice the items run in the same order as the talk, so the sentences act as a <b>structural map</b> (present it as the normal design, not a guarantee); and because the options must slot into a written sentence, <b>grammar can do elimination work</b> before the audio starts. ' +
       'This is the key contrast with Exercise 1: there you interpret pictures, here you interpret a sentence. Different cognitive skill, same one mark.',
   },
 

@@ -581,11 +581,14 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 .slide.revealed .rv:nth-child(3) { transition-delay: 0.1s; }
 .slide.revealed .rv:nth-child(4) { transition-delay: 0.15s; }
 .reveal-hint {
+  position: absolute;
+  top: 2px; right: 0;
   display: inline-flex; align-items: center; gap: 7px;
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--amber);
   background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.34);
   border-radius: 8px; padding: 4px 10px;
+  z-index: 3;
 }
 .slide.revealed .reveal-hint { display: none; }
 
@@ -684,6 +687,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
   .s-grid--2, .s-grid--3, .s-grid--4, .dd, .check { grid-template-columns: 1fr; }
   .brow { grid-template-columns: 92px 1fr 50px; }
   .chrome-progress { display: none; }
+  .reveal-hint { position: static; margin-bottom: 10px; }
 }
 
 /* ══════════════ PRINT / PDF ══════════════ */
@@ -757,7 +761,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
           <h1 class="hero-title">ESL Answering Techniques Workshop</h1>
           <p class="hero-lead">Paper 2 — <span class="accent">Listening</span> · 40 questions · five exercises · one technique at a time</p>
           <p class="hero-sub">Built for Year 10 once the syllabus is finished. This session adds no new grammar and no new topics — it turns everything you already know into marks on an answer sheet.</p>
-          <ul class="chips"><li class="on">Paper 2 · Component 2</li><li class="on">25% of the IGCSE</li><li>Syllabus 2027 · 2028 · 2029</li><li>40 marks · ~50 min</li><li>Audio heard twice</li><li>B2-high → C1</li></ul>
+          <ul class="chips"><li class="on">Paper 2 · Component 2</li><li class="on">25% of the IGCSE</li><li>Syllabus 2027 · 2028 · 2029</li><li>40 marks · ~50 min</li><li>Audio heard twice</li><li>Audience: B2-high → C1</li></ul>
           
         </div>
         <p class="s-hint">Use ← → or space to navigate · G for overview · F for fullscreen · N for notes · R to reveal answers · P to print / export PDF</p>
@@ -766,11 +770,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="outcomes" aria-label="Slide 2: By the end of this session you will be able to…">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Workshop outcomes</div>
           
           <h2 class="s-title">By the end of this session you will be able to…</h2>
           <p class="s-sub">Every outcome below is something you can do on your own, in the exam hall, without a teacher next to you.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2">
@@ -783,7 +787,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
           <p>Know exactly what you are listening for on hearing 1 and what changes on hearing 2.</p>
         </div>
         <div class="s-card tint-g">
-          <h3><span class="ico">🔍</span>Recognise the seven standard traps</h3>
+          <h3><span class="ico">🔍</span>Recognise the nine standard traps</h3>
           <p>Spot word-spotting, wrong-speaker, reversal and negation distractors before they cost you a mark.</p>
         </div>
         <div class="s-card tint-g">
@@ -805,11 +809,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="agenda" aria-label="Slide 3: How today runs">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Roadmap</div>
           
           <h2 class="s-title">How today runs</h2>
           <p class="s-sub">Nine parts. Parts 3–7 are the exam itself, exercise by exercise; part 8 covers the skills that cut across all five.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3">
@@ -830,11 +834,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="where-paper2-sits" aria-label="Slide 4: Where Paper 2 sits in the IGCSE">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Assessment overview</div>
           
           <h2 class="s-title">Where Paper 2 sits in the IGCSE</h2>
           <p class="s-sub">All candidates take three components. Listening is worth a quarter of the whole qualification — and it is the shortest paper you will sit.</p>
-          
           <div style="height:20px"></div>
           
       <div class="tbl-wrap">
@@ -850,22 +854,23 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
           </tbody>
         </table>
       </div>
+      <div class="footnote">The 140 is the sum of the three component marks. The syllabus states each component's <b>weighting</b> (50 / 25 / 25) rather than a qualification total — note that the weightings are not proportional to the raw marks, so the marks column is for information only.</div>
       <div class="s-grid s-grid--3 mt-14">
         <div class="s-card"><h3><span class="ico">⏱️</span>Least time, real weight</h3><p>~50 minutes buys you 25% of the IGCSE. Per minute, Paper 2 is the best-value paper you sit.</p></div>
         <div class="s-card"><h3><span class="ico">🔤</span>Every answer is a letter</h3><p>You never write prose. Your only job is to choose A, B, C or D — and transfer it accurately.</p></div>
         <div class="s-card"><h3><span class="ico">♻️</span>You hear every text twice</h3><p>Nothing is heard once. A good technique uses hearing 1 and hearing 2 for two different jobs.</p></div>
       </div>
         </div>
-        <div class="slide__notes"><span class="ntime">2 min</span>This slide answers "why should I care about listening?" — because 25% of the qualification arrives in the shortest paper of the three. Three facts to land: (1) <b>40 marks, 1 mark per question, no half marks</b>; (2) <b>the answer is always a letter</b> — no spelling of content words, no writing sentences, which removes a whole category of error you face in Paper 1; (3) <b>every audio extract is heard twice</b>, which is your safety net. If a student asks about spelling: on a multiple-choice answer sheet you transfer a letter, so the spelling risk is limited to filling in your candidate details and the letters themselves. Confirmed against the syllabus: "All questions are multiple choice, and candidates answer each one by selecting the correct option."</div>
+        <div class="slide__notes"><span class="ntime">2 min</span>This slide answers "why should I care about listening?" — because 25% of the qualification arrives in the shortest paper of the three. Three facts to land: (1) <b>40 marks, 1 mark per question, no half marks</b>; (2) <b>the answer is always a letter</b> — no spelling of content words, no writing sentences, which removes a whole category of error you face in Paper 1; (3) <b>every audio extract is heard twice</b>, which is your safety net. Two honesty notes if students ask. First, the 140 total is my addition: the syllabus gives each component's marks and weighting but no combined total, and the weightings (50 / 25 / 25) are not proportional to raw marks. Second, the syllabus says "Dictionaries may not be used" explicitly for Component 1 and Component 3, but the Component 2 section does not repeat that sentence — say plainly that no dictionary is permitted in the listening test in practice, and point them at the Cambridge Handbook and the centre's instructions for the detail rather than at this syllabus page. Worth confirming on the slide itself: the syllabus states "All questions are multiple choice, and candidates answer each one by selecting the correct option" — so there is no prose, and no spelling of content words.</div>
       </section>
 
       <section class="slide" id="assessment-objectives" aria-label="Slide 5: The four things examiners are actually testing">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Assessment objectives — AO3 Listening</div>
           
           <h2 class="s-title">The four things examiners are actually testing</h2>
           <p class="s-sub">Cambridge writes every listening question to test one of four skills, L1–L4. Knowing which one a question targets tells you what kind of answer to expect.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2">
@@ -897,11 +902,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="how-paper-built" aria-label="Slide 6: Five exercises. Forty questions. Two hearings each.">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Anatomy of the paper</div>
           
           <h2 class="s-title">Five exercises. Forty questions. Two hearings each.</h2>
           <p class="s-sub">Nothing about the structure should surprise you on exam day. This is the whole paper in one frame.</p>
-          
           <div style="height:20px"></div>
           
       <div class="tbl-wrap">
@@ -923,22 +928,22 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
         <div class="s-card"><h3><span class="ico">⏳</span>6 minutes to transfer</h3><p>Exactly six minutes, after the last exercise, to move 40 letters across.</p></div>
       </div>
         </div>
-        <div class="slide__notes"><span class="ntime">3 min</span>Make students say the numbers back: <b>5 exercises, 40 questions, 40 marks, ~50 minutes, played twice, 6-minute transfer.</b> Confirm the structural facts from the syllabus: each exercise tests comprehension of recorded texts such as monologues, interviews or conversations; <b>candidates hear each recorded text twice</b>; and at the end of the test they transfer answers onto a <b>separate answer sheet</b> with <b>six minutes</b> allowed. Point out the one asymmetry: Exercise 2 gives you <b>ten</b> marks for five extracts, while Exercise 4 gives you only <b>six</b> for six. Exercise 4 is the worst-value real estate in the paper — do not overspend your attention there. Also flag that no dictionary is allowed in the listening test, and that answer sheets are the standard Cambridge multiple-choice sheet.</div>
+        <div class="slide__notes"><span class="ntime">3 min</span>Make students say the numbers back: <b>5 exercises, 40 questions, 40 marks, ~50 minutes, played twice, 6-minute transfer.</b> Confirm the structural facts from the syllabus: each exercise tests comprehension of recorded texts such as monologues, interviews or conversations; <b>candidates hear each recorded text twice</b>; and at the end of the test they transfer answers onto a <b>separate answer sheet</b> with <b>six minutes</b> allowed. Point out the one asymmetry: Exercise 2 gives you <b>ten</b> marks for five extracts, while Exercise 4 gives you only <b>six</b> for six monologues plus eight statements to track. Exercise 4 is the heaviest load for the fewest marks — do not overspend your attention there. On dictionaries, be precise if asked: the syllabus says "Dictionaries may not be used" explicitly for Component 1 and Component 3, but the Component 2 (Listening) section does not repeat that sentence. Practically, no dictionary is permitted in the listening test — point students at the Cambridge Handbook and the centre's instructions rather than at this syllabus for that detail. Also note that answer sheets are the standard Cambridge multiple-choice sheets; the syllabus links to the example sheets on the exam-officers pages.</div>
       </section>
 
       <section class="slide" id="exam-day-mechanics" aria-label="Slide 7: What actually happens in the room">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam-day mechanics</div>
           
           <h2 class="s-title">What actually happens in the room</h2>
           <p class="s-sub">Most lost marks in listening are lost before the first extract — through poor preparation of the room, the paper or the answer sheet.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
         <div>
           <div class="s-card"><h3><span class="ico">🔊</span>The audio</h3>
-            <p>Delivered by the centre — CD, USB or secure download. It is checked in advance, but <b>if you cannot hear clearly, raise your hand immediately</b>. Do not sit through a whole exercise guessing.</p></div>
+            <p>Delivered by the centre, checked in advance. <b>If you cannot hear clearly, raise your hand immediately</b> — do not sit through a whole exercise guessing. Reporting a problem during the test is what lets the centre act on it.</p></div>
           <div class="s-card mt-10"><h3><span class="ico">📄</span>The question paper</h3>
             <p>You write your answers <b>on the question paper</b> first. This is a working document — underline, circle, strike through. Nobody marks the question paper.</p></div>
           <div class="s-card mt-10"><h3><span class="ico">🖊️</span>The answer sheet</h3>
@@ -946,18 +951,18 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
         </div>
         <div>
           <div class="callout ok"><b>Allowed:</b> working on the question paper, writing in pencil, changing answers, using the 6-minute transfer to double-check.<br><br>
-          <b>Not allowed:</b> dictionaries, phones, discussing answers, extra time after the recording ends beyond the 6 minutes.</div>
+          <b>Not allowed:</b> phones, discussing answers, or writing after the recording ends and the 6 minutes' transfer time has finished. The syllabus states that dictionaries may not be used in Components 1 and 3 — assume the same here and do not rely on one.</div>
           <div class="callout warn mt-14"><b>The three silent killers</b> — none of them about English:
             <ul class="s-bullets no mt-6">
               <li><b>Off-by-one transfer</b> — the answers are right, the letters are on the wrong lines.</li>
-              <li><b>Blank answers</b> — leaving a question empty when there is no penalty for guessing.</li>
+              <li><b>Blank answers</b> — leaving a question empty. A blank scores zero with certainty; a guess sometimes scores one.</li>
               <li><b>Unprepared silence</b> — sitting passively during the reading time instead of predicting.</li>
             </ul></div>
-          <div class="callout info mt-14"><b>One-in-four is free.</b> In Exercise 1 with four options, a blind guess is worth 0.25 of a mark on average. On 40 questions, never leaving a blank is worth roughly <b>2–3 marks</b> across the paper on its own.</div>
+          <div class="callout info mt-14"><b>One-in-four is free.</b> In Exercise 1 with four options, a blind guess is worth 0.25 of a mark on average. Leave eight lines blank across the paper and you have handed back roughly <b>two marks</b> — for nothing. <span style="color:#7D8DA6">(Cambridge does not deduct marks for wrong answers on multiple-choice papers; check the current Cambridge Handbook for the exact wording.)</span></div>
         </div>
       </div>
         </div>
-        <div class="slide__notes"><span class="ntime">3 min</span>This slide exists because three of the most common mark losses are nothing to do with English. Walk the left column as logistics, then spend real time on the right column. Emphasise: <b>write on the question paper</b> (it is your scrap paper and it is never marked), and <b>the answer sheet is a separate risk</b>. Teach the off-by-one failure explicitly and give the fix now: transfer in blocks of five, counting lines aloud in your head, and cover the rest of the sheet with your hand so your eye cannot drift. On guessing: there is no negative marking in Cambridge IGCSE, so <b>every question must have a letter</b>. The expected-value maths on one-in-four guessing is genuinely worth 2–3 marks per paper, which can be the difference between grades. Remind them of the invigilator script: if the audio is unclear or the equipment fails, they must raise a hand at once — centres can request special consideration only if the problem is reported during the test.</div>
+        <div class="slide__notes"><span class="ntime">3 min</span>This slide exists because three of the most common mark losses are nothing to do with English. Walk the left column as logistics, then spend real time on the right column. Emphasise: <b>write on the question paper</b> (it is your scrap paper and it is never marked), and <b>the answer sheet is a separate risk</b>. Teach the off-by-one failure explicitly and give the fix now: transfer in blocks of five, counting lines aloud in your head, and cover the rest of the sheet with your hand so your eye cannot drift. On guessing: there is no negative marking in Cambridge IGCSE, so <b>every question must have a letter</b>. Illustrate the expected value: in Exercise 1 each question has four options, so a blind guess is worth 0.25 of a mark on average — leave eight blank lines and you have given away about two marks for nothing. Across the paper that can be the difference between grades. Remind them of the invigilator script: if the audio is unclear or the equipment fails, they must raise a hand at once — centres can request special consideration only if the problem is reported during the test.</div>
       </section>
 
       <section class="slide slide--section" id="part-1" aria-label="Slide 8: The paper itself">
@@ -984,11 +989,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="exercise-map" aria-label="Slide 9: All five exercises in one frame">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>The map</div>
           
           <h2 class="s-title">All five exercises in one frame</h2>
           <p class="s-sub">Same paper, five different games. The columns on the right are the ones that decide your score.</p>
-          
           <div style="height:20px"></div>
           
       <div class="tbl-wrap">
@@ -1033,20 +1038,20 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
       </div>
       <div class="s-grid s-grid--3 mt-14">
         <div class="s-card tint-v"><h3><span class="ico">🎯</span>24 of 40 marks involve L4</h3><p>Exercises 2, 4 and 5 all test <b>implied meaning</b>. If you only listen for stated facts, you cap yourself at about 16 marks.</p></div>
-        <div class="s-card tint-g"><h3><span class="ico">💰</span>18 easy marks sit in E1 and E3</h3><p>Two exercises, 16 marks, both L1–L3 only, and both built on one clear speaker or one clear extract at a time.</p></div>
-        <div class="s-card tint-r"><h3><span class="ico">⚠️</span>E4 is high effort, low reward</h3><p>Six monologues for six marks — the worst marks-per-minute rate. Do not let it consume Exercise 5's attention.</p></div>
+        <div class="s-card tint-g"><h3><span class="ico">💰</span>16 cheap marks sit in E1 and E3</h3><p>Two exercises, 8 marks each, both L1–L3 only, and both built on one clear speaker or one clear extract at a time.</p></div>
+        <div class="s-card tint-r"><h3><span class="ico">⚠️</span>E4: most effort, fewest marks</h3><p>Six separate speakers plus eight statements to track — for only <b>6 marks</b>, the lowest on the paper. Do not let it consume Exercise 5's attention.</p></div>
       </div>
         </div>
-        <div class="slide__notes"><span class="ntime">4 min</span>This is the strategic slide. Read the table top to bottom once, then teach the three insights below it — they are the reason the table exists. <b>Insight 1 (AO coverage):</b> the syllabus assigns L4 — implied meaning — to Exercises 2, 4 and 5. That is 24 of the 40 marks. A student who only hunts for stated facts is competing for roughly 16 marks. <b>Insight 2 (value):</b> Exercises 1 and 3 test only L1–L3, and they are 16 marks between them. These are the training-priority marks for a B2/C1 student. <b>Insight 3 (effort):</b> Exercise 4 is six separate monologues and eight statements for just six marks. It also has the most complex marking logic (each statement used at most once, one statement unused). Warn them: if they are behind time or panicking, E4 is where they should make peace with losing a mark rather than destabilising E5. Note the difficulty labels are my professional judgement of cognitive load, not a Cambridge label — say so if asked.</div>
+        <div class="slide__notes"><span class="ntime">4 min</span>This is the strategic slide. Read the table top to bottom once, then teach the three insights below it — they are the reason the table exists. <b>Insight 1 (AO coverage):</b> the syllabus assigns L4 — implied meaning — to Exercises 2, 4 and 5. That is 24 of the 40 marks. A student who only hunts for stated facts is competing for roughly 16 marks. <b>Insight 2 (value):</b> Exercises 1 and 3 test only L1–L3, and they are 16 marks between them. These are the training-priority marks for a B2/C1 student. <b>Insight 3 (effort):</b> Exercise 4 is six separate monologues and eight statements for just six marks. It also has the most complex marking logic — eight statements against six speakers, so if options may be used only once, <b>two are left over</b> and none repeat. Warn them: if they are behind time or panicking, E4 is where they should make peace with losing a mark rather than destabilising E5. Note the difficulty labels are my professional judgement of cognitive load, not a Cambridge label — say so if asked.</div>
       </section>
 
       <section class="slide" id="taco-method" aria-label="Slide 10: Every question, in four beats: the T.A.C.O. loop">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>The universal method</div>
           
           <h2 class="s-title">Every question, in four beats: the T.A.C.O. loop</h2>
           <p class="s-sub">One routine you can run on all 40 questions, in all five exercises, without thinking. Learn it until it is automatic.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1084,11 +1089,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="two-hearings" aria-label="Slide 11: Hearing 1 and hearing 2 are two different jobs">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>The two hearings</div>
           
           <h2 class="s-title">Hearing 1 and hearing 2 are two different jobs</h2>
           <p class="s-sub">Students who score 20/40 usually use both hearings for the same task. Students who score 35+/40 use them for different tasks.</p>
-          
           <div style="height:20px"></div>
           
       <div class="tbl-wrap">
@@ -1114,11 +1119,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="scan-protocol" aria-label="Slide 12: The 20 seconds that are worth 5 marks">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Step T in practice</div>
           
           <h2 class="s-title">The 20 seconds that are worth 5 marks</h2>
           <p class="s-sub">Before every extract you get a short silence. It is not a rest — it is the only time in the exam when you control the information.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1187,11 +1192,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e1-anatomy" aria-label="Slide 14: Eight short extracts, one picture question each">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 1</div>
           <div class="ex-badge"><span class="ens">1</span>Exercise 1 · 8 marks <span class="ao">SKILLS L1 · L2 · L3</span></div>
           <h2 class="s-title">Eight short extracts, one picture question each</h2>
           <p class="s-sub">The friendliest exercise on the paper. Fast, concrete, and worth eight marks — but the pictures are doing more work than students realise.</p>
-          
           <div style="height:20px"></div>
           
       <div class="stats">
@@ -1206,7 +1211,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
         <div class="s-card"><h3><span class="ico">🖼️</span>What you see</h3>
           <p>One question with <b>four visual options</b>. The answer is almost always a <b>concrete fact</b> — a time, a place, an object, an activity, a weather condition, a person's role.</p></div>
         <div class="s-card"><h3><span class="ico">⏱️</span>How it feels</h3>
-          <p>Each extract is <b>short</b> and played twice with a pause between. The whole exercise moves quickly — you get roughly 30–40 seconds of decision time per question.</p></div>
+          <p>Each extract is <b>short</b> and played twice. The whole exercise moves quickly, so decisions have to be made the first time they are offered — there is no room to deliberate.</p></div>
       </div>
       <div class="callout info mt-14"><b>The design logic:</b> because the options are pictures, the paper cannot test subtle wording — it tests whether you can <b>map one concrete sentence onto one image</b>. That makes this the exercise where a well-prepared student should score <b>7 or 8 out of 8</b>. Treat anything less as a technique problem, not a vocabulary problem.</div>
         </div>
@@ -1215,11 +1220,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e1-pictures" aria-label="Slide 15: Read the pictures like a detective, not a tourist">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 1 — technique</div>
           
           <h2 class="s-title">Read the pictures like a detective, not a tourist</h2>
           <p class="s-sub">Four images that look unrelated are actually four versions of the same decision. Your job is to find the exact thing that separates them.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1246,11 +1251,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e1-worked" data-reveal="" aria-label="Slide 16: Let us break one apart, line by line">
         <div class="slide-inner">
+          <span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div class="s-kicker"><span class="dot"></span>Exercise 1 — worked example</div>
           
           <h2 class="s-title">Let us break one apart, line by line</h2>
           <p class="s-sub">Read the question and the four options first. Decide your answer before you look at the script — then reveal.</p>
-          <div style="height:12px"></div><span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div style="height:20px"></div>
           
       <div class="qcard">
@@ -1282,11 +1287,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e1-traps" aria-label="Slide 17: The four traps Exercise 1 is built from">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 1 — the traps</div>
           
           <h2 class="s-title">The four traps Exercise 1 is built from</h2>
           <p class="s-sub">Extract after extract, the same four patterns recur. Name them once and you will start hearing them arrive.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2">
@@ -1322,11 +1327,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e1-drill" aria-label="Slide 18: A ten-minute drill you can run twice a week">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 1 — make it automatic</div>
           
           <h2 class="s-title">A ten-minute drill you can run twice a week</h2>
           <p class="s-sub">Exercise 1 is where technique converts to marks fastest, because the format never changes. Use that.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-steps">
@@ -1351,11 +1356,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e2-anatomy" aria-label="Slide 19: Five extracts, two questions each — and the first real L4">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 2</div>
           <div class="ex-badge"><span class="ens">2</span>Exercise 2 · 10 marks <span class="ao">SKILLS L1 · L2 · L3 · L4</span></div>
           <h2 class="s-title">Five extracts, two questions each — and the first real L4</h2>
           <p class="s-sub">Ten marks, the biggest single block in the paper, and the first exercise where the answer is often never actually said.</p>
-          
           <div style="height:20px"></div>
           
       <div class="stats">
@@ -1379,11 +1384,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e2-pair-split" aria-label="Slide 20: The two questions are usually doing different jobs">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 2 — technique</div>
           
           <h2 class="s-title">The two questions are usually doing different jobs</h2>
           <p class="s-sub">One tends to be answerable from a stated fact. The other tends to need a stance: how someone feels, what they mean, what they imply.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1418,11 +1423,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e2-paraphrase" aria-label="Slide 21: The correct option paraphrases. The distractors quote.">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 2 — the golden rule</div>
           
           <h2 class="s-title">The correct option paraphrases. The distractors quote.</h2>
           <p class="s-sub">This is the single most useful generalisation in the whole listening paper. It comes straight out of listening-assessment research.</p>
-          
           <div style="height:20px"></div>
           
       <div class="callout info" style="font-size:0.88rem"><b>The design rule (Buck 2001; Field 2003, 2008):</b> test writers make the <b>key</b> a paraphrase of the audio, and make the <b>distractors</b> re-use the audio's own words. Recognising your own vocabulary is rewarded by feeling confident — which is precisely what the trap is for.</div>
@@ -1446,11 +1451,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e2-implied" aria-label="Slide 22: When the answer is never said, only meant">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 2 — implied meaning (L4)</div>
           
           <h2 class="s-title">When the answer is never said, only meant</h2>
           <p class="s-sub">L4 is 24 of the 40 marks across the paper. Here is how to hear something that is not there.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1477,11 +1482,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e2-worked" data-reveal="" aria-label="Slide 23: Two questions, one extract, five traps">
         <div class="slide-inner">
+          <span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div class="s-kicker"><span class="dot"></span>Exercise 2 — worked example</div>
           
           <h2 class="s-title">Two questions, one extract, five traps</h2>
           <p class="s-sub">Read both questions first. Label each F (fact) or S (stance). Decide before you look at the script.</p>
-          <div style="height:12px"></div><span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1524,11 +1529,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e3-anatomy" aria-label="Slide 24: One monologue, eight sentences, and grammar on your side">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 3</div>
           <div class="ex-badge"><span class="ens">3</span>Exercise 3 · 8 marks <span class="ao">SKILLS L1 · L2 · L3</span></div>
           <h2 class="s-title">One monologue, eight sentences, and grammar on your side</h2>
           <p class="s-sub">The only exercise in the paper where the question paper itself can eliminate wrong answers before you hear a single word.</p>
-          
           <div style="height:20px"></div>
           
       <div class="stats">
@@ -1545,19 +1550,19 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
         <div class="s-card tint-g"><h3><span class="ico">🧩</span>The gap is a clue, not a gap</h3>
           <p>Because you can see the sentence around the gap, you can use <b>grammar, collocation and word class</b> to narrow three options to one before the audio begins.</p></div>
       </div>
-      <div class="callout ok mt-14"><b>Two gifts in this exercise.</b> First, the statements <b>follow the order of the talk</b> — so the sentences are a map of the monologue's structure. Second, the options must fit <b>into a written sentence</b>, so grammar alone sometimes identifies the answer. No other exercise gives you either.</div>
+      <div class="callout ok mt-14"><b>Two gifts in this exercise.</b> First, the sentences normally <b>follow the order of the talk</b> — in practice they act as a map of the monologue's structure (check the rubric and the items on the day rather than assuming it). Second, the options must fit <b>into a written sentence</b>, so grammar alone sometimes identifies the answer. No other exercise gives you either.</div>
       <div class="callout warn mt-10"><b>The one thing Exercise 3 never tests:</b> implied meaning (L4). The syllabus lists L1, L2 and L3 only. So do not hunt for hidden meanings here — listen for <b>information and main ideas</b>, stated plainly.</div>
         </div>
-        <div class="slide__notes"><span class="ntime">3 min</span>Exercise 3 is the second of the two "easy 16 marks" — 8 marks, and per the syllabus it tests <b>L1, L2 and L3 only</b>. No L4. Tell them that plainly: this exercise rewards clear hearing and grammatical reasoning, not inference. Describe the format precisely from the syllabus: candidates listen to <b>one monologue</b> (e.g. a talk or presentation) and <b>complete eight sentences</b> by selecting from three written options — each a word or a short phrase. The sentences test "understanding of information and main ideas". Then introduce the two structural gifts: the items run in the same order as the talk, so the sentences act as a <b>structural map</b>; and because the options must slot into a written sentence, <b>grammar can do elimination work</b> before the audio starts. This is the key contrast with Exercise 1: there you interpret pictures, here you interpret a sentence. Different cognitive skill, same one mark.</div>
+        <div class="slide__notes"><span class="ntime">3 min</span>Exercise 3 is the second of the two "easy 16 marks" — 8 marks, and per the syllabus it tests <b>L1, L2 and L3 only</b>. No L4. Tell them that plainly: this exercise rewards clear hearing and grammatical reasoning, not inference. Describe the format precisely from the syllabus: candidates listen to <b>one monologue</b> (e.g. a talk or presentation) and <b>complete eight sentences</b> by selecting from three written options — each a word or a short phrase. The sentences test "understanding of information and main ideas". Then introduce the two structural gifts: in practice the items run in the same order as the talk, so the sentences act as a <b>structural map</b> (present it as the normal design, not a guarantee); and because the options must slot into a written sentence, <b>grammar can do elimination work</b> before the audio starts. This is the key contrast with Exercise 1: there you interpret pictures, here you interpret a sentence. Different cognitive skill, same one mark.</div>
       </section>
 
       <section class="slide slide--dense" id="e3-gap-prediction" aria-label="Slide 25: Read the gap like a grammar question first">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 3 — technique</div>
           
           <h2 class="s-title">Read the gap like a grammar question first</h2>
           <p class="s-sub">Before the audio starts, you can often reduce three options to one without knowing anything about the topic.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1593,11 +1598,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e3-margin-map" aria-label="Slide 26: Margin-map the talk instead of writing words">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 3 — during the audio</div>
           
           <h2 class="s-title">Margin-map the talk instead of writing words</h2>
           <p class="s-sub">You are not taking notes for an essay. You need a skeleton — and you need it in about twelve words.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1625,11 +1630,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e3-traps" aria-label="Slide 27: Three options, and two of them were built for you">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 3 — the traps</div>
           
           <h2 class="s-title">Three options, and two of them were built for you</h2>
           <p class="s-sub">Because the answer must fit a sentence, Exercise 3 traps are unusually predictable.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3">
@@ -1659,11 +1664,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e3-worked" data-reveal="" aria-label="Slide 28: Complete the sentences — a community garden">
         <div class="slide-inner">
+          <span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div class="s-kicker"><span class="dot"></span>Exercise 3 — worked example</div>
           
           <h2 class="s-title">Complete the sentences — a community garden</h2>
           <p class="s-sub">Use steps 1–4 prediction on each sentence before you consider the audio.</p>
-          <div style="height:12px"></div><span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1704,11 +1709,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e3-worked-2" data-reveal="" aria-label="Slide 29: Sentence 3: the trap that costs the mark">
         <div class="slide-inner">
+          <span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div class="s-kicker"><span class="dot"></span>Exercise 3 — worked example, part 2</div>
           
           <h2 class="s-title">Sentence 3: the trap that costs the mark</h2>
           <p class="s-sub">Two of the three options here are built from real words in the audio. Only one answers the question.</p>
-          <div style="height:12px"></div><span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1743,11 +1748,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e4-anatomy" aria-label="Slide 30: Six speakers, eight statements, six marks">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 4</div>
           <div class="ex-badge"><span class="ens">4</span>Exercise 4 · 6 marks <span class="ao">SKILLS L1 · L2 · L3 · L4</span></div>
           <h2 class="s-title">Six speakers, eight statements, six marks</h2>
-          <p class="s-sub">The most complex marking logic in the paper — and the worst marks-per-minute rate. Here you need a system, not attention.</p>
-          
+          <p class="s-sub">The most complex marking logic in the paper — and the heaviest cognitive load, for only six marks. Here you need a system, not attention.</p>
           <div style="height:20px"></div>
           
       <div class="stats">
@@ -1772,11 +1777,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e4-gist-labels" aria-label="Slide 31: Reduce all eight statements to three words each">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 4 — technique</div>
           
           <h2 class="s-title">Reduce all eight statements to three words each</h2>
           <p class="s-sub">You cannot hold eight sentences in your head while listening. You can hold eight three-word labels.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1813,11 +1818,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e4-grid" aria-label="Slide 32: The elimination grid: cross it out, then count">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 4 — the system</div>
           
           <h2 class="s-title">The elimination grid: cross it out, then count</h2>
           <p class="s-sub">One written system removes almost all of the error in Exercise 4. It takes ten seconds to set up.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1838,20 +1843,20 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
             <div class="s-step a"><span class="sn">3</span><div class="sbody"><span class="st">On hearing 2, verify — then cross it out</span><span class="sd">A line through the letter means “done, do not revisit”. This is what stops you re-litigating.</span></div></div>
             <div class="s-step a"><span class="sn">4</span><div class="sbody"><span class="st">At the end, count: six speakers, six letters used, two crossed out as spare</span><span class="sd">If two speakers point at one letter, you have an error — go back to that speaker. <b>The count is a free error detector.</b></span></div></div>
           </div>
-          <div class="callout warn mt-14"><b>Do not leave a speaker blank.</b> If you truly cannot decide, write the letter that is least likely and move on. A reasoned guess on a 1-in-4 or 1-in-6 choice is still worth marks across the paper.</div>
+          <div class="callout warn mt-14"><b>Do not leave a speaker blank.</b> If you truly cannot decide, write the letter that is least likely and move on. A blind guess here is 1-in-8, but a reasoned elimination is far better than that — and either beats a blank.</div>
         </div>
       </div>
         </div>
-        <div class="slide__notes"><span class="ntime">4 min</span>The grid is a ten-second setup that eliminates the characteristic Exercise 4 error — assigning the same statement to two speakers without noticing. Make students physically build it with you. Draw the six speaker slots and the eight letters on paper. Then play one speaker and have them write the speaker number beside the matched letter. Physically doing it once beats describing it five times. Step 4 is the part students never think of: <b>counting is an error detector</b>. Six speakers should consume six distinct letters. If two speakers point at F, there is a mistake, and they know exactly where to look. That self-check can recover a mark without re-listening. Practical note: some candidates find it faster to write the letter next to the speaker and strike the letter off the bank. Either works, provided one of the two directions is a visible ledger. What must not happen is remembering matches only in the head. Also: never leave a speaker blank. There is no penalty for a wrong answer, and a reasoned elimination is often right.</div>
+        <div class="slide__notes"><span class="ntime">4 min</span>The grid is a ten-second setup that eliminates the characteristic Exercise 4 error — assigning the same statement to two speakers without noticing. Make students physically build it with you. Draw the six speaker slots and the eight letters on paper. Then play one speaker and have them write the speaker number beside the matched letter. Physically doing it once beats describing it five times. Step 4 is the part students never think of: <b>counting is an error detector</b>. Six speakers should consume six distinct letters. If two speakers point at F, there is a mistake, and they know exactly where to look. That self-check can recover a mark without re-listening. Practical note: some candidates find it faster to write the letter next to the speaker and strike the letter off the bank. Either works, provided one of the two directions is a visible ledger. What must not happen is remembering matches only in the head. Also: never leave a speaker blank. A blank scores zero with certainty, and a reasoned elimination is often right.</div>
       </section>
 
       <section class="slide" id="e4-traps" aria-label="Slide 33: When two statements are both about the same thing">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 4 — the traps</div>
           
           <h2 class="s-title">When two statements are both about the same thing</h2>
           <p class="s-sub">Exercise 4 is built on statements that share a topic and differ in direction, scope or intensity.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3">
@@ -1881,11 +1886,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e4-worked" data-reveal="" aria-label="Slide 34: Three speakers, three decisions">
         <div class="slide-inner">
+          <span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div class="s-kicker"><span class="dot"></span>Exercise 4 — worked example</div>
           
           <h2 class="s-title">Three speakers, three decisions</h2>
           <p class="s-sub">Read all eight statements first, write your gist labels, then match these three speakers.</p>
-          <div style="height:12px"></div><span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1916,11 +1921,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e5-anatomy" aria-label="Slide 35: One interview, eight questions, one speaker who counts">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 5</div>
           <div class="ex-badge"><span class="ens">5</span>Exercise 5 · 8 marks <span class="ao">SKILLS L1 · L2 · L3 · L4</span></div>
           <h2 class="s-title">One interview, eight questions, one speaker who counts</h2>
           <p class="s-sub">The longest extract in the paper and the highest concentration of L4. The single most important instruction is printed in the syllabus itself.</p>
-          
           <div style="height:20px"></div>
           
       <div class="stats">
@@ -1945,11 +1950,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e5-attribution" aria-label="Slide 36: Attribution: the skill that decides Exercise 5">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 5 — technique</div>
           
           <h2 class="s-title">Attribution: the skill that decides Exercise 5</h2>
           <p class="s-sub">Every question is really asking the same hidden question: who said this, and did they mean it?</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -1983,11 +1988,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e5-attitude-language" aria-label="Slide 37: The words that carry opinions and attitudes">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 5 — language bank</div>
           
           <h2 class="s-title">The words that carry opinions and attitudes</h2>
           <p class="s-sub">L2 and L4 questions are answered by evaluative language, not content words. This is what to listen for.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2018,11 +2023,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="e5-traps" aria-label="Slide 38: Four ways Exercise 5 takes a mark off you">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exercise 5 — the traps</div>
           
           <h2 class="s-title">Four ways Exercise 5 takes a mark off you</h2>
           <p class="s-sub">Three of the four are attribution failures. All four are avoidable with a habit you already have.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2">
@@ -2054,11 +2059,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="e5-worked" data-reveal="" aria-label="Slide 39: Two questions, and one answer that is never said">
         <div class="slide-inner">
+          <span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div class="s-kicker"><span class="dot"></span>Exercise 5 — worked example</div>
           
           <h2 class="s-title">Two questions, and one answer that is never said</h2>
           <p class="s-sub">Mark the main speaker. Then read both questions before you listen.</p>
-          <div style="height:12px"></div><span class="reveal-hint">Press R (or click) to reveal the answers</span>
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2123,11 +2128,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="distractor-taxonomy" aria-label="Slide 41: The nine traps the whole paper is built from">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 1 of 8</div>
           
           <h2 class="s-title">The nine traps the whole paper is built from</h2>
           <p class="s-sub">Every wrong option in all five exercises is a version of one of these. Learn the list and you stop being surprised.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3">
@@ -2175,11 +2180,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="three-breakdowns" aria-label="Slide 42: Why you lose marks: three different failures">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 2 of 8</div>
           
           <h2 class="s-title">Why you lose marks: three different failures</h2>
           <p class="s-sub">“I didn't understand” hides three completely different problems — and each has a different cure. Diagnose yours before you practise more.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3">
@@ -2213,11 +2218,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="paraphrase-training" aria-label="Slide 43: Paraphrase is the real vocabulary test">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 3 of 8</div>
           
           <h2 class="s-title">Paraphrase is the real vocabulary test</h2>
           <p class="s-sub">The paper rarely repeats your words. It says the same thing differently, and you have to recognise the match.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2259,11 +2264,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="numbers-traps" aria-label="Slide 44: Numbers, times, dates and prices">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 4 of 8</div>
           
           <h2 class="s-title">Numbers, times, dates and prices</h2>
           <p class="s-sub">Numbers are the most trap-rich content in the paper, because they can be said twice and both times can be true of something different.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2294,11 +2299,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="connected-speech" aria-label="Slide 45: Why fast English defeats you — and the five-minute fix">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 5 of 8</div>
           
           <h2 class="s-title">Why fast English defeats you — and the five-minute fix</h2>
           <p class="s-sub">You know the words. You cannot hear them. That is not a vocabulary problem, and more vocabulary will not fix it.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2336,11 +2341,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="signposting" aria-label="Slide 46: Signposting: the map is spoken out loud">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 6 of 8</div>
           
           <h2 class="s-title">Signposting: the map is spoken out loud</h2>
           <p class="s-sub">Every monologue announces its own structure. If you can hear the signposts, you always know where you are — and when to move to the next question.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3">
@@ -2373,11 +2378,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="tone-attitude" aria-label="Slide 47: Tone carries meaning that words do not">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 7 of 8</div>
           
           <h2 class="s-title">Tone carries meaning that words do not</h2>
           <p class="s-sub">The same sentence can mean approval or contempt. In L2 and L4 questions, intonation is evidence.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2409,11 +2414,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="inference-ladder" aria-label="Slide 48: The inference ladder: L1 up to L4">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Cross-cutting skills · 8 of 8</div>
           
           <h2 class="s-title">The inference ladder: L1 up to L4</h2>
           <p class="s-sub">The four assessment objectives are a ladder, not four separate skills. Climb it deliberately on every extract — and know when to stop.</p>
-          
           <div style="height:20px"></div>
           
       <div class="ladder">
@@ -2455,11 +2460,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="timing-map" aria-label="Slide 50: Where your attention is worth spending">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam craft · 1 of 6</div>
           
           <h2 class="s-title">Where your attention is worth spending</h2>
           <p class="s-sub">Every question is worth exactly one mark — but the questions do not cost the same amount of effort. Spend accordingly.</p>
-          
           <div style="height:20px"></div>
           
       <div class="tbl-wrap">
@@ -2475,8 +2480,8 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
         </table>
       </div>
       <div class="s-grid s-grid--3 mt-14">
-        <div class="s-card tint-g"><h3><span class="ico">🪙</span>18 marks are “cheap”</h3><p>Exercises 1 and 3 test only L1–L3 and are 16 marks between them. <b>These are the marks a well-drilled B2/C1 student can almost bank.</b></p></div>
-        <div class="s-card tint-r"><h3><span class="ico">🧠</span>Exercise 4 is a load problem</h3><p>Six speakers plus eight statements is more than working memory holds — for six marks. <b>The written ledger is not optional; it is the answer.</b></p></div>
+        <div class="s-card tint-g"><h3><span class="ico">🪙</span>16 marks are “cheap”</h3><p>Exercises 1 and 3 test only L1–L3 and are 8 marks each. <b>These are the marks a well-drilled B2/C1 student can almost bank.</b></p></div>
+        <div class="s-card tint-r"><h3><span class="ico">🧠</span>Exercise 4 is a load problem</h3><p>Six speakers plus eight statements is more than working memory holds — for just 6 marks. <b>The written ledger is not optional; it is the answer.</b></p></div>
         <div class="s-card tint-a"><h3><span class="ico">🏁</span>Do not fade at the end</h3><p>Exercise 5 has the longest audio for the same one mark per question. <b>The last 10 minutes decide whether a 30 becomes a 34.</b></p></div>
       </div>
       <div class="footnote">The syllabus specifies “approximately 50 minutes (including 6 minutes' transfer time)” and 40 marks. Per-exercise audio durations vary by series and are not published in advance — the column above is a relative description, not a timetable.</div>
@@ -2486,11 +2491,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="transfer-protocol" aria-label="Slide 51: The six-minute transfer protocol">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam craft · 2 of 6</div>
           
           <h2 class="s-title">The six-minute transfer protocol</h2>
           <p class="s-sub">Six minutes. Forty answers. This is the only part of the paper you fully control — and it is where quiet catastrophes happen.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2511,23 +2516,23 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
             <ul class="s-bullets no mt-6">
               <li><b>Off-by-one.</b> One skipped line late in the sheet misaligns everything after it. Fix: blocks of five + cover the lines below.</li>
               <li><b>Double-shading.</b> Two letters shaded on one line — typically marked wrong. If you change your mind, erase <em>completely</em>.</li>
-              <li><b>Blank lines.</b> There is no penalty for a wrong answer. A blank line is a guaranteed zero; a guess may be right.</li>
+              <li><b>Blank lines.</b> A blank line is a certain zero; a guess may be right. Cambridge does not deduct marks for wrong answers on multiple-choice papers.</li>
             </ul></div>
           <div class="callout ok mt-14"><b>The count check is your safety net.</b> 8 + 10 + 8 + 6 + 8 = <b>40</b>. If your last answer is on line 40, you almost certainly transferred correctly. If it is on line 39, you skipped a line — and you have two minutes to find it.</div>
           <div class="callout info mt-14"><b>Six minutes for forty lines is comfortable.</b> Roughly nine seconds per answer. That is enough time to be careful — so there is no excuse for rushing, and no reason to skip the sweep.</div>
         </div>
       </div>
         </div>
-        <div class="slide__notes"><span class="ntime">4 min</span>The syllabus is explicit: after the last exercise, candidates <b>transfer their answers onto a separate answer sheet and have six minutes to do this</b>. Six minutes for 40 lines is about nine seconds per answer — genuinely comfortable. The risk here is not time pressure, it is mechanical error. Teach the block-of-five method and explain why blocks work: they give you restart points. A candidate who transfers 1 to 40 in one continuous run has no checkpoint, so a skipped line late in the sheet is invisible until the end. The hand-covering technique is the most effective single fix for off-by-one errors and it takes one second to adopt. Demonstrate it. Then the count check — this is the real safety net and it is arithmetic the students already know: 8 + 10 + 8 + 6 + 8 = 40. If the final answer lands on line 40, the transfer is almost certainly aligned. If it lands on 39, a line was skipped and there are still minutes to find it. Finally, say the unpopular thing out loud: <b>there is no penalty for guessing in Cambridge IGCSE</b>, so a blank line is a guaranteed zero. Remind them that across 40 questions, never leaving a blank is worth roughly two to three marks on expectation. One more practical point worth adding verbally: tell them to fill in candidate details <b>before</b> the audio starts if they are allowed to, and to check the digits, not just write them.</div>
+        <div class="slide__notes"><span class="ntime">4 min</span>The syllabus is explicit: after the last exercise, candidates <b>transfer their answers onto a separate answer sheet and have six minutes to do this</b>. Six minutes for 40 lines is about nine seconds per answer — genuinely comfortable. The risk here is not time pressure, it is mechanical error. Teach the block-of-five method and explain why blocks work: they give you restart points. A candidate who transfers 1 to 40 in one continuous run has no checkpoint, so a skipped line late in the sheet is invisible until the end. The hand-covering technique is the most effective single fix for off-by-one errors and it takes one second to adopt. Demonstrate it. Then the count check — this is the real safety net and it is arithmetic the students already know: 8 + 10 + 8 + 6 + 8 = 40. If the final answer lands on line 40, the transfer is almost certainly aligned. If it lands on 39, a line was skipped and there are still minutes to find it. Finally, say the unpopular thing out loud: <b>a blank line is a certain zero</b>, and Cambridge does not deduct marks for wrong answers on multiple-choice papers, so an educated guess is always better than nothing. Illustrate with Exercise 1: four options means a blind guess is worth 0.25 of a mark on average, so eight blank lines hand back about two marks. One more practical point worth adding verbally: tell them to fill in candidate details <b>before</b> the audio starts if they are allowed to, and to check the digits, not just write them.</div>
       </section>
 
       <section class="slide slide--dense" id="top-mistakes" aria-label="Slide 52: Twelve avoidable mistakes — ranked by cost">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam craft · 3 of 6</div>
           
           <h2 class="s-title">Twelve avoidable mistakes — ranked by cost</h2>
           <p class="s-sub">None of these are about English ability. Every one of them is a decision you can pre-make today.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3">
@@ -2545,7 +2550,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
         </div>
         <div>
           <div class="s-card tint-v"><h3><span class="ico">9</span>Translating in your head</h3><p>It consumes the working memory you need for the next sentence. Listen for meaning.</p></div>
-          <div class="s-card tint-v mt-10"><h3><span class="ico">10</span>Leaving blanks</h3><p>No penalty for guessing. A blank is a guaranteed zero; a guess is not.</p></div>
+          <div class="s-card tint-v mt-10"><h3><span class="ico">10</span>Leaving blanks</h3><p>A blank is a certain zero; a guess is not. Cambridge does not deduct marks for wrong MCQ answers.</p></div>
           <div class="s-card tint-v mt-10"><h3><span class="ico">11</span>Off-by-one transfer</h3><p>Right answers, wrong lines. Blocks of five and cover the sheet below.</p></div>
           <div class="s-card tint-v mt-10"><h3><span class="ico">12</span>Fading in the last 10 minutes</h3><p>Exercise 5 is the longest extract and the easiest place to lose 3–4 recoverable marks.</p></div>
         </div>
@@ -2557,11 +2562,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="four-week-plan" aria-label="Slide 53: The four-week practice plan">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam craft · 4 of 6</div>
           
           <h2 class="s-title">The four-week practice plan</h2>
           <p class="s-sub">Structure beats volume. What matters is that each week has one focus, one paper, and one review that names your errors.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--4">
@@ -2613,11 +2618,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="drill-menu" aria-label="Slide 54: The drill menu — what to do, and how long for">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam craft · 5 of 6</div>
           
           <h2 class="s-title">The drill menu — what to do, and how long for</h2>
           <p class="s-sub">Six activities, all evidence-linked, all short. Pick two or three and run them consistently rather than all six occasionally.</p>
-          
           <div style="height:20px"></div>
           
       <div class="tbl-wrap">
@@ -2646,11 +2651,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="metacognitive-review" aria-label="Slide 55: The review cycle that actually raises your score">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam craft · 6 of 6</div>
           
           <h2 class="s-title">The review cycle that actually raises your score</h2>
           <p class="s-sub">Five steps after every practice paper. This is the metacognitive listening cycle adapted for self-study — and it is where the improvement happens.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2681,11 +2686,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide" id="self-assessment" aria-label="Slide 56: Are you actually exam-ready?">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Self-assessment</div>
           
           <h2 class="s-title">Are you actually exam-ready?</h2>
           <p class="s-sub">Ten statements. Tick the ones that are genuinely, reliably true — not the ones that are true when you are fresh and the room is quiet.</p>
-          
           <div style="height:20px"></div>
           
       <div class="check">
@@ -2711,11 +2716,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="exam-day" aria-label="Slide 57: The final checklist">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Exam day</div>
           
           <h2 class="s-title">The final checklist</h2>
           <p class="s-sub">Read this the night before. Everything on it is a decision already made — on the day you only execute.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2 gap-lg">
@@ -2758,11 +2763,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--dense" id="takeaways" aria-label="Slide 58: Eight things to carry into the exam hall">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>Key takeaways</div>
           
           <h2 class="s-title">Eight things to carry into the exam hall</h2>
           <p class="s-sub">If the rest of this workshop fades, keep these.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--2">
@@ -2772,7 +2777,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
         <div class="s-card tint-r"><h3><span class="ico">4</span>Hunt the pivot</h3><p><em>But, however, actually, not, in fact, that said.</em> The answer nearly always lives after the pivot.</p></div>
         <div class="s-card tint-v"><h3><span class="ico">5</span>Ask who said it</h3><p>Before “is it true?”, ask “who said it?”. The interviewer's voice is a trap factory.</p></div>
         <div class="s-card tint-v"><h3><span class="ico">6</span>Symbols, not words</h3><p>Numbers and symbols in the margin. Every word written while listening is a second not heard.</p></div>
-        <div class="s-card tint-g"><h3><span class="ico">7</span>Never leave a blank</h3><p>No penalty for guessing. Combined with the transfer sweep, this alone is worth 2–3 marks.</p></div>
+        <div class="s-card tint-g"><h3><span class="ico">7</span>Never leave a blank</h3><p>A blank is a certain zero. Cambridge does not deduct marks for wrong MCQ answers — a four-option guess is worth 0.25 of a mark on average.</p></div>
         <div class="s-card tint-g"><h3><span class="ico">8</span>Review beats repetition</h3><p>One analysed paper outperforms three unexamined ones. Name the trap; never write “careless”.</p></div>
       </div>
       <div class="callout mt-14"><b>The overall message:</b> Paper 2 is not primarily a test of how much English you know. It is a test of <b>how well you handle a recording you only hear twice.</b> That is a skill — and skills improve with deliberate practice, not with hoping.</div>
@@ -2782,11 +2787,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
 
       <section class="slide slide--close" id="close" aria-label="Slide 59: Now go and beat the paper.">
         <div class="slide-inner">
+          
           <div class="s-kicker"><span class="dot"></span>End of workshop</div>
           
           <h2 class="s-title">Now go and beat the paper.</h2>
           <p class="s-sub">You already have the English. What you now have as well is a method — and a method is what turns a 26 into a 34.</p>
-          
           <div style="height:20px"></div>
           
       <div class="s-grid s-grid--3 mt-6" style="text-align:left">

@@ -66,11 +66,11 @@ function renderContent(s, idx) {
   return `
       <section class="${cls.join(' ')}" id="${s.id}"${rv} aria-label="Slide ${idx + 1}: ${attr(s.title)}">
         <div class="slide-inner"${s.wide ? ' style="max-width:1000px"' : ''}>
+          ${s.reveal ? '<span class="reveal-hint">Press R (or click) to reveal the answers</span>' : ''}
           ${s.kicker ? `<div class="s-kicker${s.tone ? ' ' + s.tone : ''}"><span class="dot"></span>${s.kicker}</div>` : ''}
           ${s.exBadge || ''}
           ${s.title ? `<h2 class="s-title">${s.title}</h2>` : ''}
           ${s.sub ? `<p class="s-sub">${s.sub}</p>` : ''}
-          ${s.reveal ? '<div style="height:12px"></div><span class="reveal-hint">Press R (or click) to reveal the answers</span>' : ''}
           ${s.title || s.sub ? '<div style="height:20px"></div>' : ''}
           ${s.body || ''}
         </div>

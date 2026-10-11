@@ -21,8 +21,8 @@ export const i = [
         </table>
       </div>
       <div class="s-grid s-grid--3 mt-14">
-        <div class="s-card tint-g"><h3><span class="ico">🪙</span>18 marks are “cheap”</h3><p>Exercises 1 and 3 test only L1–L3 and are 16 marks between them. <b>These are the marks a well-drilled B2/C1 student can almost bank.</b></p></div>
-        <div class="s-card tint-r"><h3><span class="ico">🧠</span>Exercise 4 is a load problem</h3><p>Six speakers plus eight statements is more than working memory holds — for six marks. <b>The written ledger is not optional; it is the answer.</b></p></div>
+        <div class="s-card tint-g"><h3><span class="ico">🪙</span>16 marks are “cheap”</h3><p>Exercises 1 and 3 test only L1–L3 and are 8 marks each. <b>These are the marks a well-drilled B2/C1 student can almost bank.</b></p></div>
+        <div class="s-card tint-r"><h3><span class="ico">🧠</span>Exercise 4 is a load problem</h3><p>Six speakers plus eight statements is more than working memory holds — for just 6 marks. <b>The written ledger is not optional; it is the answer.</b></p></div>
         <div class="s-card tint-a"><h3><span class="ico">🏁</span>Do not fade at the end</h3><p>Exercise 5 has the longest audio for the same one mark per question. <b>The last 10 minutes decide whether a 30 becomes a 34.</b></p></div>
       </div>
       <div class="footnote">The syllabus specifies “approximately 50 minutes (including 6 minutes' transfer time)” and 40 marks. Per-exercise audio durations vary by series and are not published in advance — the column above is a relative description, not a timetable.</div>`,
@@ -59,7 +59,7 @@ export const i = [
             <ul class="s-bullets no mt-6">
               <li><b>Off-by-one.</b> One skipped line late in the sheet misaligns everything after it. Fix: blocks of five + cover the lines below.</li>
               <li><b>Double-shading.</b> Two letters shaded on one line — typically marked wrong. If you change your mind, erase <em>completely</em>.</li>
-              <li><b>Blank lines.</b> There is no penalty for a wrong answer. A blank line is a guaranteed zero; a guess may be right.</li>
+              <li><b>Blank lines.</b> A blank line is a certain zero; a guess may be right. Cambridge does not deduct marks for wrong answers on multiple-choice papers.</li>
             </ul></div>
           <div class="callout ok mt-14"><b>The count check is your safety net.</b> 8 + 10 + 8 + 6 + 8 = <b>40</b>. If your last answer is on line 40, you almost certainly transferred correctly. If it is on line 39, you skipped a line — and you have two minutes to find it.</div>
           <div class="callout info mt-14"><b>Six minutes for forty lines is comfortable.</b> Roughly nine seconds per answer. That is enough time to be careful — so there is no excuse for rushing, and no reason to skip the sweep.</div>
@@ -70,7 +70,7 @@ export const i = [
       'Teach the block-of-five method and explain why blocks work: they give you restart points. A candidate who transfers 1 to 40 in one continuous run has no checkpoint, so a skipped line late in the sheet is invisible until the end. ' +
       'The hand-covering technique is the most effective single fix for off-by-one errors and it takes one second to adopt. Demonstrate it. ' +
       'Then the count check — this is the real safety net and it is arithmetic the students already know: 8 + 10 + 8 + 6 + 8 = 40. If the final answer lands on line 40, the transfer is almost certainly aligned. If it lands on 39, a line was skipped and there are still minutes to find it. ' +
-      'Finally, say the unpopular thing out loud: <b>there is no penalty for guessing in Cambridge IGCSE</b>, so a blank line is a guaranteed zero. Remind them that across 40 questions, never leaving a blank is worth roughly two to three marks on expectation. ' +
+      'Finally, say the unpopular thing out loud: <b>a blank line is a certain zero</b>, and Cambridge does not deduct marks for wrong answers on multiple-choice papers, so an educated guess is always better than nothing. Illustrate with Exercise 1: four options means a blind guess is worth 0.25 of a mark on average, so eight blank lines hand back about two marks. ' +
       'One more practical point worth adding verbally: tell them to fill in candidate details <b>before</b> the audio starts if they are allowed to, and to check the digits, not just write them.',
   },
 
@@ -97,7 +97,7 @@ export const i = [
         </div>
         <div>
           <div class="s-card tint-v"><h3><span class="ico">9</span>Translating in your head</h3><p>It consumes the working memory you need for the next sentence. Listen for meaning.</p></div>
-          <div class="s-card tint-v mt-10"><h3><span class="ico">10</span>Leaving blanks</h3><p>No penalty for guessing. A blank is a guaranteed zero; a guess is not.</p></div>
+          <div class="s-card tint-v mt-10"><h3><span class="ico">10</span>Leaving blanks</h3><p>A blank is a certain zero; a guess is not. Cambridge does not deduct marks for wrong MCQ answers.</p></div>
           <div class="s-card tint-v mt-10"><h3><span class="ico">11</span>Off-by-one transfer</h3><p>Right answers, wrong lines. Blocks of five and cover the sheet below.</p></div>
           <div class="s-card tint-v mt-10"><h3><span class="ico">12</span>Fading in the last 10 minutes</h3><p>Exercise 5 is the longest extract and the easiest place to lose 3–4 recoverable marks.</p></div>
         </div>
@@ -338,7 +338,7 @@ export const i = [
         <div class="s-card tint-r"><h3><span class="ico">4</span>Hunt the pivot</h3><p><em>But, however, actually, not, in fact, that said.</em> The answer nearly always lives after the pivot.</p></div>
         <div class="s-card tint-v"><h3><span class="ico">5</span>Ask who said it</h3><p>Before “is it true?”, ask “who said it?”. The interviewer's voice is a trap factory.</p></div>
         <div class="s-card tint-v"><h3><span class="ico">6</span>Symbols, not words</h3><p>Numbers and symbols in the margin. Every word written while listening is a second not heard.</p></div>
-        <div class="s-card tint-g"><h3><span class="ico">7</span>Never leave a blank</h3><p>No penalty for guessing. Combined with the transfer sweep, this alone is worth 2–3 marks.</p></div>
+        <div class="s-card tint-g"><h3><span class="ico">7</span>Never leave a blank</h3><p>A blank is a certain zero. Cambridge does not deduct marks for wrong MCQ answers — a four-option guess is worth 0.25 of a mark on average.</p></div>
         <div class="s-card tint-g"><h3><span class="ico">8</span>Review beats repetition</h3><p>One analysed paper outperforms three unexamined ones. Name the trap; never write “careless”.</p></div>
       </div>
       <div class="callout mt-14"><b>The overall message:</b> Paper 2 is not primarily a test of how much English you know. It is a test of <b>how well you handle a recording you only hear twice.</b> That is a skill — and skills improve with deliberate practice, not with hoping.</div>`,

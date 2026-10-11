@@ -15,7 +15,7 @@ export const a = [
       { t: 'Syllabus 2027 · 2028 · 2029' },
       { t: '40 marks · ~50 min' },
       { t: 'Audio heard twice' },
-      { t: 'B2-high → C1' },
+      { t: 'Audience: B2-high → C1' },
     ],
     hint: 'Use ← → or space to navigate · G for overview · F for fullscreen · N for notes · R to reveal answers · P to print / export PDF',
     notes:
@@ -42,7 +42,7 @@ export const a = [
           <p>Know exactly what you are listening for on hearing 1 and what changes on hearing 2.</p>
         </div>
         <div class="s-card tint-g">
-          <h3><span class="ico">🔍</span>Recognise the seven standard traps</h3>
+          <h3><span class="ico">🔍</span>Recognise the nine standard traps</h3>
           <p>Spot word-spotting, wrong-speaker, reversal and negation distractors before they cost you a mark.</p>
         </div>
         <div class="s-card tint-g">
@@ -109,6 +109,7 @@ export const a = [
           </tbody>
         </table>
       </div>
+      <div class="footnote">The 140 is the sum of the three component marks. The syllabus states each component's <b>weighting</b> (50 / 25 / 25) rather than a qualification total — note that the weightings are not proportional to the raw marks, so the marks column is for information only.</div>
       <div class="s-grid s-grid--3 mt-14">
         <div class="s-card"><h3><span class="ico">⏱️</span>Least time, real weight</h3><p>~50 minutes buys you 25% of the IGCSE. Per minute, Paper 2 is the best-value paper you sit.</p></div>
         <div class="s-card"><h3><span class="ico">🔤</span>Every answer is a letter</h3><p>You never write prose. Your only job is to choose A, B, C or D — and transfer it accurately.</p></div>
@@ -117,7 +118,8 @@ export const a = [
     notes:
       '<span class="ntime">2 min</span>This slide answers "why should I care about listening?" — because 25% of the qualification arrives in the shortest paper of the three. ' +
       'Three facts to land: (1) <b>40 marks, 1 mark per question, no half marks</b>; (2) <b>the answer is always a letter</b> — no spelling of content words, no writing sentences, which removes a whole category of error you face in Paper 1; (3) <b>every audio extract is heard twice</b>, which is your safety net. ' +
-      'If a student asks about spelling: on a multiple-choice answer sheet you transfer a letter, so the spelling risk is limited to filling in your candidate details and the letters themselves. Confirmed against the syllabus: "All questions are multiple choice, and candidates answer each one by selecting the correct option."',
+      'Two honesty notes if students ask. First, the 140 total is my addition: the syllabus gives each component\'s marks and weighting but no combined total, and the weightings (50 / 25 / 25) are not proportional to raw marks. Second, the syllabus says "Dictionaries may not be used" explicitly for Component 1 and Component 3, but the Component 2 section does not repeat that sentence — say plainly that no dictionary is permitted in the listening test in practice, and point them at the Cambridge Handbook and the centre\'s instructions for the detail rather than at this syllabus page. ' +
+      'Worth confirming on the slide itself: the syllabus states "All questions are multiple choice, and candidates answer each one by selecting the correct option" — so there is no prose, and no spelling of content words.',
   },
 
   /* ── 5 ───────────────────────────────────────────── */
@@ -185,8 +187,9 @@ export const a = [
     notes:
       '<span class="ntime">3 min</span>Make students say the numbers back: <b>5 exercises, 40 questions, 40 marks, ~50 minutes, played twice, 6-minute transfer.</b> ' +
       'Confirm the structural facts from the syllabus: each exercise tests comprehension of recorded texts such as monologues, interviews or conversations; <b>candidates hear each recorded text twice</b>; and at the end of the test they transfer answers onto a <b>separate answer sheet</b> with <b>six minutes</b> allowed. ' +
-      'Point out the one asymmetry: Exercise 2 gives you <b>ten</b> marks for five extracts, while Exercise 4 gives you only <b>six</b> for six. Exercise 4 is the worst-value real estate in the paper — do not overspend your attention there. ' +
-      'Also flag that no dictionary is allowed in the listening test, and that answer sheets are the standard Cambridge multiple-choice sheet.',
+      'Point out the one asymmetry: Exercise 2 gives you <b>ten</b> marks for five extracts, while Exercise 4 gives you only <b>six</b> for six monologues plus eight statements to track. Exercise 4 is the heaviest load for the fewest marks — do not overspend your attention there. ' +
+      'On dictionaries, be precise if asked: the syllabus says "Dictionaries may not be used" explicitly for Component 1 and Component 3, but the Component 2 (Listening) section does not repeat that sentence. Practically, no dictionary is permitted in the listening test — point students at the Cambridge Handbook and the centre\'s instructions rather than at this syllabus for that detail. ' +
+      'Also note that answer sheets are the standard Cambridge multiple-choice sheets; the syllabus links to the example sheets on the exam-officers pages.',
   },
 
   /* ── 7 ───────────────────────────────────────────── */
@@ -199,7 +202,7 @@ export const a = [
       <div class="s-grid s-grid--2 gap-lg">
         <div>
           <div class="s-card"><h3><span class="ico">🔊</span>The audio</h3>
-            <p>Delivered by the centre — CD, USB or secure download. It is checked in advance, but <b>if you cannot hear clearly, raise your hand immediately</b>. Do not sit through a whole exercise guessing.</p></div>
+            <p>Delivered by the centre, checked in advance. <b>If you cannot hear clearly, raise your hand immediately</b> — do not sit through a whole exercise guessing. Reporting a problem during the test is what lets the centre act on it.</p></div>
           <div class="s-card mt-10"><h3><span class="ico">📄</span>The question paper</h3>
             <p>You write your answers <b>on the question paper</b> first. This is a working document — underline, circle, strike through. Nobody marks the question paper.</p></div>
           <div class="s-card mt-10"><h3><span class="ico">🖊️</span>The answer sheet</h3>
@@ -207,21 +210,21 @@ export const a = [
         </div>
         <div>
           <div class="callout ok"><b>Allowed:</b> working on the question paper, writing in pencil, changing answers, using the 6-minute transfer to double-check.<br><br>
-          <b>Not allowed:</b> dictionaries, phones, discussing answers, extra time after the recording ends beyond the 6 minutes.</div>
+          <b>Not allowed:</b> phones, discussing answers, or writing after the recording ends and the 6 minutes' transfer time has finished. The syllabus states that dictionaries may not be used in Components 1 and 3 — assume the same here and do not rely on one.</div>
           <div class="callout warn mt-14"><b>The three silent killers</b> — none of them about English:
             <ul class="s-bullets no mt-6">
               <li><b>Off-by-one transfer</b> — the answers are right, the letters are on the wrong lines.</li>
-              <li><b>Blank answers</b> — leaving a question empty when there is no penalty for guessing.</li>
+              <li><b>Blank answers</b> — leaving a question empty. A blank scores zero with certainty; a guess sometimes scores one.</li>
               <li><b>Unprepared silence</b> — sitting passively during the reading time instead of predicting.</li>
             </ul></div>
-          <div class="callout info mt-14"><b>One-in-four is free.</b> In Exercise 1 with four options, a blind guess is worth 0.25 of a mark on average. On 40 questions, never leaving a blank is worth roughly <b>2–3 marks</b> across the paper on its own.</div>
+          <div class="callout info mt-14"><b>One-in-four is free.</b> In Exercise 1 with four options, a blind guess is worth 0.25 of a mark on average. Leave eight lines blank across the paper and you have handed back roughly <b>two marks</b> — for nothing. <span style="color:#7D8DA6">(Cambridge does not deduct marks for wrong answers on multiple-choice papers; check the current Cambridge Handbook for the exact wording.)</span></div>
         </div>
       </div>`,
     notes:
       '<span class="ntime">3 min</span>This slide exists because three of the most common mark losses are nothing to do with English. Walk the left column as logistics, then spend real time on the right column. ' +
       'Emphasise: <b>write on the question paper</b> (it is your scrap paper and it is never marked), and <b>the answer sheet is a separate risk</b>. ' +
       'Teach the off-by-one failure explicitly and give the fix now: transfer in blocks of five, counting lines aloud in your head, and cover the rest of the sheet with your hand so your eye cannot drift. ' +
-      'On guessing: there is no negative marking in Cambridge IGCSE, so <b>every question must have a letter</b>. The expected-value maths on one-in-four guessing is genuinely worth 2–3 marks per paper, which can be the difference between grades. ' +
+      'On guessing: there is no negative marking in Cambridge IGCSE, so <b>every question must have a letter</b>. Illustrate the expected value: in Exercise 1 each question has four options, so a blind guess is worth 0.25 of a mark on average — leave eight blank lines and you have given away about two marks for nothing. Across the paper that can be the difference between grades. ' +
       'Remind them of the invigilator script: if the audio is unclear or the equipment fails, they must raise a hand at once — centres can request special consideration only if the problem is reported during the test.',
   },
 ];

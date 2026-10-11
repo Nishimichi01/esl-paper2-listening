@@ -6,7 +6,7 @@ export const f = [
     id: 'e4-anatomy',
     kicker: 'Exercise 4',
     title: 'Six speakers, eight statements, six marks',
-    sub: 'The most complex marking logic in the paper — and the worst marks-per-minute rate. Here you need a system, not attention.',
+    sub: 'The most complex marking logic in the paper — and the heaviest cognitive load, for only six marks. Here you need a system, not attention.',
     exBadge: '<div class="ex-badge"><span class="ens">4</span>Exercise 4 · 6 marks <span class="ao">SKILLS L1 · L2 · L3 · L4</span></div>',
     body: `
       <div class="stats">
@@ -99,7 +99,7 @@ export const f = [
             <div class="s-step a"><span class="sn">3</span><div class="sbody"><span class="st">On hearing 2, verify — then cross it out</span><span class="sd">A line through the letter means “done, do not revisit”. This is what stops you re-litigating.</span></div></div>
             <div class="s-step a"><span class="sn">4</span><div class="sbody"><span class="st">At the end, count: six speakers, six letters used, two crossed out as spare</span><span class="sd">If two speakers point at one letter, you have an error — go back to that speaker. <b>The count is a free error detector.</b></span></div></div>
           </div>
-          <div class="callout warn mt-14"><b>Do not leave a speaker blank.</b> If you truly cannot decide, write the letter that is least likely and move on. A reasoned guess on a 1-in-4 or 1-in-6 choice is still worth marks across the paper.</div>
+          <div class="callout warn mt-14"><b>Do not leave a speaker blank.</b> If you truly cannot decide, write the letter that is least likely and move on. A blind guess here is 1-in-8, but a reasoned elimination is far better than that — and either beats a blank.</div>
         </div>
       </div>`,
     notes:
@@ -107,7 +107,7 @@ export const f = [
       'Make students physically build it with you. Draw the six speaker slots and the eight letters on paper. Then play one speaker and have them write the speaker number beside the matched letter. Physically doing it once beats describing it five times. ' +
       'Step 4 is the part students never think of: <b>counting is an error detector</b>. Six speakers should consume six distinct letters. If two speakers point at F, there is a mistake, and they know exactly where to look. That self-check can recover a mark without re-listening. ' +
       'Practical note: some candidates find it faster to write the letter next to the speaker and strike the letter off the bank. Either works, provided one of the two directions is a visible ledger. What must not happen is remembering matches only in the head. ' +
-      'Also: never leave a speaker blank. There is no penalty for a wrong answer, and a reasoned elimination is often right.',
+      'Also: never leave a speaker blank. A blank scores zero with certainty, and a reasoned elimination is often right.',
   },
 
   /* ── 30 ──────────────────────────────────────────── */

@@ -50,14 +50,14 @@ export const b = [
       </div>
       <div class="s-grid s-grid--3 mt-14">
         <div class="s-card tint-v"><h3><span class="ico">🎯</span>24 of 40 marks involve L4</h3><p>Exercises 2, 4 and 5 all test <b>implied meaning</b>. If you only listen for stated facts, you cap yourself at about 16 marks.</p></div>
-        <div class="s-card tint-g"><h3><span class="ico">💰</span>18 easy marks sit in E1 and E3</h3><p>Two exercises, 16 marks, both L1–L3 only, and both built on one clear speaker or one clear extract at a time.</p></div>
-        <div class="s-card tint-r"><h3><span class="ico">⚠️</span>E4 is high effort, low reward</h3><p>Six monologues for six marks — the worst marks-per-minute rate. Do not let it consume Exercise 5's attention.</p></div>
+        <div class="s-card tint-g"><h3><span class="ico">💰</span>16 cheap marks sit in E1 and E3</h3><p>Two exercises, 8 marks each, both L1–L3 only, and both built on one clear speaker or one clear extract at a time.</p></div>
+        <div class="s-card tint-r"><h3><span class="ico">⚠️</span>E4: most effort, fewest marks</h3><p>Six separate speakers plus eight statements to track — for only <b>6 marks</b>, the lowest on the paper. Do not let it consume Exercise 5's attention.</p></div>
       </div>`,
     notes:
       '<span class="ntime">4 min</span>This is the strategic slide. Read the table top to bottom once, then teach the three insights below it — they are the reason the table exists. ' +
       '<b>Insight 1 (AO coverage):</b> the syllabus assigns L4 — implied meaning — to Exercises 2, 4 and 5. That is 24 of the 40 marks. A student who only hunts for stated facts is competing for roughly 16 marks. ' +
       '<b>Insight 2 (value):</b> Exercises 1 and 3 test only L1–L3, and they are 16 marks between them. These are the training-priority marks for a B2/C1 student. ' +
-      '<b>Insight 3 (effort):</b> Exercise 4 is six separate monologues and eight statements for just six marks. It also has the most complex marking logic (each statement used at most once, one statement unused). Warn them: if they are behind time or panicking, E4 is where they should make peace with losing a mark rather than destabilising E5. ' +
+      '<b>Insight 3 (effort):</b> Exercise 4 is six separate monologues and eight statements for just six marks. It also has the most complex marking logic — eight statements against six speakers, so if options may be used only once, <b>two are left over</b> and none repeat. Warn them: if they are behind time or panicking, E4 is where they should make peace with losing a mark rather than destabilising E5. ' +
       'Note the difficulty labels are my professional judgement of cognitive load, not a Cambridge label — say so if asked.',
   },
 

@@ -21,7 +21,7 @@ export const c = [
         <div class="s-card"><h3><span class="ico">🖼️</span>What you see</h3>
           <p>One question with <b>four visual options</b>. The answer is almost always a <b>concrete fact</b> — a time, a place, an object, an activity, a weather condition, a person's role.</p></div>
         <div class="s-card"><h3><span class="ico">⏱️</span>How it feels</h3>
-          <p>Each extract is <b>short</b> and played twice with a pause between. The whole exercise moves quickly — you get roughly 30–40 seconds of decision time per question.</p></div>
+          <p>Each extract is <b>short</b> and played twice. The whole exercise moves quickly, so decisions have to be made the first time they are offered — there is no room to deliberate.</p></div>
       </div>
       <div class="callout info mt-14"><b>The design logic:</b> because the options are pictures, the paper cannot test subtle wording — it tests whether you can <b>map one concrete sentence onto one image</b>. That makes this the exercise where a well-prepared student should score <b>7 or 8 out of 8</b>. Treat anything less as a technique problem, not a vocabulary problem.</div>`,
     notes:
