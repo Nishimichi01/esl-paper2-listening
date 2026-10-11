@@ -1,242 +1,222 @@
 /* ═══════════════════════════════════════════════════════════════
-   ESL ANSWERING TECHNIQUES WORKSHOP — deck chrome
-   Navigation · progress · speaker notes · overview grid ·
-   answer reveals (R) · fullscreen · print
+   ESL Paper 2 workshop — deck controls
+   Fixed 1280x720 canvas scaled to fit. Nav, overview, notes,
+   answer reveal, image zoom, idle-fading chrome.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
+  var W = 1280, H = 720;
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var total = slides.length;
   if (!total) return;
 
-  var stage    = document.getElementById('deck-stage');
-  var elCount  = document.getElementById('chrome-count');
-  var elFill   = document.getElementById('progress-fill');
-  var btnPrev  = document.getElementById('btn-prev');
-  var btnNext  = document.getElementById('btn-next');
-  var btnNotes = document.getElementById('btn-notes');
-  var btnOv    = document.getElementById('btn-overview');
-  var btnFs    = document.getElementById('btn-fs');
-  var btnPrint = document.getElementById('btn-print');
-  var notes    = document.getElementById('deck-notes');
-  var notesBody= document.getElementById('notes-body');
-  var ov       = document.getElementById('deck-overview');
-  var ovGrid   = document.getElementById('ov-grid');
+  var canvas = document.getElementById('canvas');
+  var elCount = document.getElementById('count');
+  var elProg = document.getElementById('prog');
+  var notesEl = document.getElementById('notes');
+  var notesBd = document.getElementById('notes-bd');
+  var ov = document.getElementById('ov');
+  var ovGrid = document.getElementById('ov-g');
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
 
-  var cur = 0, notesOn = false, ovOn = false;
+  var cur = 0, notesOn = false, ovOn = false, lbOn = false;
 
-  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function slug(s, i) { return s.id || ('slide-' + (i + 1)); }
 
-  function slugOf(s, i) { return s.id || ('slide-' + (i + 1)); }
-
-  function updateChrome() {
-    elCount.innerHTML = '<b>' + (cur + 1) + '</b> / ' + total;
-    elFill.style.width = ((cur + 1) / total * 100).toFixed(2) + '%';
-    var s = slides[cur];
-    var n = s.querySelector('.slide__notes');
-    notesBody.innerHTML = n ? n.innerHTML : '<em>No notes for this slide.</em>';
-    if (history.replaceState) history.replaceState(null, '', '#' + slugOf(s, cur));
+  /* ── scale the fixed canvas to the window ─────────────── */
+  function fit() {
+    var k = Math.min(window.innerWidth / W, window.innerHeight / H);
+    canvas.style.transform = 'scale(' + k + ')';
   }
 
-  function show(i, scrollTop) {
+  function update() {
+    elCount.innerHTML = '<b>' + (cur + 1) + '</b> / ' + total;
+    elProg.style.width = ((cur + 1) / total * 100).toFixed(2) + '%';
+    var n = slides[cur].querySelector('.slide__notes');
+    notesBd.innerHTML = n ? n.innerHTML : '<em>No notes for this slide.</em>';
+    // the title/closing slides show the school logo at full size, so hide the small chrome mark there
+    document.body.classList.toggle('on-hero', slides[cur].classList.contains('hero') || slides[cur].classList.contains('close'));
+    if (history.replaceState) history.replaceState(null, '', '#' + slug(slides[cur], cur));
+  }
+
+  function show(i) {
     i = Math.max(0, Math.min(total - 1, i));
-    if (i === cur) { updateChrome(); return; }
+    if (i === cur) { update(); return; }
     slides[cur].classList.remove('is-active');
     cur = i;
     for (var k = 0; k < total; k++) {
       slides[k].classList.toggle('is-active', k === cur);
       slides[k].classList.toggle('is-prev', k < cur);
     }
-    if (scrollTop !== false) slides[cur].scrollTop = 0;
-    updateChrome();
-    if (ovOn) markCurrentOverview();
+    update();
+    if (ovOn) markCur();
   }
-
   function next() { show(cur + 1); }
   function prev() { show(cur - 1); }
 
-  /* ── auto-fit: never let a slide overflow its stage ────── */
-  function fitSlide(s) {
-    var inner = s.querySelector('.slide-inner');
-    if (!inner) return;
-    inner.style.transform = '';
-    s.style.overflowY = '';
-    var cs = getComputedStyle(s);
-    var avail = s.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
-    var natural = inner.offsetHeight;
-    if (!avail || !natural) return;
-    if (natural > avail + 1) {
-      var scale = Math.max(0.66, avail / natural);
-      inner.style.transformOrigin = 'center center';
-      inner.style.transform = 'scale(' + scale.toFixed(4) + ')';
-      s.style.overflowY = 'hidden';
-    }
-  }
-  function fitAll() { slides.forEach(fitSlide); }
-
-  /* ── reveals ───────────────────────────────────────────── */
-  function toggleReveal(force) {
+  /* ── reveal ───────────────────────────────────────────── */
+  function reveal(force) {
     var s = slides[cur];
     var on = (typeof force === 'boolean') ? force : !s.classList.contains('revealed');
     s.classList.toggle('revealed', on);
   }
 
-  /* ── notes ─────────────────────────────────────────────── */
+  /* ── notes ────────────────────────────────────────────── */
   function toggleNotes(force) {
     notesOn = (typeof force === 'boolean') ? force : !notesOn;
-    notes.classList.toggle('open', notesOn);
-    btnNotes.setAttribute('aria-pressed', String(notesOn));
+    notesEl.classList.toggle('open', notesOn);
+    document.getElementById('b-notes').setAttribute('aria-pressed', String(notesOn));
   }
 
-  /* ── fullscreen ────────────────────────────────────────── */
-  function toggleFs() {
-    if (document.fullscreenElement) { document.exitFullscreen(); }
-    else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen().catch(function(){}); }
+  /* ── overview ─────────────────────────────────────────── */
+  function markCur() {
+    Array.prototype.forEach.call(ovGrid.children, function (el, i) {
+      el.classList.toggle('cur', i === cur);
+    });
   }
-
-  /* ── overview ──────────────────────────────────────────── */
   function buildOverview() {
     ovGrid.innerHTML = '';
-    var w = stage.clientWidth || window.innerWidth;
-    var h = stage.clientHeight || (window.innerHeight - 54);
-    var scale = 232 / w;
+    var scale = 224 / W;
     slides.forEach(function (s, i) {
-      var item = document.createElement('div');
-      item.className = 'ov-item' + (i === cur ? ' current' : '');
-      item.setAttribute('role', 'button');
-      item.setAttribute('tabindex', '0');
-      item.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      item.dataset.idx = i;
+      var it = document.createElement('div');
+      it.className = 'it' + (i === cur ? ' cur' : '');
+      it.setAttribute('role', 'button');
+      it.setAttribute('tabindex', '0');
+      it.setAttribute('aria-label', 'Go to slide ' + (i + 1));
 
-      var thumb = document.createElement('div');
-      thumb.className = 'ov-thumb';
-      thumb.style.width = '232px';
-      thumb.style.height = Math.round(h * scale) + 'px';
+      var th = document.createElement('div');
+      th.className = 'th';
+      th.style.height = Math.round(H * scale) + 'px';
 
       var clone = s.cloneNode(true);
       clone.className = 'slide is-active revealed';
       clone.removeAttribute('id');
-      clone.style.cssText = 'position:absolute;top:0;left:0;width:' + w + 'px;height:' + h + 'px;' +
+      clone.style.cssText = 'position:absolute;top:0;left:0;width:' + W + 'px;height:' + H + 'px;' +
         'transform:scale(' + scale + ');transform-origin:top left;pointer-events:none;opacity:1;visibility:visible;';
 
-      var num = document.createElement('span');
-      num.className = 'ov-num';
-      num.textContent = i + 1;
+      var nn = document.createElement('span');
+      nn.className = 'nn';
+      nn.textContent = i + 1;
 
-      thumb.appendChild(clone);
-      item.appendChild(thumb);
-      item.appendChild(num);
+      th.appendChild(clone);
+      it.appendChild(th);
+      it.appendChild(nn);
 
-      function go() { closeOverview(); show(i); }
-      item.addEventListener('click', go);
-      item.addEventListener('keydown', function (e) {
+      function go() { closeOv(); show(i); }
+      it.addEventListener('click', go);
+      it.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
       });
-      ovGrid.appendChild(item);
+      ovGrid.appendChild(it);
     });
   }
-  function markCurrentOverview() {
-    Array.prototype.forEach.call(ovGrid.children, function (el, i) {
-      el.classList.toggle('current', i === cur);
-    });
+  function openOv()  { buildOverview(); ov.hidden = false; ovOn = true; document.getElementById('b-ov').setAttribute('aria-pressed', 'true'); }
+  function closeOv() { ov.hidden = true; ovOn = false; document.getElementById('b-ov').setAttribute('aria-pressed', 'false'); }
+
+  /* ── lightbox for the exam-paper crops ────────────────── */
+  function openLb(src) { lbImg.src = src; lb.hidden = false; lbOn = true; }
+  function closeLb() { lb.hidden = true; lbOn = false; }
+
+  /* ── chrome: fade when idle ───────────────────────────── */
+  var idle;
+  function awake() {
+    document.body.classList.add('awake');
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove('awake'); }, 2600);
   }
-  function openOverview() { buildOverview(); ov.hidden = false; ovOn = true; btnOv.setAttribute('aria-pressed', 'true'); }
-  function closeOverview() { ov.hidden = true; ovOn = false; btnOv.setAttribute('aria-pressed', 'false'); }
-  function toggleOverview() { ovOn ? closeOverview() : openOverview(); }
 
-  /* ── wiring ────────────────────────────────────────────── */
-  btnPrev.addEventListener('click', prev);
-  btnNext.addEventListener('click', next);
-  btnNotes.addEventListener('click', function () { toggleNotes(); });
-  btnOv.addEventListener('click', toggleOverview);
-  btnFs.addEventListener('click', toggleFs);
-  if (btnPrint) btnPrint.addEventListener('click', function () { window.print(); });
-  document.getElementById('ov-close').addEventListener('click', closeOverview);
+  /* ── wiring ───────────────────────────────────────────── */
+  document.getElementById('b-prev').addEventListener('click', prev);
+  document.getElementById('b-next').addEventListener('click', next);
+  document.getElementById('b-notes').addEventListener('click', function () { toggleNotes(); });
+  document.getElementById('b-ov').addEventListener('click', function () { ovOn ? closeOv() : openOv(); });
+  document.getElementById('b-fs').addEventListener('click', function () {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(function () {});
+  });
+  document.getElementById('b-print').addEventListener('click', function () { window.print(); });
+  document.getElementById('ov-x').addEventListener('click', closeOv);
+  lb.addEventListener('click', closeLb);
 
-  /* click anywhere on a slide advances the reveal first, then the slide */
-  stage.addEventListener('click', function (e) {
+  canvas.addEventListener('click', function (e) {
     if (e.target.closest('a, button')) return;
+    var img = e.target.closest('.shot img');
+    if (img) { openLb(img.getAttribute('src')); return; }
     var s = slides[cur];
-    if (s.querySelector('.rv') && !s.classList.contains('revealed')) { toggleReveal(true); return; }
-    if (e.clientX > window.innerWidth * 0.62) next();
-    else if (e.clientX < window.innerWidth * 0.38) prev();
+    if (s.hasAttribute('data-reveal') && !s.classList.contains('revealed')) { reveal(true); return; }
+    if (e.clientX > window.innerWidth * 0.6) next();
+    else if (e.clientX < window.innerWidth * 0.4) prev();
   });
 
-  /* ── keyboard ──────────────────────────────────────────── */
+  document.addEventListener('mousemove', awake);
+  document.addEventListener('touchstart', awake, { passive: true });
+
   document.addEventListener('keydown', function (e) {
     var tag = (e.target && e.target.tagName) || '';
     if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    awake();
 
+    if (lbOn) { if (e.key === 'Escape' || e.key === ' ') { e.preventDefault(); closeLb(); } return; }
     if (ovOn) {
-      if (e.key === 'Escape' || e.key === 'g' || e.key === 'G') { e.preventDefault(); closeOverview(); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); closeOverview(); next(); }
-      if (e.key === 'ArrowLeft')  { e.preventDefault(); closeOverview(); prev(); }
+      if (e.key === 'Escape' || e.key === 'g' || e.key === 'G') { e.preventDefault(); closeOv(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); closeOv(); next(); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); closeOv(); prev(); }
       return;
     }
-
     switch (e.key) {
-      case 'ArrowRight': case 'PageDown': case ' ': case 'Enter':
+      case 'ArrowRight': case 'PageDown': e.preventDefault(); next(); break;
+      case 'ArrowLeft':  case 'PageUp':   e.preventDefault(); prev(); break;
+      case ' ': case 'Enter':
         e.preventDefault();
-        if (slides[cur].classList.contains('revealed') === false && slides[cur].querySelector('.rv') && (e.key === ' ')) { toggleReveal(true); }
+        if (slides[cur].hasAttribute('data-reveal') && !slides[cur].classList.contains('revealed')) reveal(true);
         else next();
         break;
-      case 'ArrowLeft': case 'PageUp':
-        e.preventDefault(); prev(); break;
       case 'Home': e.preventDefault(); show(0); break;
       case 'End':  e.preventDefault(); show(total - 1); break;
-      case 'r': case 'R': e.preventDefault(); toggleReveal(); break;
+      case 'r': case 'R': e.preventDefault(); reveal(); break;
       case 'n': case 'N': toggleNotes(); break;
-      case 'g': case 'G': toggleOverview(); break;
-      case 'f': case 'F': toggleFs(); break;
+      case 'g': case 'G': ovOn ? closeOv() : openOv(); break;
+      case 'f': case 'F':
+        if (document.fullscreenElement) document.exitFullscreen();
+        else document.documentElement.requestFullscreen().catch(function () {});
+        break;
       case 'p': case 'P': e.preventDefault(); window.print(); break;
       case 'Escape':
         if (notesOn) toggleNotes(false);
-        else if (document.fullscreenElement) toggleFs();
+        else if (document.fullscreenElement) document.exitFullscreen();
         break;
     }
   });
 
-  /* ── touch swipe ───────────────────────────────────────── */
   var tX = 0, tY = 0;
-  stage.addEventListener('touchstart', function (e) { tX = e.changedTouches[0].clientX; tY = e.changedTouches[0].clientY; }, { passive: true });
-  stage.addEventListener('touchend', function (e) {
+  document.addEventListener('touchstart', function (e) { tX = e.changedTouches[0].clientX; tY = e.changedTouches[0].clientY; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tX, dy = e.changedTouches[0].clientY - tY;
     if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) { dx < 0 ? next() : prev(); }
   }, { passive: true });
 
-  var fitTimer = null;
-  function scheduleFit() {
-    clearTimeout(fitTimer);
-    fitTimer = setTimeout(function () { fitAll(); if (ovOn) buildOverview(); }, 120);
-  }
-  window.addEventListener('resize', scheduleFit);
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(scheduleFit); }
-  window.addEventListener('load', scheduleFit);
-
+  window.addEventListener('resize', fit);
   window.addEventListener('hashchange', function () {
     var h = (location.hash || '').replace('#', '');
     if (!h) return;
-    for (var i = 0; i < total; i++) {
-      if (slugOf(slides[i], i) === h && i !== cur) { show(i); break; }
-    }
+    for (var i = 0; i < total; i++) if (slug(slides[i], i) === h && i !== cur) { show(i); break; }
   });
 
-  /* ── init ──────────────────────────────────────────────── */
   (function init() {
-    var h = (location.hash || '').replace('#', '');
-    var idx = 0;
-    if (h) { for (var i = 0; i < total; i++) { if (slugOf(slides[i], i) === h) { idx = i; break; } } }
-    cur = 0;
+    var h = (location.hash || '').replace('#', ''), idx = 0;
+    if (h) for (var i = 0; i < total; i++) if (slug(slides[i], i) === h) { idx = i; break; }
     for (var k = 0; k < total; k++) {
       slides[k].classList.toggle('is-active', k === idx);
       slides[k].classList.toggle('is-prev', k < idx);
     }
     cur = idx;
-    updateChrome();
-    fitAll();
-    requestAnimationFrame(fitAll);
+    fit();
+    update();
+    awake();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })();
 
-  window.__deck = { show: show, next: next, prev: prev, total: total, reveal: toggleReveal, fit: fitAll };
+  window.__deck = { show: show, next: next, prev: prev, total: total, reveal: reveal, fit: fit };
 })();
