@@ -22,7 +22,7 @@ export const open = [
     title: 'What the next two hours look like',
     body: `
       <div class="grid g2 fill" style="align-content:start">
-        <div class="card num o"><span class="n">1</span><h3>The paper itself</h3><p>40 questions, 5 exercises, 25% of your IGCSE.</p></div>
+        <div class="card num"><span class="n">1</span><h3>The paper itself</h3><p>40 questions, 5 exercises, 25% of your IGCSE.</p></div>
         <div class="card num"><span class="n">2</span><h3>The T.A.C.O. method</h3><p>One routine you use on every single question.</p></div>
         <div class="card num"><span class="n">3</span><h3>Exercise 1 to 5, one at a time</h3><p>Real questions from the 2025 paper. You decide, then we check.</p></div>
         <div class="card num"><span class="n">4</span><h3>Using the transcript</h3><p>The fastest way to improve at home.</p></div>
@@ -64,8 +64,8 @@ export const open = [
     sub: 'Every question on the paper is testing one of these four. Knowing which one tells you what kind of answer to expect.',
     body: `
       <div class="grid g4 fill" style="align-content:start">
-        <div class="card"><span class="pill n">L1</span><h3 style="margin-top:10px">Stated facts</h3><p>Times, places, numbers, names. Said out loud plainly.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“The train leaves at 9:15.”</em></p></div>
-        <div class="card"><span class="pill n">L2</span><h3 style="margin-top:10px">Opinions</h3><p>How someone feels about something. Said in opinion words.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Honestly, it was a waste of money.”</em></p></div>
+        <div class="card"><span class="pill">L1</span><h3 style="margin-top:10px">Stated facts</h3><p>Times, places, numbers, names. Said out loud plainly.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“The train leaves at 9:15.”</em></p></div>
+        <div class="card"><span class="pill">L2</span><h3 style="margin-top:10px">Opinions</h3><p>How someone feels about something. Said in opinion words.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Honestly, it was a waste of money.”</em></p></div>
         <div class="card"><span class="pill">L3</span><h3 style="margin-top:10px">Connections</h3><p>Linking two ideas — cause, effect, contrast, time.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Because the buses stopped, she walked.”</em></p></div>
         <div class="card"><span class="pill">L4</span><h3 style="margin-top:10px">Implied meaning</h3><p>The answer is <b>never said</b>. You work it out.</p><p style="margin-top:8px;font-size:18px;color:var(--orange-dk)"><em>“Well… I suppose the seats were comfortable.”</em></p></div>
       </div>

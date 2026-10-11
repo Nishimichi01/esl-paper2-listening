@@ -392,10 +392,34 @@ table.t small { display: block; font-size: 15px; color: var(--navy-soft); font-w
   color: #fff; font-variant-numeric: tabular-nums; flex-shrink: 0;
 }
 .player .track {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 5px;
-  background: rgba(255,255,255,0.16);
+  position: absolute; left: 0; right: 0; bottom: 0; height: 20px;
+  display: flex; align-items: flex-end;
+  cursor: pointer; touch-action: none;
+  padding: 0;
 }
-.player .track i { display: block; height: 100%; width: 0; background: var(--orange); }
+.player .track .line {
+  position: relative; width: 100%; height: 5px;
+  background: rgba(255,255,255,0.16);
+  transition: height .14s ease, background .14s ease;
+}
+.player .track .line i {
+  display: block; height: 100%; width: calc(var(--p, 0) * 100%);
+  background: var(--orange);
+}
+.player .track .knob {
+  position: absolute; top: 50%; left: calc(var(--p, 0) * 100%);
+  width: 15px; height: 15px; margin: -7.5px 0 0 -7.5px;
+  border-radius: 50%; background: var(--orange);
+  border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.42);
+  transform: scale(0); transition: transform .14s ease;
+  pointer-events: none;
+}
+.player .track:hover .line { height: 8px; background: rgba(255,255,255,0.28); }
+.player:hover .track .line { height: 7px; }
+.player:hover .track .knob,
+.player.scrubbing .track .knob { transform: scale(1); }
+.player.scrubbing .track .line i { background: #fff; }
+.player .track:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
 .player.playing { background: #14162F; }
 .player.done .pp { background: rgba(255,255,255,0.20); }
 
@@ -562,7 +586,7 @@ body.on-hero .chrome .mark { display: none; }
         <div style="height:18px"></div>
         <div class="body">
       <div class="grid g2 fill" style="align-content:start">
-        <div class="card num o"><span class="n">1</span><h3>The paper itself</h3><p>40 questions, 5 exercises, 25% of your IGCSE.</p></div>
+        <div class="card num"><span class="n">1</span><h3>The paper itself</h3><p>40 questions, 5 exercises, 25% of your IGCSE.</p></div>
         <div class="card num"><span class="n">2</span><h3>The T.A.C.O. method</h3><p>One routine you use on every single question.</p></div>
         <div class="card num"><span class="n">3</span><h3>Exercise 1 to 5, one at a time</h3><p>Real questions from the 2025 paper. You decide, then we check.</p></div>
         <div class="card num"><span class="n">4</span><h3>Using the transcript</h3><p>The fastest way to improve at home.</p></div>
@@ -602,8 +626,8 @@ body.on-hero .chrome .mark { display: none; }
         <div style="height:18px"></div>
         <div class="body">
       <div class="grid g4 fill" style="align-content:start">
-        <div class="card"><span class="pill n">L1</span><h3 style="margin-top:10px">Stated facts</h3><p>Times, places, numbers, names. Said out loud plainly.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“The train leaves at 9:15.”</em></p></div>
-        <div class="card"><span class="pill n">L2</span><h3 style="margin-top:10px">Opinions</h3><p>How someone feels about something. Said in opinion words.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Honestly, it was a waste of money.”</em></p></div>
+        <div class="card"><span class="pill">L1</span><h3 style="margin-top:10px">Stated facts</h3><p>Times, places, numbers, names. Said out loud plainly.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“The train leaves at 9:15.”</em></p></div>
+        <div class="card"><span class="pill">L2</span><h3 style="margin-top:10px">Opinions</h3><p>How someone feels about something. Said in opinion words.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Honestly, it was a waste of money.”</em></p></div>
         <div class="card"><span class="pill">L3</span><h3 style="margin-top:10px">Connections</h3><p>Linking two ideas — cause, effect, contrast, time.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Because the buses stopped, she walked.”</em></p></div>
         <div class="card"><span class="pill">L4</span><h3 style="margin-top:10px">Implied meaning</h3><p>The answer is <b>never said</b>. You work it out.</p><p style="margin-top:8px;font-size:18px;color:var(--orange-dk)"><em>“Well… I suppose the seats were comfortable.”</em></p></div>
       </div>
@@ -786,7 +810,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play Question 1"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play Question 1</div><div class="l2">The real recording, played twice</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex1_q1.mp3" preload="metadata"></audio>
         </div>
       <div class="ans two rv" style="margin-top:12px"><span class="tag">The audio says</span><div>“there wasn't a single space left in the <b>pool car park</b>… I hope you didn't leave it at the <b>train station</b> like last time… It's actually <b>next to the petrol station</b>… the <b>supermarket</b>'s nearer… but I'd feel bad parking there without doing any shopping!”</div></div></div>
@@ -858,7 +882,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play the Exercise 2 instructions"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play the Exercise 2 instructions</div><div class="l2">Hear the real 15-second reading pause</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex2_intro.mp3" preload="metadata"></audio>
         </div></div></div>
         <footer class="s-foot"><span>Falih Junior International Academy &nbsp;&middot;&nbsp; IGCSE English as a Second Language 0511 &nbsp;&middot;&nbsp; Paper 2 Listening</span><span class="pg">16</span></footer>
@@ -902,7 +926,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play Questions 9 and 10"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play Questions 9 and 10</div><div class="l2">The real recording, played twice</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex2_videos.mp3" preload="metadata"></audio>
         </div>
           <div class="tape fill rv" style="overflow-y:auto">
@@ -929,7 +953,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play Questions 13 and 14"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play Questions 13 and 14</div><div class="l2">The real recording, played twice</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex2_cafe.mp3" preload="metadata"></audio>
         </div>
           <div class="tape fill rv" style="overflow-y:auto">
@@ -993,7 +1017,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play the Exercise 3 instructions"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play the Exercise 3 instructions</div><div class="l2">Hear the real 40-second reading pause</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex3_intro.mp3" preload="metadata"></audio>
         </div></div></div>
         <footer class="s-foot"><span>Falih Junior International Academy &nbsp;&middot;&nbsp; IGCSE English as a Second Language 0511 &nbsp;&middot;&nbsp; Paper 2 Listening</span><span class="pg">21</span></footer>
@@ -1068,7 +1092,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play the shark talk"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play the shark talk</div><div class="l2">Covers Questions 19, 20 and 21</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex3_sharks.mp3" preload="metadata"></audio>
         </div>
           <div class="tape fill rv" style="overflow-y:auto">
@@ -1097,7 +1121,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play the Exercise 4 instructions"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play the Exercise 4 instructions</div><div class="l2">Statements A–H and the real 30-second reading pause</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex4_intro.mp3" preload="metadata"></audio>
         </div></div></div>
         <footer class="s-foot"><span>Falih Junior International Academy &nbsp;&middot;&nbsp; IGCSE English as a Second Language 0511 &nbsp;&middot;&nbsp; Paper 2 Listening</span><span class="pg">25</span></footer>
@@ -1143,7 +1167,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play Speakers 1 and 2"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play Speakers 1 and 2</div><div class="l2">The real recording, played twice</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex4_speakers12.mp3" preload="metadata"></audio>
         </div>
           <div class="tape fill rv" style="overflow-y:auto">
@@ -1171,7 +1195,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play the Exercise 5 instructions"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play the Exercise 5 instructions</div><div class="l2">Hear the real 45-second reading pause</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex5_intro.mp3" preload="metadata"></audio>
         </div></div></div>
         <footer class="s-foot"><span>Falih Junior International Academy &nbsp;&middot;&nbsp; IGCSE English as a Second Language 0511 &nbsp;&middot;&nbsp; Paper 2 Listening</span><span class="pg">28</span></footer>
@@ -1214,7 +1238,7 @@ body.on-hero .chrome .mark { display: none; }
           <button class="pp" aria-label="Play: Play Questions 33 and 34"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg></button>
           <div class="pt"><div class="l1">Play Questions 33 and 34</div><div class="l2">The interview begins here</div></div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="audio/ex5_q33_34.mp3" preload="metadata"></audio>
         </div>
           <div class="tape fill rv" style="overflow-y:auto">
@@ -1663,28 +1687,88 @@ body.on-hero .chrome .mark { display: none; }
     document.querySelectorAll('.player').forEach(function (el) {
       var audio = el.querySelector('audio');
       var btn = el.querySelector('.pp');
-      var bar = el.querySelector('.track i');
+      var track = el.querySelector('.track');
+      var line = el.querySelector('.track .line');
       var dur = el.querySelector('.dur');
-      if (!audio || !btn) return;
+      if (!audio || !btn || !track) return;
       audio.preload = 'metadata';
-      function setDur() { if (dur && isFinite(audio.duration)) dur.textContent = fmt(audio.duration); }
+
+      var seeking = false;
+      function setP(p) {
+        p = Math.max(0, Math.min(1, p));
+        el.style.setProperty('--p', p);
+        track.setAttribute('aria-valuenow', Math.round(p * 100));
+      }
+      function paint() {
+        setP(audio.currentTime / (audio.duration || 1));
+        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+      }
+      function setDur() {
+        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+        paint();
+      }
+
       audio.addEventListener('loadedmetadata', setDur);
       audio.addEventListener('durationchange', setDur);
-      audio.addEventListener('timeupdate', function () {
-        if (bar) bar.style.width = (audio.currentTime / (audio.duration || 1) * 100) + '%';
-        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
-      });
+      audio.addEventListener('timeupdate', function () { if (!seeking) paint(); });
       audio.addEventListener('ended', function () {
         el.classList.remove('playing'); el.classList.add('done');
-        if (bar) bar.style.width = '0%';
+        setP(0);
         if (dur) dur.textContent = fmt(audio.duration);
         if (current && current.audio === audio) current = null;
       });
+
+      /* ── click-to-seek and drag-to-scrub ── */
+      function seekFrom(clientX) {
+        if (!isFinite(audio.duration) || !audio.duration) return;
+        var r = line.getBoundingClientRect();
+        var p = Math.max(0, Math.min(1, (clientX - r.left) / r.width));
+        audio.currentTime = p * audio.duration;
+        setP(p);
+        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+      }
+      track.addEventListener('pointerdown', function (e) {
+        if (!isFinite(audio.duration) || !audio.duration) return;
+        e.preventDefault(); e.stopPropagation();
+        seeking = true;
+        el.classList.add('scrubbing');
+        try { track.setPointerCapture(e.pointerId); } catch (_) {}
+        seekFrom(e.clientX);
+      });
+      track.addEventListener('pointermove', function (e) {
+        if (!seeking) return;
+        e.preventDefault(); e.stopPropagation();
+        seekFrom(e.clientX);
+      });
+      function endSeek(e) {
+        if (!seeking) return;
+        seeking = false;
+        el.classList.remove('scrubbing');
+        try { track.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
+      track.addEventListener('pointerup', endSeek);
+      track.addEventListener('pointercancel', endSeek);
+
+      /* keyboard scrubbing: ±5s, home/end */
+      track.addEventListener('keydown', function (e) {
+        if (!audio.duration) return;
+        var step = e.key === 'ArrowLeft' ? -5 : e.key === 'ArrowRight' ? 5 : 0;
+        if (step) {
+          e.preventDefault(); e.stopPropagation();
+          audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + step));
+          paint();
+        } else if (e.key === 'Home') {
+          e.preventDefault(); audio.currentTime = 0; paint();
+        } else if (e.key === 'End') {
+          e.preventDefault(); audio.currentTime = audio.duration; paint();
+        }
+      });
+
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
         if (current && current.audio !== audio) stopCurrent();
         if (audio.paused) {
-          audio.currentTime = 0;
+          if (audio.ended || audio.currentTime >= (audio.duration || 0) - 0.05) audio.currentTime = 0;
           audio.play().catch(function () {});
           el.classList.add('playing'); el.classList.remove('done');
           current = { audio: audio, el: el };

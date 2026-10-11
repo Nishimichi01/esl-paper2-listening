@@ -37,7 +37,17 @@ Click any exam-paper image to zoom it. Deep links work: append `#q1-decide` etc.
 It is **one HTML file with zero external requests** — fonts and all 11 exam-paper crops are
 embedded. Open the hosted URL, or download `index.html` and open it offline (works from a USB stick).
 
-Locally: `python -m http.server 8779` in `dist/`, then open `http://127.0.0.1:8779/`.
+Locally, use the bundled server — **not** `python -m http.server`, which does not
+support HTTP Range requests, so an `<audio>` element reports a seekable range of 0-0
+and the scrub bar cannot be dragged:
+
+```bash
+node build.mjs          # build first
+python serve.py         # serves ./dist on http://127.0.0.1:8080
+```
+
+`serve.py` is stdlib-only and handles GET/HEAD plus single-range requests, so
+scrubbing works offline. GitHub Pages also supports ranges, so the hosted copy is fine.
 
 ## Rebuilding
 
@@ -81,8 +91,10 @@ transcript — so each clip starts on an announcement and ends in a pause, never
 | `ex5_q33_34` | 1:55 | Questions 33–34 |
 
 Encoded 22 050 Hz mono MP3 at 48 kbps — 4.9 MB in total, ample for speech.
-In the deck each clip is a click-to-play button with a progress bar; starting one
-stops any other, and changing slide stops playback.
+In the deck each clip is a full media control: click the button to play, **click or
+drag anywhere on the progress bar to scrub** (a knob appears on hover and while dragging),
+and use left/right arrows on the bar to nudge ±5 s. Starting one clip stops any other,
+and changing slide stops playback.
 
 Scripts: `ref/transcribe.py` (ASR over the whole recording), `ref/align.py`
 (section map), `ref/cut_clips.py` (the cut list at the top is the single source of

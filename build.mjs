@@ -51,7 +51,7 @@ function player(clip, line1, line2, small) {
           <button class="pp" aria-label="Play: ${attr(line1)}">${ICON_PLAY}${ICON_PAUSE}</button>
           <div class="pt"><div class="l1">${line1}</div>${line2 ? `<div class="l2">${line2}</div>` : ''}</div>
           <span class="dur">--:--</span>
-          <div class="track"><i></i></div>
+          <div class="track" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="line"><i></i><b class="knob"></b></div></div>
           <audio src="${audSrc(clip)}" preload="metadata"></audio>
         </div>`;
 }

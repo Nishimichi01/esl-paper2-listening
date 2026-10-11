@@ -137,28 +137,88 @@
     document.querySelectorAll('.player').forEach(function (el) {
       var audio = el.querySelector('audio');
       var btn = el.querySelector('.pp');
-      var bar = el.querySelector('.track i');
+      var track = el.querySelector('.track');
+      var line = el.querySelector('.track .line');
       var dur = el.querySelector('.dur');
-      if (!audio || !btn) return;
+      if (!audio || !btn || !track) return;
       audio.preload = 'metadata';
-      function setDur() { if (dur && isFinite(audio.duration)) dur.textContent = fmt(audio.duration); }
+
+      var seeking = false;
+      function setP(p) {
+        p = Math.max(0, Math.min(1, p));
+        el.style.setProperty('--p', p);
+        track.setAttribute('aria-valuenow', Math.round(p * 100));
+      }
+      function paint() {
+        setP(audio.currentTime / (audio.duration || 1));
+        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+      }
+      function setDur() {
+        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+        paint();
+      }
+
       audio.addEventListener('loadedmetadata', setDur);
       audio.addEventListener('durationchange', setDur);
-      audio.addEventListener('timeupdate', function () {
-        if (bar) bar.style.width = (audio.currentTime / (audio.duration || 1) * 100) + '%';
-        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
-      });
+      audio.addEventListener('timeupdate', function () { if (!seeking) paint(); });
       audio.addEventListener('ended', function () {
         el.classList.remove('playing'); el.classList.add('done');
-        if (bar) bar.style.width = '0%';
+        setP(0);
         if (dur) dur.textContent = fmt(audio.duration);
         if (current && current.audio === audio) current = null;
       });
+
+      /* ── click-to-seek and drag-to-scrub ── */
+      function seekFrom(clientX) {
+        if (!isFinite(audio.duration) || !audio.duration) return;
+        var r = line.getBoundingClientRect();
+        var p = Math.max(0, Math.min(1, (clientX - r.left) / r.width));
+        audio.currentTime = p * audio.duration;
+        setP(p);
+        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+      }
+      track.addEventListener('pointerdown', function (e) {
+        if (!isFinite(audio.duration) || !audio.duration) return;
+        e.preventDefault(); e.stopPropagation();
+        seeking = true;
+        el.classList.add('scrubbing');
+        try { track.setPointerCapture(e.pointerId); } catch (_) {}
+        seekFrom(e.clientX);
+      });
+      track.addEventListener('pointermove', function (e) {
+        if (!seeking) return;
+        e.preventDefault(); e.stopPropagation();
+        seekFrom(e.clientX);
+      });
+      function endSeek(e) {
+        if (!seeking) return;
+        seeking = false;
+        el.classList.remove('scrubbing');
+        try { track.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
+      track.addEventListener('pointerup', endSeek);
+      track.addEventListener('pointercancel', endSeek);
+
+      /* keyboard scrubbing: ±5s, home/end */
+      track.addEventListener('keydown', function (e) {
+        if (!audio.duration) return;
+        var step = e.key === 'ArrowLeft' ? -5 : e.key === 'ArrowRight' ? 5 : 0;
+        if (step) {
+          e.preventDefault(); e.stopPropagation();
+          audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + step));
+          paint();
+        } else if (e.key === 'Home') {
+          e.preventDefault(); audio.currentTime = 0; paint();
+        } else if (e.key === 'End') {
+          e.preventDefault(); audio.currentTime = audio.duration; paint();
+        }
+      });
+
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
         if (current && current.audio !== audio) stopCurrent();
         if (audio.paused) {
-          audio.currentTime = 0;
+          if (audio.ended || audio.currentTime >= (audio.duration || 0) - 0.05) audio.currentTime = 0;
           audio.play().catch(function () {});
           el.classList.add('playing'); el.classList.remove('done');
           current = { audio: audio, el: el };
