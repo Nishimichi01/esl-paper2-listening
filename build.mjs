@@ -97,7 +97,9 @@ function render(s, i) {
   const cls = ['slide'];
   if (s.kind === 'close') cls.push('close');
   const rv = s.reveal ? ' data-reveal=""' : '';
-  const inner = s.wide ? ' style="max-width:100% ; display:flex; flex-direction:column; flex:1; min-height:0"' : ' class="body"';
+  const inner = s.wide
+    ? ' style="max-width:100% ; display:flex; flex-direction:column; flex:1; min-height:0"'
+    : ' class="body' + (s.vcenter ? ' vc' : '') + '"';
   const foot = s.kind === 'close' ? '' :
     `<footer class="s-foot"><span>Falih Junior International Academy &nbsp;&middot;&nbsp; IGCSE English as a Second Language 0511 &nbsp;&middot;&nbsp; Paper 2 Listening</span><span class="pg">${i + 1}</span></footer>`;
 

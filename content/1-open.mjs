@@ -91,20 +91,22 @@ export const open = [
   /* ── 6 ── */
   {
     id: 'map',
+    vcenter: true,
     kicker: 'The map',
     title: 'All five exercises',
     body: `
-      <table class="t fill" style="align-self:start">
-        <thead><tr><th style="width:70px">Ex</th><th>What you hear</th><th class="c" style="width:90px">Qs</th><th>What you choose</th><th class="c" style="width:100px">Marks</th></tr></thead>
+      <table class="t tight" style="align-self:stretch">
+        <colgroup><col style="width:84px"><col style="width:29%"><col style="width:92px"><col><col style="width:118px"></colgroup>
+        <thead><tr><th class="c">Ex</th><th>What you hear</th><th class="c">Qs</th><th>What you choose</th><th class="c">Marks</th></tr></thead>
         <tbody>
-          <tr><td class="n">1</td><td>8 very short extracts</td><td class="c">8</td><td>1 question each · <b>4 pictures</b> A–D</td><td class="c n">8</td></tr>
-          <tr><td class="n">2</td><td>5 short extracts</td><td class="c">10</td><td><b>2 questions</b> each · 3 written options A–C</td><td class="c n">10</td></tr>
-          <tr><td class="n">3</td><td>1 talk (monologue)</td><td class="c">8</td><td>8 gaps in sentences · 3 options each</td><td class="c n">8</td></tr>
-          <tr><td class="n">4</td><td>6 different speakers</td><td class="c">6</td><td>Match to <b>8 statements</b> A–H</td><td class="c n">6</td></tr>
-          <tr><td class="n">5</td><td>1 interview (2 voices)</td><td class="c">8</td><td>3 written options A–C · <b>the main speaker only</b></td><td class="c n">8</td></tr>
+          <tr><td class="n">1</td><td class="l">8 very short extracts</td><td class="c">8</td><td class="l">1 question each · <b>4 pictures</b> A–D</td><td class="c n">8</td></tr>
+          <tr><td class="n">2</td><td class="l">5 short extracts</td><td class="c">10</td><td class="l"><b>2 questions</b> each · 3 written options A–C</td><td class="c n">10</td></tr>
+          <tr><td class="n">3</td><td class="l">1 talk (monologue)</td><td class="c">8</td><td class="l">8 gaps in sentences · 3 options each</td><td class="c n">8</td></tr>
+          <tr><td class="n">4</td><td class="l">6 different speakers</td><td class="c">6</td><td class="l">Match to <b>8 statements</b> A–H</td><td class="c n">6</td></tr>
+          <tr><td class="n">5</td><td class="l">1 interview (2 voices)</td><td class="c">8</td><td class="l">3 written options A–C · <b>the main speaker only</b></td><td class="c n">8</td></tr>
         </tbody>
       </table>
-      <div class="grid g3" style="margin-top:16px">
+      <div class="grid g3" style="margin-top:12px">
         <div class="card"><h3>16 cheap marks</h3><p>Exercises 1 and 3 test stated facts and opinions only. Aim to bank these.</p></div>
         <div class="card"><h3>24 harder marks</h3><p>Exercises 2, 4 and 5 also test implied meaning.</p></div>
         <div class="card"><h3>Every question = 1 mark</h3><p>So never spend longer than one question is worth.</p></div>
@@ -143,16 +145,18 @@ export const open = [
   /* ── 8 ── */
   {
     id: 'two-hearings',
+    vcenter: true,
     kicker: 'The method',
     title: 'Hearing 1 and hearing 2 are different jobs',
     body: `
-      <table class="t fill" style="align-self:start">
-        <thead><tr><th style="width:220px"></th><th>Hearing 1</th><th>Hearing 2</th></tr></thead>
+      <table class="t" style="align-self:stretch">
+        <colgroup><col style="width:210px"><col><col></colgroup>
+        <thead><tr><th class="c"></th><th class="c">Hearing 1</th><th class="c">Hearing 2</th></tr></thead>
         <tbody>
-          <tr><td><b>Your job</b></td><td>Understand the <b>whole recording</b> — who, what, in what order</td><td><b>Decide</b> each answer with evidence</td></tr>
-          <tr><td><b>Your pen</b></td><td>A small dash by a <b>possible</b> answer</td><td>A firm circle round the <b>final</b> letter</td></tr>
-          <tr><td><b>Your eyes</b></td><td>Mostly on the <b>question paper</b></td><td>Mostly <b>listening</b>, glancing at your two best options</td></tr>
-          <tr><td><b>Never</b></td><td>Lock an answer in — it is only a draft</td><td>Re-read every option from the beginning</td></tr>
+          <tr><td class="l"><b>Your job</b></td><td class="l">Understand the <b>whole recording</b> — who, what, in what order</td><td class="l"><b>Decide</b> each answer with evidence</td></tr>
+          <tr><td class="l"><b>Your pen</b></td><td class="l">A small dash by a <b>possible</b> answer</td><td class="l">A firm circle round the <b>final</b> letter</td></tr>
+          <tr><td class="l"><b>Your eyes</b></td><td class="l">Mostly on the <b>question paper</b></td><td class="l">Mostly <b>listening</b>, glancing at your two best options</td></tr>
+          <tr><td class="l"><b>Never</b></td><td class="l">Lock an answer in — it is only a draft</td><td class="l">Re-read every option from the beginning</td></tr>
         </tbody>
       </table>
       <div class="ans hint" style="margin-top:16px"><span class="tag">Listen for</span><div><b>not · never · only · already · instead · unless · but · actually · in the end · at first</b><br><span style="font-size:18px">These words are where the answer flips. Most wrong answers are decided by one of them.</span></div></div>`,

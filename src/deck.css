@@ -159,6 +159,11 @@ html, body {
 .s-head { margin-bottom: 22px; }
 .s-head.tight { margin-bottom: 14px; }
 .body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+/* Safe vertical centring: auto margins absorb free space, and collapse to 0 when
+   the content is taller than the box. `justify-content: center` would instead
+   clip the top of an overflowing slide, which the canvas hides. */
+.body.vc > :first-child { margin-top: auto; }
+.body.vc > :last-child  { margin-bottom: auto; }
 
 /* ══════════ GRID / CARDS ══════════ */
 .grid { display: grid; gap: 16px; }
@@ -282,37 +287,54 @@ ul.list li b, ul.list li strong { color: var(--navy); font-weight: 800; }
 .tape .brk { color: var(--navy-soft); font-style: italic; font-size: 17px; }
 
 /* ══════════ TIMING TABLE ══════════ */
-table.t { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 20px; }
+table.t {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  font-size: 20px; table-layout: fixed;
+}
 table.t th {
-  background: var(--navy); color: #fff; text-align: left;
-  padding: 11px 16px; font-size: 16px; font-weight: 800;
+  background: var(--navy); color: #fff;
+  padding: 13px 18px; font-size: 16px; font-weight: 800;
   letter-spacing: .07em; text-transform: uppercase;
+  text-align: center;            /* headers are labels → always centred */
+  vertical-align: middle;
 }
 table.t th:first-child { border-radius: 12px 0 0 0; }
 table.t th:last-child  { border-radius: 0 12px 0 0; }
 table.t td {
-  padding: 9px 16px; border-bottom: 2px solid var(--line);
+  padding: 12px 18px; border-bottom: 2px solid var(--line);
   color: var(--navy-2); font-weight: 600; background: #fff;
+  vertical-align: middle;        /* rows sit level however tall the tallest cell is */
+  overflow-wrap: break-word;
 }
-table.t.tight td { padding: 5px 14px; }
-table.t.tight th { padding: 7px 14px; }
-table.t.tight .time { font-size: 22px; }
-table.t.tight .n { font-size: 21px; }
-table.t.tight .says { font-size: 18px; }
-table.t tr:last-child td { border-bottom: none; }
-table.t td.c { text-align: center; }
-table.t .hl td { background: var(--orange-lt); }
+table.t tbody tr:nth-child(even) td { background: #FCFAF7; }   /* eye-tracking stripe */
+table.t tbody tr:last-child td { border-bottom: none; }
+
+/* per-cell alignment: l = left (long prose), c = centred (short/numeric) */
+table.t td.l { text-align: left; }
+table.t td.c, table.t th.c { text-align: center; }
+table.t td.r { text-align: right; }
+
 table.t .n {
   font-family: 'Baloo 2', Nunito, sans-serif; font-weight: 800;
   font-size: 24px; color: var(--navy); text-align: center;
 }
 table.t .time {
   font-family: 'Baloo 2', Nunito, sans-serif; font-weight: 800;
-  font-size: 24px; color: var(--orange); text-align: center; white-space: nowrap;
+  font-size: 25px; color: var(--orange); text-align: center;
+  white-space: nowrap; line-height: 1.1;
 }
-table.t .time small { display: block; font-size: 14px; color: var(--navy-soft); font-weight: 700; font-family: Nunito, sans-serif; }
+table.t .time small {
+  display: block; font-size: 14px; color: var(--navy-soft);
+  font-weight: 700; font-family: Nunito, sans-serif; margin-top: 2px;
+}
 table.t .says { font-size: 19px; color: var(--navy-mid); font-weight: 600; }
 table.t .says em { color: var(--navy); font-style: italic; }
+
+table.t.tight td { padding: 9px 14px; }
+table.t.tight th { padding: 10px 14px; }
+table.t.tight .n { font-size: 21px; }
+table.t.tight .time { font-size: 23px; }
+table.t.tight .says { font-size: 19px; }
 table.t small { display: block; font-size: 15px; color: var(--navy-soft); font-weight: 700; }
 
 /* ══════════ BIG STATS ══════════ */

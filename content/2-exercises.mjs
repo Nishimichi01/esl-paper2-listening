@@ -4,18 +4,20 @@ export const ex = [
   /* ── 9 ── */
   {
     id: 'real-times',
+    vcenter: true,
     kicker: 'Your reading time is built in',
     title: 'The paper tells you when to read',
     body: `
-      <table class="t tight" style="align-self:start">
-        <thead><tr><th style="width:70px">Ex</th><th>The recording says…</th><th class="c" style="width:210px">You get</th></tr></thead>
+      <table class="t tight" style="align-self:stretch">
+        <colgroup><col style="width:104px"><col><col style="width:264px"></colgroup>
+        <thead><tr><th class="c">Ex</th><th class="c">The recording says…</th><th class="c">You get</th></tr></thead>
         <tbody>
-          <tr><td class="n">1</td><td class="says">no reading pause — it starts straight away</td><td class="time">3 sec<small>before Q1 only</small></td></tr>
-          <tr><td class="n">2</td><td class="says"><em>“Now look at Questions 9 and 10.”</em></td><td class="time">15 sec<small>before every pair</small></td></tr>
-          <tr><td class="n">3</td><td class="says"><em>“Now look at questions 19–26.”</em></td><td class="time">40 sec<small>all eight at once</small></td></tr>
-          <tr><td class="n">4</td><td class="says"><em>“Now read statements A–H.”</em></td><td class="time">30 sec<small>all eight at once</small></td></tr>
-          <tr><td class="n">5</td><td class="says"><em>“Now look at questions 33–40.”</em></td><td class="time">45 sec<small>all eight at once</small></td></tr>
-          <tr><td class="n">End</td><td class="says">after the last recording — to move your answers</td><td class="time">6 min<small>5 min + 1 min</small></td></tr>
+          <tr><td class="n">1</td><td class="says c">no reading pause — it starts straight away</td><td class="time">3 sec<small>before Q1 only</small></td></tr>
+          <tr><td class="n">2</td><td class="says c"><em>“Now look at Questions 9 and 10.”</em></td><td class="time">15 sec<small>before every pair</small></td></tr>
+          <tr><td class="n">3</td><td class="says c"><em>“Now look at questions 19–26.”</em></td><td class="time">40 sec<small>all eight at once</small></td></tr>
+          <tr><td class="n">4</td><td class="says c"><em>“Now read statements A–H.”</em></td><td class="time">30 sec<small>all eight at once</small></td></tr>
+          <tr><td class="n">5</td><td class="says c"><em>“Now look at questions 33–40.”</em></td><td class="time">45 sec<small>all eight at once</small></td></tr>
+          <tr><td class="n">End</td><td class="says c">after the last recording — to move your answers</td><td class="time">6 min<small>5 min + 1 min</small></td></tr>
         </tbody>
       </table>
       <div class="ans hint" style="margin-top:12px"><span class="tag">Use it</span><div>Most students spend this time staring at the paper. <b>Read, underline the key words, predict the answer.</b></div></div>`,

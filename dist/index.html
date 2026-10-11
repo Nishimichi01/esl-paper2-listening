@@ -170,6 +170,11 @@ html, body {
 .s-head { margin-bottom: 22px; }
 .s-head.tight { margin-bottom: 14px; }
 .body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+/* Safe vertical centring: auto margins absorb free space, and collapse to 0 when
+   the content is taller than the box. `justify-content: center` would instead
+   clip the top of an overflowing slide, which the canvas hides. */
+.body.vc > :first-child { margin-top: auto; }
+.body.vc > :last-child  { margin-bottom: auto; }
 
 /* ══════════ GRID / CARDS ══════════ */
 .grid { display: grid; gap: 16px; }
@@ -293,37 +298,54 @@ ul.list li b, ul.list li strong { color: var(--navy); font-weight: 800; }
 .tape .brk { color: var(--navy-soft); font-style: italic; font-size: 17px; }
 
 /* ══════════ TIMING TABLE ══════════ */
-table.t { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 20px; }
+table.t {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  font-size: 20px; table-layout: fixed;
+}
 table.t th {
-  background: var(--navy); color: #fff; text-align: left;
-  padding: 11px 16px; font-size: 16px; font-weight: 800;
+  background: var(--navy); color: #fff;
+  padding: 13px 18px; font-size: 16px; font-weight: 800;
   letter-spacing: .07em; text-transform: uppercase;
+  text-align: center;            /* headers are labels → always centred */
+  vertical-align: middle;
 }
 table.t th:first-child { border-radius: 12px 0 0 0; }
 table.t th:last-child  { border-radius: 0 12px 0 0; }
 table.t td {
-  padding: 9px 16px; border-bottom: 2px solid var(--line);
+  padding: 12px 18px; border-bottom: 2px solid var(--line);
   color: var(--navy-2); font-weight: 600; background: #fff;
+  vertical-align: middle;        /* rows sit level however tall the tallest cell is */
+  overflow-wrap: break-word;
 }
-table.t.tight td { padding: 5px 14px; }
-table.t.tight th { padding: 7px 14px; }
-table.t.tight .time { font-size: 22px; }
-table.t.tight .n { font-size: 21px; }
-table.t.tight .says { font-size: 18px; }
-table.t tr:last-child td { border-bottom: none; }
-table.t td.c { text-align: center; }
-table.t .hl td { background: var(--orange-lt); }
+table.t tbody tr:nth-child(even) td { background: #FCFAF7; }   /* eye-tracking stripe */
+table.t tbody tr:last-child td { border-bottom: none; }
+
+/* per-cell alignment: l = left (long prose), c = centred (short/numeric) */
+table.t td.l { text-align: left; }
+table.t td.c, table.t th.c { text-align: center; }
+table.t td.r { text-align: right; }
+
 table.t .n {
   font-family: 'Baloo 2', Nunito, sans-serif; font-weight: 800;
   font-size: 24px; color: var(--navy); text-align: center;
 }
 table.t .time {
   font-family: 'Baloo 2', Nunito, sans-serif; font-weight: 800;
-  font-size: 24px; color: var(--orange); text-align: center; white-space: nowrap;
+  font-size: 25px; color: var(--orange); text-align: center;
+  white-space: nowrap; line-height: 1.1;
 }
-table.t .time small { display: block; font-size: 14px; color: var(--navy-soft); font-weight: 700; font-family: Nunito, sans-serif; }
+table.t .time small {
+  display: block; font-size: 14px; color: var(--navy-soft);
+  font-weight: 700; font-family: Nunito, sans-serif; margin-top: 2px;
+}
 table.t .says { font-size: 19px; color: var(--navy-mid); font-weight: 600; }
 table.t .says em { color: var(--navy); font-style: italic; }
+
+table.t.tight td { padding: 9px 14px; }
+table.t.tight th { padding: 10px 14px; }
+table.t.tight .n { font-size: 21px; }
+table.t.tight .time { font-size: 23px; }
+table.t.tight .says { font-size: 19px; }
 table.t small { display: block; font-size: 15px; color: var(--navy-soft); font-weight: 700; }
 
 /* ══════════ BIG STATS ══════════ */
@@ -651,18 +673,19 @@ body.on-hero .chrome .mark { display: none; }
         <h2 class="s-title">All five exercises</h2>
         
         <div style="height:18px"></div>
-        <div class="body">
-      <table class="t fill" style="align-self:start">
-        <thead><tr><th style="width:70px">Ex</th><th>What you hear</th><th class="c" style="width:90px">Qs</th><th>What you choose</th><th class="c" style="width:100px">Marks</th></tr></thead>
+        <div class="body vc">
+      <table class="t tight" style="align-self:stretch">
+        <colgroup><col style="width:84px"><col style="width:29%"><col style="width:92px"><col><col style="width:118px"></colgroup>
+        <thead><tr><th class="c">Ex</th><th>What you hear</th><th class="c">Qs</th><th>What you choose</th><th class="c">Marks</th></tr></thead>
         <tbody>
-          <tr><td class="n">1</td><td>8 very short extracts</td><td class="c">8</td><td>1 question each · <b>4 pictures</b> A–D</td><td class="c n">8</td></tr>
-          <tr><td class="n">2</td><td>5 short extracts</td><td class="c">10</td><td><b>2 questions</b> each · 3 written options A–C</td><td class="c n">10</td></tr>
-          <tr><td class="n">3</td><td>1 talk (monologue)</td><td class="c">8</td><td>8 gaps in sentences · 3 options each</td><td class="c n">8</td></tr>
-          <tr><td class="n">4</td><td>6 different speakers</td><td class="c">6</td><td>Match to <b>8 statements</b> A–H</td><td class="c n">6</td></tr>
-          <tr><td class="n">5</td><td>1 interview (2 voices)</td><td class="c">8</td><td>3 written options A–C · <b>the main speaker only</b></td><td class="c n">8</td></tr>
+          <tr><td class="n">1</td><td class="l">8 very short extracts</td><td class="c">8</td><td class="l">1 question each · <b>4 pictures</b> A–D</td><td class="c n">8</td></tr>
+          <tr><td class="n">2</td><td class="l">5 short extracts</td><td class="c">10</td><td class="l"><b>2 questions</b> each · 3 written options A–C</td><td class="c n">10</td></tr>
+          <tr><td class="n">3</td><td class="l">1 talk (monologue)</td><td class="c">8</td><td class="l">8 gaps in sentences · 3 options each</td><td class="c n">8</td></tr>
+          <tr><td class="n">4</td><td class="l">6 different speakers</td><td class="c">6</td><td class="l">Match to <b>8 statements</b> A–H</td><td class="c n">6</td></tr>
+          <tr><td class="n">5</td><td class="l">1 interview (2 voices)</td><td class="c">8</td><td class="l">3 written options A–C · <b>the main speaker only</b></td><td class="c n">8</td></tr>
         </tbody>
       </table>
-      <div class="grid g3" style="margin-top:16px">
+      <div class="grid g3" style="margin-top:12px">
         <div class="card"><h3>16 cheap marks</h3><p>Exercises 1 and 3 test stated facts and opinions only. Aim to bank these.</p></div>
         <div class="card"><h3>24 harder marks</h3><p>Exercises 2, 4 and 5 also test implied meaning.</p></div>
         <div class="card"><h3>Every question = 1 mark</h3><p>So never spend longer than one question is worth.</p></div>
@@ -702,14 +725,15 @@ body.on-hero .chrome .mark { display: none; }
         <h2 class="s-title">Hearing 1 and hearing 2 are different jobs</h2>
         
         <div style="height:18px"></div>
-        <div class="body">
-      <table class="t fill" style="align-self:start">
-        <thead><tr><th style="width:220px"></th><th>Hearing 1</th><th>Hearing 2</th></tr></thead>
+        <div class="body vc">
+      <table class="t" style="align-self:stretch">
+        <colgroup><col style="width:210px"><col><col></colgroup>
+        <thead><tr><th class="c"></th><th class="c">Hearing 1</th><th class="c">Hearing 2</th></tr></thead>
         <tbody>
-          <tr><td><b>Your job</b></td><td>Understand the <b>whole recording</b> — who, what, in what order</td><td><b>Decide</b> each answer with evidence</td></tr>
-          <tr><td><b>Your pen</b></td><td>A small dash by a <b>possible</b> answer</td><td>A firm circle round the <b>final</b> letter</td></tr>
-          <tr><td><b>Your eyes</b></td><td>Mostly on the <b>question paper</b></td><td>Mostly <b>listening</b>, glancing at your two best options</td></tr>
-          <tr><td><b>Never</b></td><td>Lock an answer in — it is only a draft</td><td>Re-read every option from the beginning</td></tr>
+          <tr><td class="l"><b>Your job</b></td><td class="l">Understand the <b>whole recording</b> — who, what, in what order</td><td class="l"><b>Decide</b> each answer with evidence</td></tr>
+          <tr><td class="l"><b>Your pen</b></td><td class="l">A small dash by a <b>possible</b> answer</td><td class="l">A firm circle round the <b>final</b> letter</td></tr>
+          <tr><td class="l"><b>Your eyes</b></td><td class="l">Mostly on the <b>question paper</b></td><td class="l">Mostly <b>listening</b>, glancing at your two best options</td></tr>
+          <tr><td class="l"><b>Never</b></td><td class="l">Lock an answer in — it is only a draft</td><td class="l">Re-read every option from the beginning</td></tr>
         </tbody>
       </table>
       <div class="ans hint" style="margin-top:16px"><span class="tag">Listen for</span><div><b>not · never · only · already · instead · unless · but · actually · in the end · at first</b><br><span style="font-size:18px">These words are where the answer flips. Most wrong answers are decided by one of them.</span></div></div></div>
@@ -723,16 +747,17 @@ body.on-hero .chrome .mark { display: none; }
         <h2 class="s-title">The paper tells you when to read</h2>
         
         <div style="height:18px"></div>
-        <div class="body">
-      <table class="t tight" style="align-self:start">
-        <thead><tr><th style="width:70px">Ex</th><th>The recording says…</th><th class="c" style="width:210px">You get</th></tr></thead>
+        <div class="body vc">
+      <table class="t tight" style="align-self:stretch">
+        <colgroup><col style="width:104px"><col><col style="width:264px"></colgroup>
+        <thead><tr><th class="c">Ex</th><th class="c">The recording says…</th><th class="c">You get</th></tr></thead>
         <tbody>
-          <tr><td class="n">1</td><td class="says">no reading pause — it starts straight away</td><td class="time">3 sec<small>before Q1 only</small></td></tr>
-          <tr><td class="n">2</td><td class="says"><em>“Now look at Questions 9 and 10.”</em></td><td class="time">15 sec<small>before every pair</small></td></tr>
-          <tr><td class="n">3</td><td class="says"><em>“Now look at questions 19–26.”</em></td><td class="time">40 sec<small>all eight at once</small></td></tr>
-          <tr><td class="n">4</td><td class="says"><em>“Now read statements A–H.”</em></td><td class="time">30 sec<small>all eight at once</small></td></tr>
-          <tr><td class="n">5</td><td class="says"><em>“Now look at questions 33–40.”</em></td><td class="time">45 sec<small>all eight at once</small></td></tr>
-          <tr><td class="n">End</td><td class="says">after the last recording — to move your answers</td><td class="time">6 min<small>5 min + 1 min</small></td></tr>
+          <tr><td class="n">1</td><td class="says c">no reading pause — it starts straight away</td><td class="time">3 sec<small>before Q1 only</small></td></tr>
+          <tr><td class="n">2</td><td class="says c"><em>“Now look at Questions 9 and 10.”</em></td><td class="time">15 sec<small>before every pair</small></td></tr>
+          <tr><td class="n">3</td><td class="says c"><em>“Now look at questions 19–26.”</em></td><td class="time">40 sec<small>all eight at once</small></td></tr>
+          <tr><td class="n">4</td><td class="says c"><em>“Now read statements A–H.”</em></td><td class="time">30 sec<small>all eight at once</small></td></tr>
+          <tr><td class="n">5</td><td class="says c"><em>“Now look at questions 33–40.”</em></td><td class="time">45 sec<small>all eight at once</small></td></tr>
+          <tr><td class="n">End</td><td class="says c">after the last recording — to move your answers</td><td class="time">6 min<small>5 min + 1 min</small></td></tr>
         </tbody>
       </table>
       <div class="ans hint" style="margin-top:12px"><span class="tag">Use it</span><div>Most students spend this time staring at the paper. <b>Read, underline the key words, predict the answer.</b></div></div></div>
