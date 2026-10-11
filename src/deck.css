@@ -606,10 +606,11 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
   background: rgba(255,255,255,0.02);
   border-left-color: var(--line-2);
 }
-.slide[data-reveal]:not(.revealed) .callout.ok > *,
-.slide[data-reveal]:not(.revealed) .callout.bad > * { visibility: hidden; }
+.slide[data-reveal]:not(.revealed) .callout.ok,
+.slide[data-reveal]:not(.revealed) .callout.bad { visibility: hidden; }
 .slide[data-reveal]:not(.revealed) .callout.ok::before,
 .slide[data-reveal]:not(.revealed) .callout.bad::before {
+  visibility: visible;
   content: "answer held back — press R";
   font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--faint);
@@ -703,6 +704,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
   .rv { opacity: 1 !important; transform: none !important; }
   .slide[data-reveal] .why { display: block !important; }
   .slide[data-reveal] .callout.ok > *, .slide[data-reveal] .callout.bad > * { visibility: visible !important; }
+  .slide[data-reveal] .callout.ok, .slide[data-reveal] .callout.bad { visibility: visible !important; }
   .slide[data-reveal] .callout.ok::before, .slide[data-reveal] .callout.bad::before { content: none !important; }
   .hero-title, .s-title, .s-card h3, .s-step .st, .qcard .qtext, .tape .sp, .brow .bl { color: #000 !important; }
   .hero-sub, .s-sub, .s-card p, .s-bullets li, .opt, .tape, .stmt, .rung .rt, .dd-col li { color: #222 !important; }
