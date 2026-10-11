@@ -89,7 +89,7 @@ export const craft = [
         <div class="card"><span class="pill">Week 3</span><h3 style="margin-top:10px">Attack 2, 4 and 5</h3>
           <ul class="list" style="font-size:18px;margin-top:8px"><li>One full paper under exam conditions</li><li>Re-do only Exercises 2, 4, 5 with the transcript</li><li>Quote the phrase that earns each mark</li></ul>
           <p style="margin-top:8px;font-size:17px;color:var(--orange-dk)"><b>Output:</b> every answer traced to a phrase.</p></div>
-        <div class="card g"><span class="pill g">Week 4</span><h3 style="margin-top:10px">Rehearse it</h3>
+        <div class="card"><span class="pill">Week 4</span><h3 style="margin-top:10px">Rehearse it</h3>
           <ul class="list g" style="font-size:18px;margin-top:8px"><li>Two papers, timed, with the real answer sheet</li><li>Practise the 6-minute transfer with a pen</li><li>No new words this week — technique only</li></ul>
           <p style="margin-top:8px;font-size:17px;color:var(--green)"><b>Output:</b> a routine you do not have to think about.</p></div>
       </div>`,
@@ -129,12 +129,12 @@ export const craft = [
     title: 'Six things to remember',
     body: `
       <div class="grid g3 fill" style="align-content:start;gap:14px">
-        <div class="card o"><h3>Read before you listen</h3><p>The paper gives you 15, 30, 40 and 45 seconds. Use all of it.</p></div>
-        <div class="card o"><h3>Two hearings, two jobs</h3><p>Hearing 1 maps it. Hearing 2 decides it.</p></div>
-        <div class="card o"><h3>Distrust the words you recognise</h3><p>The answer usually re-words. The trap usually repeats.</p></div>
-        <div class="card o"><h3>Hunt the pivot</h3><p>but · however · actually · not · instead · hardly. The answer comes after.</p></div>
-        <div class="card o"><h3>Ask who said it</h3><p>Especially in Exercise 5. The interviewer is a trap factory.</p></div>
-        <div class="card g"><h3>Review with the transcript</h3><p>One diagnosed paper beats three papers you never checked.</p></div>
+        <div class="card"><h3>Read before you listen</h3><p>The paper gives you 15, 30, 40 and 45 seconds. Use all of it.</p></div>
+        <div class="card"><h3>Two hearings, two jobs</h3><p>Hearing 1 maps it. Hearing 2 decides it.</p></div>
+        <div class="card"><h3>Distrust the words you recognise</h3><p>The answer usually re-words. The trap usually repeats.</p></div>
+        <div class="card"><h3>Hunt the pivot</h3><p>but · however · actually · not · instead · hardly. The answer comes after.</p></div>
+        <div class="card"><h3>Ask who said it</h3><p>Especially in Exercise 5. The interviewer is a trap factory.</p></div>
+        <div class="card"><h3>Review with the transcript</h3><p>One diagnosed paper beats three papers you never checked.</p></div>
       </div>
       <div class="ans hint" style="margin-top:18px"><span class="tag">Remember</span><div>Paper 2 is not mainly a test of how much English you know. It is a test of <b>how well you handle a recording you only hear twice</b>. That is a skill — and skills improve with practice.</div></div>`,
     notes:
@@ -153,9 +153,9 @@ export const craft = [
     meta: 'Paper 2 — Listening · 40 questions · 40 marks · you hear everything twice<br><b>Falih Junior International Academy</b>',
     body: `
       <div class="grid g3" style="margin-top:26px;text-align:left">
-        <div class="card g"><h3>This week</h3><p>Label every wrong answer in one paper with the trap that caught you.</p></div>
-        <div class="card o"><h3>Every week</h3><p>One paper, always reviewed with the transcript.</p></div>
-        <div class="card n"><h3>Until the exam</h3><p>Five minutes of transcript listening, three times a week.</p></div>
+        <div class="card"><h3>This week</h3><p>Label every wrong answer in one paper with the trap that caught you.</p></div>
+        <div class="card"><h3>Every week</h3><p>One paper, always reviewed with the transcript.</p></div>
+        <div class="card"><h3>Until the exam</h3><p>Five minutes of transcript listening, three times a week.</p></div>
       </div>
       <p style="margin-top:24px;font-size:17px;color:var(--navy-soft);line-height:1.6;max-width:900px;margin-left:auto;margin-right:auto">
         All questions, pictures and scripts in this workshop are taken from Cambridge IGCSE English as a Second Language 0511/21, Paper 2 Listening, October/November 2025

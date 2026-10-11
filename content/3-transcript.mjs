@@ -68,10 +68,10 @@ export const transcript = [
           <span class="brk">REPEAT FROM * TO **</span>
         </div>
         <div class="grid g2" style="gap:12px;align-content:start">
-          <div class="card num o"><span class="n">1</span><h3>M: and F:</h3><p>Each speech bubble is labelled, so you can check <b>who</b> said it — not just what was said.</p></div>
-          <div class="card num o"><span class="n">2</span><h3>Voice descriptions</h3><p><em>“male, forties, UK accent”</em> tells you which voice is which before you replay.</p></div>
-          <div class="card num o"><span class="n">3</span><h3>Every PAUSE</h3><p>The 5-second gap after each extract is where you commit your letter.</p></div>
-          <div class="card num o"><span class="n">4</span><h3>REPEAT FROM * TO **</h3><p>Shows exactly which part is played twice, so you can replay only that.</p></div>
+          <div class="card num"><span class="n">1</span><h3>M: and F:</h3><p>Each speech bubble is labelled, so you can check <b>who</b> said it — not just what was said.</p></div>
+          <div class="card num"><span class="n">2</span><h3>Voice descriptions</h3><p><em>“male, forties, UK accent”</em> tells you which voice is which before you replay.</p></div>
+          <div class="card num"><span class="n">3</span><h3>Every PAUSE</h3><p>The 5-second gap after each extract is where you commit your letter.</p></div>
+          <div class="card num"><span class="n">4</span><h3>REPEAT FROM * TO **</h3><p>Shows exactly which part is played twice, so you can replay only that.</p></div>
         </div>
       </div>`,
     notes:
@@ -88,10 +88,10 @@ export const transcript = [
     title: 'How to review a paper in twenty minutes',
     body: `
       <div class="s-steps grid" style="grid-template-columns:repeat(4,1fr);gap:14px;align-content:start">
-        <div class="card o"><h3><span class="pill">Step 1</span></h3><h3>Do it properly first</h3><p>Full speed, one play, no pausing. Write a letter for all 40 — including guesses.</p></div>
-        <div class="card o"><h3><span class="pill">Step 2</span></h3><h3>Mark it, but do not look at the answers</h3><p>Just look at which questions were wrong. Do not read the transcript yet.</p></div>
-        <div class="card o"><h3><span class="pill">Step 3</span></h3><h3>Now open the transcript</h3><p>For each wrong question, find and <b>underline the phrase</b> that earns the mark. Then write why you were wrong: which trap?</p></div>
-        <div class="card o"><h3><span class="pill">Step 4</span></h3><h3>Replay only those extracts</h3><p>Listen again with the script in front of you. Your ear connects the written phrase to the sound.</p></div>
+        <div class="card"><h3><span class="pill">Step 1</span></h3><h3>Do it properly first</h3><p>Full speed, one play, no pausing. Write a letter for all 40 — including guesses.</p></div>
+        <div class="card"><h3><span class="pill">Step 2</span></h3><h3>Mark it, but do not look at the answers</h3><p>Just look at which questions were wrong. Do not read the transcript yet.</p></div>
+        <div class="card"><h3><span class="pill">Step 3</span></h3><h3>Now open the transcript</h3><p>For each wrong question, find and <b>underline the phrase</b> that earns the mark. Then write why you were wrong: which trap?</p></div>
+        <div class="card"><h3><span class="pill">Step 4</span></h3><h3>Replay only those extracts</h3><p>Listen again with the script in front of you. Your ear connects the written phrase to the sound.</p></div>
       </div>
       <div class="ans hint" style="margin-top:18px"><span class="tag">Write this</span><div>Beside every wrong answer, write one of: <b>rejected suggestion</b> · <b>past plan</b> · <b>never mentioned</b> · <b>wrong speaker</b> · <b>polarity flip</b> · <b>degree shift</b> · <b>number for something else</b></div></div>`,
     notes:

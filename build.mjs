@@ -6,7 +6,7 @@
  *  · every exam-paper crop embedded as base64 JPEG
  *  · CSS + JS inlined   →  works completely offline, zero HTTP requests
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, copyFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { slides } from './content/slides.mjs';
@@ -27,6 +27,40 @@ function dataUri(name) {
 const withImages = (html = '') =>
   html.replace(/__IMG:([a-z0-9_]+)__/g, (m, n) => dataUri(n));
 
+/* ── audio ────────────────────────────────────────────────────
+   Clips ship as separate files in ./audio so the deck keeps proper speech
+   quality (base64-inlining ~5 MB of MP3 mainly bloats index.html, and the
+   folder still travels as one portable bundle). Set INLINE_AUDIO=1 for a
+   genuine single-file build. */
+const INLINE_AUDIO = process.env.INLINE_AUDIO === '1';
+const audCache = new Map();
+function audSrc(name) {
+  if (!INLINE_AUDIO) return 'audio/' + name + '.mp3';
+  if (!audCache.has(name)) {
+    const buf = readFileSync(p('assets/audio', name + '.mp3'));
+    audCache.set(name, 'data:audio/mpeg;base64,' + buf.toString('base64'));
+  }
+  return audCache.get(name);
+}
+const ICON_PLAY = '<svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
+const ICON_PAUSE = '<svg class="ic-pause" viewBox="0 0 24 24"><rect x="7" y="5.5" width="3.6" height="13" rx="1"/><rect x="13.4" y="5.5" width="3.6" height="13" rx="1"/></svg>';
+
+/** __PLAY:clip|Caption line 1|Caption line 2__  → a full player */
+function player(clip, line1, line2, small) {
+  return `<div class="player${small ? ' sm' : ''}">
+          <button class="pp" aria-label="Play: ${attr(line1)}">${ICON_PLAY}${ICON_PAUSE}</button>
+          <div class="pt"><div class="l1">${line1}</div>${line2 ? `<div class="l2">${line2}</div>` : ''}</div>
+          <span class="dur">--:--</span>
+          <div class="track"><i></i></div>
+          <audio src="${audSrc(clip)}" preload="metadata"></audio>
+        </div>`;
+}
+function expand(html = '') {
+  return withImages(html)
+    .replace(/__PLAYSM:([a-z0-9_]+)\|([^|]*)\|?([^_|]*)__/g, (m, c, l1, l2) => player(c, l1, l2, true))
+    .replace(/__PLAY:([a-z0-9_]+)\|([^|]*)\|?([^_|]*)__/g, (m, c, l1, l2) => player(c, l1, l2, false));
+}
+
 /* ── slide renderers ────────────────────────────────────────── */
 const logo = 'data:image/png;base64,' + readFileSync(p('assets/img/logo.png')).toString('base64');
 const notes = (s) => (s.notes ? `<div class="slide__notes">${s.notes}</div>` : '');
@@ -39,7 +73,7 @@ function renderHero(s, i) {
         ${s.tagline ? `<p class="tagline">${s.tagline}</p>` : ''}
         <div class="rule"></div>
         ${s.meta ? `<p class="meta">${s.meta}</p>` : ''}
-        ${s.body ? `<div style="margin-top:22px">${withImages(s.body)}</div>` : ''}
+        ${s.body ? `<div style="margin-top:22px">${expand(s.body)}</div>` : ''}
         ${notes(s)}
       </section>`;
 }
@@ -51,7 +85,7 @@ function renderSect(s, i) {
         ${s.kicker ? `<div class="s-kick">${s.kicker}</div>` : ''}
         <h2>${s.title}</h2>
         ${s.sub ? `<p>${s.sub}</p>` : ''}
-        ${s.body ? `<div style="margin-top:24px">${withImages(s.body)}</div>` : ''}
+        ${s.body ? `<div style="margin-top:24px">${expand(s.body)}</div>` : ''}
         ${notes(s)}
       </section>`;
 }
@@ -64,6 +98,8 @@ function render(s, i) {
   if (s.kind === 'close') cls.push('close');
   const rv = s.reveal ? ' data-reveal=""' : '';
   const inner = s.wide ? ' style="max-width:100% ; display:flex; flex-direction:column; flex:1; min-height:0"' : ' class="body"';
+  const foot = s.kind === 'close' ? '' :
+    `<footer class="s-foot"><span>Falih Junior International Academy &nbsp;&middot;&nbsp; IGCSE English as a Second Language 0511 &nbsp;&middot;&nbsp; Paper 2 Listening</span><span class="pg">${i + 1}</span></footer>`;
 
   return `
       <section class="${cls.join(' ')}" id="${s.id}"${rv} aria-label="Slide ${i + 1}: ${attr(s.title)}">
@@ -72,7 +108,8 @@ function render(s, i) {
         ${s.title ? `<h2 class="s-title">${s.title}</h2>` : ''}
         ${s.sub ? `<p class="s-sub">${s.sub}</p>` : ''}
         ${s.title || s.sub ? '<div style="height:18px"></div>' : ''}
-        <div${inner}>${withImages(s.body) || ''}</div>
+        <div${inner}>${expand(s.body) || ''}</div>
+        ${foot}
         ${notes(s)}
       </section>`;
 }
@@ -100,6 +137,7 @@ const html = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <title>Paper 2 Listening — Answering Techniques Workshop | Falih Junior International Academy</title>
 <meta name="description" content="A concise step-by-step workshop on Cambridge IGCSE English as a Second Language 0511 Paper 2 (Listening), using the October/November 2025 paper. Falih Junior International Academy.">
 <meta name="color-scheme" content="light">
@@ -110,6 +148,7 @@ ${css}
 </head>
 <body>
 <div class="stage"><div class="canvas" id="canvas">
+<div class="deco" aria-hidden="true"><i class="ring1"></i><i class="dotgrid"></i></div>
 ${body}
 </div></div>
 
@@ -150,10 +189,18 @@ ${js}
 `;
 
 mkdirSync(p('dist'), { recursive: true });
+mkdirSync(p('dist/audio'), { recursive: true });
 writeFileSync(p('dist/index.html'), html, 'utf8');
 writeFileSync(p('index.html'), html, 'utf8');
+const audioFiles = readdirSync(p('assets/audio'));
+if (!INLINE_AUDIO) {
+  for (const f of audioFiles) {
+    copyFileSync(p('assets/audio', f), p('dist/audio', f));
+    copyFileSync(p('assets/audio', f), p('audio', f));
+  }
+}
 const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
-console.log(`✓ ${slides.length} slides · ${kb} KB (fonts + ${imgCache.size} paper crops embedded, offline-ready)`);
+console.log(`✓ ${slides.length} slides · ${kb} KB html — ${imgCache.size} paper crops, ${audioFiles.length} audio clips${INLINE_AUDIO ? ' (inlined)' : ' (./audio/)'}, fonts embedded`);
 
 const warn = [];
 slides.forEach((s, i) => {

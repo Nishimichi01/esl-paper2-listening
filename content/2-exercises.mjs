@@ -15,7 +15,7 @@ export const ex = [
           <tr><td class="n">3</td><td class="says"><em>“Now look at questions 19–26.”</em></td><td class="time">40 sec<small>all eight at once</small></td></tr>
           <tr><td class="n">4</td><td class="says"><em>“Now read statements A–H.”</em></td><td class="time">30 sec<small>all eight at once</small></td></tr>
           <tr><td class="n">5</td><td class="says"><em>“Now look at questions 33–40.”</em></td><td class="time">45 sec<small>all eight at once</small></td></tr>
-          <tr class="hl"><td class="n">End</td><td class="says">after the last recording — to move your answers</td><td class="time">6 min<small>5 min + 1 min</small></td></tr>
+          <tr><td class="n">End</td><td class="says">after the last recording — to move your answers</td><td class="time">6 min<small>5 min + 1 min</small></td></tr>
         </tbody>
       </table>
       <div class="ans hint" style="margin-top:12px"><span class="tag">Use it</span><div>Most students spend this time staring at the paper. <b>Read, underline the key words, predict the answer.</b></div></div>`,
@@ -67,7 +67,7 @@ export const ex = [
     title: 'Four pictures are one question at four settings',
     body: `
       <div class="grid g2" style="align-items:start">
-        <div class="card o"><h3>Find the difference</h3>
+        <div class="card"><h3>Find the difference</h3>
           <p>Do not read the pictures one by one. Ask:</p>
           <p style="margin-top:10px;font-size:24px;color:var(--navy)"><b>What single thing changes from A to B to C to D?</b></p>
           <p style="margin-top:10px">That one thing is the question. In Question 1 it is <b>where the car is parked</b> — nothing else matters.</p></div>
@@ -95,6 +95,7 @@ export const ex = [
     reveal: true,
     body: `
       <div class="shot fill zoom"><img src="__IMG:ex1_q1__" alt="Question 1 from the 2025 paper"></div>
+      __PLAY:ex1_q1|Play Question 1|The real recording, played twice__
       <div class="ans two rv" style="margin-top:12px"><span class="tag">The audio says</span><div>“there wasn't a single space left in the <b>pool car park</b>… I hope you didn't leave it at the <b>train station</b> like last time… It's actually <b>next to the petrol station</b>… the <b>supermarket</b>'s nearer… but I'd feel bad parking there without doing any shopping!”</div></div>`,
     notes:
       '<span class="t">4 min</span>Run it properly. Show Question 1, give them ten seconds, and make <b>everyone write a letter</b> before you reveal anything. Then press R. ' +
@@ -170,7 +171,8 @@ export const ex = [
         <li><b>15 seconds</b> reading time before <b>every</b> pair</li>
         <li>Three written options A–C — words or short phrases</li>
         <li>Lose the thread once and it costs you <b>two</b> marks</li>
-      </ul>`,
+      </ul>
+      <div style="margin-top:12px">__PLAYSM:ex2_intro|Play the Exercise 2 instructions|Hear the real 15-second reading pause__</div>`,
     notes:
       '<span class="t">3 min</span>Two facts to land. First, the value: <b>10 marks for five extracts — the best marks-per-minute on the paper.</b> Second, the risk: because two questions come from one recording, one moment of inattention costs <b>two</b> marks. ' +
       'The 15-second pause before every pair is the real gift here. Show them the paper: “Now look at Questions 9 and 10” then a 15-second pause. In 15 seconds you can read two questions and three options each — comfortably — if you are not staring at the ceiling.',
@@ -187,7 +189,7 @@ export const ex = [
           <p><b>How…? Where…? What kind…? How many…?</b></p>
           <p style="margin-top:10px">The answer is stated. Often winnable on hearing 1.</p>
           <p style="margin-top:10px;font-size:19px;color:var(--navy-soft)">Mark it <b>F</b> on your paper.</p></div>
-        <div class="card o"><h3>One is usually a stance</h3>
+        <div class="card"><h3>One is usually a stance</h3>
           <p><b>Why…? How does she feel…? What made him…?</b></p>
           <p style="margin-top:10px">The answer is an opinion, reason or feeling — and the option will be <b>worded differently</b> from the audio.</p>
           <p style="margin-top:10px;font-size:19px;color:var(--orange-dk)">Mark it <b>S</b> on your paper.</p></div>
@@ -209,9 +211,12 @@ export const ex = [
     body: `
       <div class="grid g2 fill" style="align-items:stretch;gap:14px">
         <div class="shot fill zoom"><img src="__IMG:ex2_q9_10__" alt="Questions 9 and 10"></div>
-        <div class="tape fill rv" style="overflow-y:auto">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+          __PLAY:ex2_videos|Play Questions 9 and 10|The real recording, played twice__
+          <div class="tape fill rv" style="overflow-y:auto">
           <span class="who">Boy:</span> My presentation today's on the environmental videos I make and upload. This is perhaps simpler than you'd imagine. There are literally <span class="kg">thousands of websites and film clips</span> on the internet, each of which contains someone <span class="kg">guiding you step-by-step</span>. <span class="kr">Attending classes</span> on the topic was <span class="kr">totally unnecessary</span>, thanks to that.
           <br><br>So why did I choose the environment as a topic? Well, unlike many students, I'd <span class="kr">only developed a passion for it relatively recently</span>, but I realised there were a <span class="kg">vast number of issues contained within a single subject</span>, which meant <span class="kg">each video could be very different</span> from the last. My <span class="k">marks</span> in environment-related schoolwork have <span class="k">improved greatly as a result</span>.
+          </div>
         </div>
       </div>`,
     notes:
@@ -231,7 +236,9 @@ export const ex = [
     body: `
       <div class="grid g2 fill" style="align-items:stretch;gap:14px">
         <div class="shot fill zoom"><img src="__IMG:ex2_q13_14__" alt="Questions 13 and 14"></div>
-        <div class="tape fill rv" style="overflow-y:auto">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+          __PLAY:ex2_cafe|Play Questions 13 and 14|The real recording, played twice__
+          <div class="tape fill rv" style="overflow-y:auto">
           <span class="who">Girl:</span> Have you been to that new café?
           <br><span class="who">Boy:</span> Yeah — I felt <span class="kg">totally at home</span> there from the moment I walked in.
           <br><span class="who">Girl:</span> It's like having coffee and cake at your <span class="kg">favourite relative's house</span>. But providing <span class="kr">more choice of things to eat</span>'d make it even better.
@@ -239,6 +246,7 @@ export const ex = [
           <br><span class="who">Girl:</span> It'd be great to hang out there <span class="kr">before school</span> too — <span class="kr">shame it's shut then</span>. Actually, I might ask if they have any <span class="k">jobs</span> available.
           <br><span class="who">Boy:</span> I can imagine you <span class="kr">chatting with the customers</span>.
           <br><span class="who">Girl:</span> <span class="kr">I meant in the kitchen.</span> I'm hoping to do a <span class="kg">catering course</span> after leaving school and it'd be <span class="kg">valuable experience</span> for that. And I'd have some <span class="k">extra cash</span>, of course.
+          </div>
         </div>
       </div>`,
     notes:
@@ -292,7 +300,8 @@ export const ex = [
         <li><b>40 seconds</b> to read all eight questions first</li>
         <li>The questions <b>follow the order of the talk</b></li>
         <li>Tests stated facts, not implied meaning — <b>the cheapest 8 marks on the paper</b></li>
-      </ul>`,
+      </ul>
+      <div style="margin-top:12px">__PLAYSM:ex3_intro|Play the Exercise 3 instructions|Hear the real 40-second reading pause__</div>`,
     notes:
       '<span class="t">3 min</span>Exercise 3 is the other "cheap" exercise: per the syllabus it tests L1, L2 and L3 only — <b>no implied meaning.</b> A well-drilled class should be banking 7 or 8 here, and any loss is a technique problem rather than an English problem. ' +
       'Point out the 40 seconds on the slide: eight questions, 40 seconds, five seconds each. The questions run in the same order as the talk, so they act as a map of the whole monologue. ' +
@@ -303,28 +312,60 @@ export const ex = [
   {
     id: 'ex3-technique',
     kicker: 'Exercise 3 · technique',
-    title: 'Use the sentence. The grammar does half the work.',
+    title: 'Use the sentence to cross out wrong options',
+    sub: 'You can often delete an option before you hear a single word. Ask these three questions about the gap.',
     body: `
-      <div class="grid g2" style="align-items:start;gap:14px">
-        <div>
-          <div class="card num o" style="margin-bottom:12px"><span class="n">1</span><h3>What kind of word fits the gap?</h3><p>A noun? A number? A verb? Cross out options that cannot fit.</p></div>
-          <div class="card num o" style="margin-bottom:12px"><span class="n">2</span><h3>Does the sentence have a direction?</h3><p>“The biggest <b>problem</b> was ___” needs something <b>bad</b>. A positive option is wrong before the audio starts.</p></div>
-          <div class="card num o"><span class="n">3</span><h3>Which option collocates?</h3><p>“___ million years ago” → three numbers, all possible. Here only the audio decides.</p></div>
-        </div>
-        <div class="card n"><h3>Then take notes in the margin</h3>
-          <p>Do not write words. Write <b>numbers and symbols</b> next to each question:</p>
-          <p style="margin-top:12px;font-size:30px;font-family:'Baloo 2';color:var(--navy);letter-spacing:.08em">+ &nbsp; − &nbsp; ? &nbsp; X &nbsp; → &nbsp; BUT &nbsp; #</p>
-          <ul class="list" style="margin-top:12px;font-size:19px">
-            <li><b>+</b> positive &nbsp; <b>−</b> negative &nbsp; <b>?</b> unsure</li>
-            <li><b>X</b> ruled out &nbsp; <b>→</b> cause/effect &nbsp; <b>BUT</b> contrast</li>
-            <li><b>#</b> a number or date was said here</li>
-          </ul>
-          <p style="margin-top:10px">Every word you write is a second you are not listening.</p></div>
+      <div class="grid g3" style="align-content:start;gap:14px">
+        <div class="card num"><span class="n">1</span><h3>What kind of word is missing?</h3>
+          <p>A noun, a number, a verb? Cross out anything that cannot fit.</p>
+          <p style="margin-top:10px;font-size:19px;color:var(--navy-soft)"><em>&ldquo;&hellip;on the site of an old ___&rdquo;</em> &rarr; a <b>singular noun</b>. &ldquo;<em>a parking</em>&rdquo; is impossible.</p></div>
+        <div class="card num"><span class="n">2</span><h3>Which way does the sentence point?</h3>
+          <p>Is it describing something good, or something bad?</p>
+          <p style="margin-top:10px;font-size:19px;color:var(--navy-soft)"><em>&ldquo;The biggest <b>problem</b> was ___&rdquo;</em> &rarr; something <b>negative</b>. A positive option is wrong already.</p></div>
+        <div class="card num"><span class="n">3</span><h3>Can the sentence decide it at all?</h3>
+          <p>Sometimes it cannot. If all three options fit, grammar has nothing to say &mdash; and that is useful to know.</p>
+          <p style="margin-top:10px;font-size:19px;color:var(--navy-soft)"><em>&ldquo;about ___ million years ago&rdquo;</em> &rarr; 200, 250 and 400 all fit. <b>Only the audio decides.</b></p></div>
+      </div>
+      <div class="tape" style="margin-top:16px">
+        <b>What to do when the sentence cannot decide it &mdash; Question 19:</b><br>
+        The oldest of the shark species living today appeared about <b>___ million years ago</b>. &nbsp;&nbsp; <b>A</b> 200 &nbsp; <b>B</b> 250 &nbsp; <b>C</b> 400<br>
+        <span class="brk">All three are numbers, so all three fit. Do not guess &mdash;</span> write <b>#</b> in the margin and listen for <b>which number belongs to which fact</b>. The audio says all three; you have to match them.
       </div>`,
     notes:
-      '<span class="t">3 min</span>Exercise 3 is the only part of the paper where the question paper itself does elimination work, so teach it properly. Walk steps 1 to 3 on the visible shark questions. For Q19, the gap is "___ million years ago" so all three numbers fit — grammar cannot help, and you must say so honestly, because students over-trust this technique if you only show the cases where it works. ' +
-      'Then teach the margin symbols. This is the highest-return note-taking change: students want to write words; we want signals. Have them physically write the symbol row in the margin of the question paper now while you talk. ' +
-      'The line to repeat: <b>if you fall behind, do not catch up on the lost question — jump to the next question number.</b> Chasing a lost mark usually costs the next two.',
+      '<span class="t">4 min</span>One message on this slide and nothing else: <b>the sentence itself can eliminate options.</b> Walk the three questions in order, and give the class about ten seconds after each one to look at their own paper. ' +
+      'Be honest about question 3, because it is the part students get wrong. For Question 19 the gap is "about ___ million years ago" &mdash; 200, 250 and 400 are all valid numbers and all three are said in the audio. So the sentence cannot decide it. Say that out loud. Students who are taught that this trick always works lose confidence the first time it does not. ' +
+      'What the technique IS reliable for: <b>word class</b> (a gap after "an old" cannot be a verb or an uncountable noun) and <b>direction</b> (a sentence about a "problem" wants something negative). Those two genuinely remove options before the audio starts. ' +
+      'Land the habit from the box at the bottom: when all three options fit, <b>write # in the margin and match each number to its fact</b> instead of guessing which number you heard.',
+  },
+
+  /* ── 23 · MARGIN NOTES ── */
+  {
+    id: 'ex3-margin',
+    kicker: 'Exercise 3 · during the audio',
+    title: 'In the margin: symbols, not words',
+    sub: 'Exercise 3 is long. You cannot hold eight questions in your head, so you write the shape of the talk instead.',
+    body: `
+      <div class="grid g2" style="align-items:start;gap:18px">
+        <div class="card">
+          <p style="font-size:14px;color:var(--navy-soft);font-weight:800;letter-spacing:.1em;text-transform:uppercase">Before the audio: number your margin 1&ndash;8</p>
+          <p style="margin-top:14px;font-size:34px;font-family:'Baloo 2';font-weight:800;color:var(--navy);letter-spacing:.1em;line-height:1.5">+ &nbsp; &minus; &nbsp; ? &nbsp; X &nbsp; &rarr; &nbsp; BUT &nbsp; #</p>
+          <ul class="list" style="margin-top:14px;font-size:20px">
+            <li><b>+</b> good news &nbsp;&nbsp; <b>&minus;</b> bad news &nbsp;&nbsp; <b>?</b> not sure yet</li>
+            <li><b>X</b> ruled out &nbsp;&nbsp; <b>&rarr;</b> cause and effect &nbsp;&nbsp; <b>BUT</b> a contradiction</li>
+            <li><b>#</b> a number, a date or a price was said</li>
+          </ul>
+        </div>
+        <div>
+          <div class="ans no"><span class="tag">Not this</span><div>Writing words or full sentences. <b>Every word you write is a second you are not listening to.</b></div></div>
+          <div class="ans ok" style="margin-top:14px"><span class="tag">This</span><div>One symbol per question, written on hearing 1. On hearing 2 you look at your symbols and <b>go straight back to the questions you marked ? or X</b>.</div></div>
+          <div class="ans hint" style="margin-top:14px"><span class="tag">If you fall behind</span><div><b>Do not catch up on the question you missed.</b> Find the next question number and rejoin there. Chasing one lost mark is how students lose the next two.</div></div>
+        </div>
+      </div>`,
+    notes:
+      '<span class="t">3 min</span>This slide exists because Exercise 3 is where students run out of working memory. Eight questions and one long talk is more than you can hold in your head, so you write a skeleton instead. ' +
+      'Make them do it physically. Tell everyone to number their margin 1 to 8 right now, then copy the seven symbols. Physically doing it once beats describing it five times. ' +
+      'The two most useful symbols for the exam are <b>#</b> (a number, date or price was said here) and <b>BUT</b> (a contradiction &mdash; the speaker is about to overturn something). Between them they cover most of the traps in Exercise 3. ' +
+      'The recovery rule at the bottom right is the one that saves marks: <b>if you lose a question, jump forward, never back.</b> An abandoned question is already gone; the next one is still winnable. Say it twice.',
   },
 
   /* ── 23 · Q19-21 DECIDE ── */
@@ -336,10 +377,13 @@ export const ex = [
     body: `
       <div class="grid g2 fill" style="align-items:stretch;gap:14px">
         <div class="shot fill zoom"><img src="__IMG:ex3_q19_21__" alt="Questions 19 to 21"></div>
-        <div class="tape fill rv" style="overflow-y:auto">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+          __PLAY:ex3_sharks|Play the shark talk|Covers Questions 19, 20 and 21__
+          <div class="tape fill rv" style="overflow-y:auto">
           <span class="who">Jana Holanova:</span> Several types still found swimming in our oceans have done so for almost <span class="kg">200 million</span> years. Their ancestors emerged around <span class="kr">400 million</span> years ago, but most of these disappeared just over <span class="kr">250 million</span> years ago.
           <br><br>So where does the word ‘shark' come from? Before the sixteenth century the term <span class="kr">‘sea dog'</span> described the <span class="kr">large fish</span> that sailors often spotted. A Dutch word — <em>shurck</em> — that roughly translates as <span class="kg">‘bad person'</span> is generally accepted as the likely source.
           <br><br>The largest group, the ground sharks, is made up of just under <span class="kr">300</span> species, so well over half of the <span class="kg">500</span> or so varieties that live in our seas today. Of this total, around <span class="kr">450</span> types live fairly close to the shore.
+          </div>
         </div>
       </div>`,
     notes:
@@ -359,7 +403,8 @@ export const ex = [
       <div class="grid g2 fill" style="align-items:stretch;gap:16px">
         <div class="shot fill zoom"><img src="__IMG:ex4_statements__" alt="Exercise 4 instructions and statements A to H"></div>
         <div class="shot fill zoom"><img src="__IMG:ex4_grid__" alt="Exercise 4 answer grid for questions 27 to 32"></div>
-      </div>`,
+      </div>
+      <div style="margin-top:14px">__PLAYSM:ex4_intro|Play the Exercise 4 instructions|Statements A–H and the real 30-second reading pause__</div>`,
     notes:
       '<span class="t">4 min</span>Read the instruction box aloud with the class, because it contains the rules: <b>“choose from the list (A–H) which idea each speaker expresses… Use each letter only once. There are two extra letters which you do not need to use.”</b> ' +
       'So: six speakers, eight statements, <b>each letter used once, two left over.</b> That is now confirmed from the paper itself, not a guess. ' +
@@ -404,9 +449,12 @@ export const ex = [
     body: `
       <div class="grid g2 fill" style="align-items:stretch;gap:14px">
         <div class="shot fill zoom"><img src="__IMG:ex4_grid__" alt="Exercise 4 grid"></div>
-        <div class="tape fill rv" style="overflow-y:auto">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+          __PLAY:ex4_speakers12|Play Speakers 1 and 2|The real recording, played twice__
+          <div class="tape fill rv" style="overflow-y:auto">
           <span class="who">Speaker 1 (girl, Australian):</span> I took part in a talent show last week, thinking it'd be the <span class="kr">first and last time</span>, but my performance showed enough promise to <span class="kr">have another go</span>. I'm <span class="kg">astonished</span> it went as well as it did, because the first competitor sang the same song as I was due to perform, so I rapidly <span class="kg">decided to switch my choice of music</span>. This actually helped <span class="kr">reduce my anxiety</span>.
           <br><br><span class="who">Speaker 2 (boy, UK):</span> I play guitar and decided to enter a talent show at school. Considering I <span class="kg">spent every spare minute I had practising</span> the piece of music I chose for it, I would've been <span class="kr">amazed if I'd finished last</span>. Even so, I wasn't expecting to be good enough to win, which is what happened. The people watching were mainly parents and family, so it's <span class="kr">hardly surprising</span> they clapped everyone so enthusiastically, but it was nice to hear.
+          </div>
         </div>
       </div>`,
     notes:
@@ -426,7 +474,8 @@ export const ex = [
       <div class="grid g2 fill" style="align-items:stretch;gap:14px">
         <div class="shot fill zoom"><img src="__IMG:ex5_instr__" alt="Exercise 5 instructions"></div>
         <div class="shot fill zoom"><img src="__IMG:ex5_q33_36__" alt="Questions 33 to 36"></div>
-      </div>`,
+      </div>
+      <div style="margin-top:14px">__PLAYSM:ex5_intro|Play the Exercise 5 instructions|Hear the real 45-second reading pause__</div>`,
     notes:
       '<span class="t">4 min</span>Read the instruction line with them: <b>"You will hear an interview with a competitive skateboarder called Mikaela Quayle."</b> Then the key sentence from the syllabus — the questions test information expressed by <b>the main speaker</b>. ' +
       'Define "main speaker" operationally: <b>the person being interviewed</b>, the one who answers. The interviewer is scaffolding. ' +
@@ -467,10 +516,13 @@ export const ex = [
     body: `
       <div class="grid g2 fill" style="align-items:stretch;gap:14px">
         <div class="shot fill zoom"><img src="__IMG:ex5_q33_36__" alt="Questions 33 to 36"></div>
-        <div class="tape fill rv" style="overflow-y:auto">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+          __PLAY:ex5_q33_34|Play Questions 33 and 34|The interview begins here__
+          <div class="tape fill rv" style="overflow-y:auto">
           <span class="who">Interviewer:</span> I'm talking to fifteen-year-old Mikaela Quayle. How did it start?
           <br><span class="who">Mikaela:</span> I was learning to walk and Dad noticed I hardly ever fell over. As a skateboarder himself, <span class="kr">he said</span>, ‘Let's put her on a skateboard' — I was eighteen months old! I couldn't do anything, but the balance was there. <span class="kg">I've no memory of that</span>, but I was <span class="kr">never without my skateboard</span> as I grew up. Other kids take toys on car journeys — I had my skateboard!
           <br><br><span class="who">Mikaela:</span> When I was three, Dad took me to the skateboard park. I just stayed at the bottom. I <span class="kr">didn't necessarily admire the older skaters</span>, I just felt I was one of them. <span class="kg">I wanted to try tricks, and was shocked when I realised how hard it was.</span> But I didn't give up and eventually managed a small jump.
+          </div>
         </div>
       </div>`,
     notes:
@@ -486,25 +538,27 @@ export const ex = [
   {
     id: 'ex5-language',
     kicker: 'Exercise 5 · language',
-    title: 'The words that carry opinions',
-    sub: 'L2 and L4 questions are answered by the speaker\'s attitude, not their facts. Learn where the attitude hides.',
+    title: 'The words that give away an opinion',
+    sub: 'L2 and L4 questions are won or lost on these phrases. Each column below does a different job.',
     body: `
       <div class="grid g3" style="align-content:start;gap:14px">
-        <div class="card o"><h3>“This is my real view”</h3>
-          <p style="font-size:19px"><b>to be honest · if I'm honest · I'd say · I suppose · frankly · I must admit</b></p>
-          <p style="margin-top:8px;font-size:18px;color:var(--orange-dk)">The answer is in the next few words.</p></div>
-        <div class="card"><h3>“Here comes the verdict”</h3>
-          <p style="font-size:19px"><b>but · however · although · that said · actually · having said that</b></p>
-          <p style="margin-top:8px;font-size:18px;color:var(--navy-soft)">Everything before the pivot is the decoy.</p></div>
-        <div class="card n"><h3>Feelings, without the feeling word</h3>
-          <p style="font-size:19px">it grew on me · I could take it or leave it · it left me cold · I wasn't blown away · it fell flat</p>
-          <p style="margin-top:8px;font-size:18px;color:var(--navy-soft)">These are the phrases options paraphrase.</p></div>
+        <div class="card"><span class="pill">Column 1</span><h3 style="margin-top:10px">An opinion is coming</h3>
+          <p style="font-size:19px"><b>to be honest &middot; if I&rsquo;m honest &middot; I&rsquo;d say &middot; I suppose &middot; frankly &middot; I must admit</b></p>
+          <p style="margin-top:12px;font-size:19px;color:var(--orange-dk)"><b>What to do:</b> get ready. The answer is in the <b>next few words</b>.</p></div>
+        <div class="card"><span class="pill">Column 2</span><h3 style="margin-top:10px">The meaning is about to flip</h3>
+          <p style="font-size:19px"><b>but &middot; however &middot; although &middot; actually &middot; that said &middot; hardly &middot; only</b></p>
+          <p style="margin-top:12px;font-size:19px;color:var(--orange-dk)"><b>What to do:</b> cross out whatever came <b>before</b> it. That part is the trap.</p></div>
+        <div class="card"><span class="pill">Column 3</span><h3 style="margin-top:10px">A feeling, with no feeling word</h3>
+          <p style="font-size:19px">it grew on me &middot; I could take it or leave it &middot; it left me cold &middot; I wasn&rsquo;t blown away &middot; it fell flat &middot; not really my thing</p>
+          <p style="margin-top:12px;font-size:19px;color:var(--orange-dk)"><b>Why it matters:</b> the options paraphrase these, so you have to know what each one <b>means</b>.</p></div>
       </div>
-      <div class="ans hint" style="margin-top:16px"><span class="tag">Build it</span><div>Add every new opinion phrase you meet to one page. That single page is worth more than another whole mock paper.</div></div>`,
+      <div class="ans hint" style="margin-top:16px"><span class="tag">Build one page</span><div>Add every new phrase you meet to a single page in your notes. That page is worth more than another whole practice paper.</div></div>`,
     notes:
-      '<span class="t">3 min</span>Teach this as a <b>signal</b> slide, not a vocabulary list: these words tell you <em>where</em> the answer is before you know what it is. ' +
-      'Demonstrate the stance markers live. Say "if I\'m honest, …" and have the class call out "here it comes". When a speaker says "to be honest" or "I must admit", the answer is in the next clause. ' +
-      'The concession family is the highest-value one in the whole paper: <b>everything before but / however / that said is the decoy.</b> We have already seen it decide Question 1 ("actually"), Question 13 ("shame it\'s shut") and Speaker 1 in Exercise 4. Make that connection explicit — it is one idea appearing in every exercise. ' +
-      'Set the task: keep one page of opinion phrases, added to after every practice paper. The set is finite and highly reusable.',
+      '<span class="t">4 min</span>This is a <b>signal</b> slide, not a vocabulary list. The three columns do three different jobs, so teach them as three separate instructions rather than as one list of words. ' +
+      'Column 1 tells you an opinion is arriving. Demonstrate it live: say "if I\'m honest, &hellip;" and have the class say "here it comes" back to you. When a speaker uses any of those phrases, the answer is in the next clause. That is the whole of column 1. ' +
+      'Column 2 is the highest-value family in the entire paper. <b>Everything before but / however / actually / that said is the decoy.</b> You can prove it from questions they have already seen: Question 1 ("it\'s actually next to the petrol station"), Question 13 ("shame it\'s shut"), Question 10 ("improved greatly as a result" &mdash; a consequence, not a reason) and Speaker 1 in Exercise 4. Make that connection out loud: it is one idea reappearing in every single exercise. ' +
+      'Column 3 is a vocabulary job, and it is finite. "It left me cold", "it fell flat", "I could take it or leave it" are exactly the kind of hedged evaluation that options paraphrase into "she was disappointed". If a student does not know the phrase, the mark is gone before technique can help. ' +
+      'Set the task at the bottom: one page, added to after every practice paper. Not a textbook list &mdash; their own list.',
   },
+
 ];

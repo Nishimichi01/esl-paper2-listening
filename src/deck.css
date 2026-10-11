@@ -70,31 +70,72 @@ html, body {
   width: var(--W); height: var(--H);
   position: relative;
   transform-origin: center center;
-  background: var(--cream);
+  background-color: var(--cream);
+  /* opaque, low-contrast texture: a fine exercise-book grid plus two soft brand washes */
+  background-image:
+    linear-gradient(rgba(27,29,62,0.030) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,29,62,0.030) 1px, transparent 1px),
+    radial-gradient(820px 500px at 102% -10%, rgba(236,103,26,0.13), transparent 64%),
+    radial-gradient(760px 460px at -12% 110%, rgba(27,29,62,0.05), transparent 62%);
+  background-size: 34px 34px, 34px 34px, 100% 100%, 100% 100%;
   box-shadow: 0 30px 90px rgba(0,0,0,0.55);
   overflow: hidden;
   border-radius: 6px;
 }
 
+/* decorative geometry, behind every slide */
+.deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.deco i { position: absolute; display: block; }
+.deco .ring1 { width: 620px; height: 620px; border-radius: 50%; border: 78px solid rgba(236,103,26,0.070); right: -230px; top: -260px; }
+.deco .dotgrid {
+  left: 44px; bottom: 96px; width: 156px; height: 84px;
+  background-image: radial-gradient(rgba(27,29,62,0.11) 2px, transparent 2.5px);
+  background-size: 18px 18px;
+}
+
 .slide {
   position: absolute; inset: 0;
-  padding: 40px 56px 52px;
+  padding: 38px 56px 58px;
   display: flex; flex-direction: column;
   opacity: 0; visibility: hidden;
   transform: translateX(30px);
   transition: opacity .28s ease, transform .28s ease, visibility .28s;
-  background: var(--cream);
+  background: transparent;
   overflow: hidden;
+  z-index: 1;
 }
+
+/* footer: school line + slide number */
+.s-foot {
+  position: absolute; left: 56px; right: 56px; bottom: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 700; color: rgba(27,29,62,0.30);
+  letter-spacing: .04em; pointer-events: none;
+}
+.s-foot::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -10px;
+  height: 2px; background: linear-gradient(90deg, rgba(236,103,26,0.30), rgba(27,29,62,0.10) 55%, transparent);
+}
+.s-foot .pg { font-family: 'Baloo 2', Nunito, sans-serif; font-size: 17px; color: rgba(27,29,62,0.42); }
+.slide.hero .s-foot, .slide.close .s-foot { display: none; }
 .slide.is-active { opacity: 1; visibility: visible; transform: none; }
 .slide.is-prev   { transform: translateX(-30px); }
 
-/* soft orange wash, top-right + bottom-left */
+/* soft brand wash per slide */
 .slide::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(720px 420px at 100% 0%, rgba(236,103,26,0.10), transparent 62%),
-    radial-gradient(620px 420px at 0% 100%, rgba(27,29,62,0.05), transparent 60%);
+    radial-gradient(720px 420px at 100% 0%, rgba(236,103,26,0.075), transparent 64%),
+    radial-gradient(640px 400px at 0% 100%, rgba(27,29,62,0.035), transparent 62%);
+}
+.slide.hero::after, .slide.close::after, .slide.sect::after {
+  content: ""; position: absolute; pointer-events: none; z-index: 0;
+  width: 940px; height: 940px; border-radius: 50%;
+  border: 140px solid rgba(236,103,26,0.052);
+  right: -350px; bottom: -430px;
+}
+.slide.sect::before {
+  background: linear-gradient(103deg, rgba(236,103,26,0.10) 0 38%, transparent 38.2%);
 }
 
 /* ══════════ SLIDE HEADER ══════════ */
@@ -131,7 +172,7 @@ html, body {
   border: 2px solid var(--line);
   border-radius: 18px;
   padding: 17px 20px;
-  box-shadow: 0 2px 0 rgba(27,29,62,0.03);
+  box-shadow: 0 1px 2px rgba(27,29,62,0.045), 0 10px 24px -14px rgba(27,29,62,0.22);
 }
 .card h3 {
   font-family: 'Baloo 2', Nunito, sans-serif;
@@ -195,7 +236,7 @@ ul.list li b, ul.list li strong { color: var(--navy); font-weight: 800; }
 .shot {
   background: #fff; border: 2px solid var(--line-2);
   border-radius: 14px; padding: 10px;
-  box-shadow: 0 6px 18px rgba(27,29,62,0.10);
+  box-shadow: 0 1px 2px rgba(27,29,62,0.05), 0 14px 30px -18px rgba(27,29,62,0.30);
   display: flex; align-items: center; justify-content: center;
   min-height: 0; overflow: hidden;
 }
@@ -312,6 +353,48 @@ table.t small { display: block; font-size: 15px; color: var(--navy-soft); font-w
   line-height: 1.05; margin: 6px 0 12px;
 }
 .sect p { font-size: 23px; font-weight: 600; color: var(--navy-mid); max-width: 780px; line-height: 1.5; }
+
+/* ══════════ AUDIO PLAYER ══════════ */
+.player {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--navy); border-radius: 16px;
+  padding: 14px 20px 14px 16px;
+  box-shadow: 0 10px 26px -14px rgba(27,29,62,0.55);
+  position: relative; overflow: hidden;
+}
+.player .pp {
+  width: 54px; height: 54px; flex-shrink: 0; border: none; cursor: pointer;
+  border-radius: 50%; background: var(--orange); color: #fff;
+  display: grid; place-items: center; transition: transform .12s, background .15s;
+}
+.player .pp:hover { transform: scale(1.06); }
+.player .pp:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.player .pp svg { width: 24px; height: 24px; fill: #fff; stroke: none; }
+.player .pp .ic-pause { display: none; }
+.player.playing .pp .ic-play { display: none; }
+.player.playing .pp .ic-pause { display: block; }
+.player .pt { flex: 1; min-width: 0; }
+.player .pt .l1 { font-size: 21px; font-weight: 800; color: #fff; line-height: 1.25; }
+.player .pt .l2 { font-size: 16px; font-weight: 600; color: #A9B2CE; margin-top: 2px; }
+.player .dur {
+  font-family: 'Baloo 2', Nunito, sans-serif; font-size: 20px; font-weight: 800;
+  color: #fff; font-variant-numeric: tabular-nums; flex-shrink: 0;
+}
+.player .track {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 5px;
+  background: rgba(255,255,255,0.16);
+}
+.player .track i { display: block; height: 100%; width: 0; background: var(--orange); }
+.player.playing { background: #14162F; }
+.player.done .pp { background: rgba(255,255,255,0.20); }
+
+/* a quieter inline variant for the exercise-intro slides */
+.player.sm { padding: 10px 16px 10px 12px; gap: 12px; }
+.player.sm .pp { width: 42px; height: 42px; }
+.player.sm .pp svg { width: 18px; height: 18px; }
+.player.sm .pt .l1 { font-size: 18px; }
+.player.sm .pt .l2 { font-size: 14px; }
+.player.sm .dur { font-size: 17px; }
 
 /* ══════════ MISC ══════════ */
 .pill {

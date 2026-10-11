@@ -27,7 +27,7 @@ export const open = [
         <div class="card num"><span class="n">3</span><h3>Exercise 1 to 5, one at a time</h3><p>Real questions from the 2025 paper. You decide, then we check.</p></div>
         <div class="card num"><span class="n">4</span><h3>Using the transcript</h3><p>The fastest way to improve at home.</p></div>
         <div class="card num"><span class="n">5</span><h3>Exam craft</h3><p>The 6-minute transfer, the traps, and a 4-week plan.</p></div>
-        <div class="card num g"><span class="n">✓</span><h3>By the end</h3><p>You will have practised all five exercises on real questions.</p></div>
+        <div class="card num"><span class="n">✓</span><h3>By the end</h3><p>You will have practised all five exercises on real questions.</p></div>
       </div>`,
     notes:
       '<span class="t">1 min</span>Keep this short — it is a map, not a lesson. The important line is number 3: <b>we are going to work through all five exercises on real questions, and you answer first.</b> ' +
@@ -67,7 +67,7 @@ export const open = [
         <div class="card"><span class="pill n">L1</span><h3 style="margin-top:10px">Stated facts</h3><p>Times, places, numbers, names. Said out loud plainly.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“The train leaves at 9:15.”</em></p></div>
         <div class="card"><span class="pill n">L2</span><h3 style="margin-top:10px">Opinions</h3><p>How someone feels about something. Said in opinion words.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Honestly, it was a waste of money.”</em></p></div>
         <div class="card"><span class="pill">L3</span><h3 style="margin-top:10px">Connections</h3><p>Linking two ideas — cause, effect, contrast, time.</p><p style="margin-top:8px;font-size:18px;color:var(--navy-soft)"><em>“Because the buses stopped, she walked.”</em></p></div>
-        <div class="card o"><span class="pill">L4</span><h3 style="margin-top:10px">Implied meaning</h3><p>The answer is <b>never said</b>. You work it out.</p><p style="margin-top:8px;font-size:18px;color:var(--orange-dk)"><em>“Well… I suppose the seats were comfortable.”</em></p></div>
+        <div class="card"><span class="pill">L4</span><h3 style="margin-top:10px">Implied meaning</h3><p>The answer is <b>never said</b>. You work it out.</p><p style="margin-top:8px;font-size:18px;color:var(--orange-dk)"><em>“Well… I suppose the seats were comfortable.”</em></p></div>
       </div>
       <div class="ans hint" style="margin-top:16px"><span class="tag">Key</span><div><b>24 of the 40 marks involve L4</b> — Exercises 2, 4 and 5 all test implied meaning. If you only listen for stated facts, you are playing for about 16 marks.</div></div>`,
     notes:
@@ -101,13 +101,13 @@ export const open = [
           <tr><td class="n">2</td><td>5 short extracts</td><td class="c">10</td><td><b>2 questions</b> each · 3 written options A–C</td><td class="c n">10</td></tr>
           <tr><td class="n">3</td><td>1 talk (monologue)</td><td class="c">8</td><td>8 gaps in sentences · 3 options each</td><td class="c n">8</td></tr>
           <tr><td class="n">4</td><td>6 different speakers</td><td class="c">6</td><td>Match to <b>8 statements</b> A–H</td><td class="c n">6</td></tr>
-          <tr class="hl"><td class="n">5</td><td>1 interview (2 voices)</td><td class="c">8</td><td>3 written options A–C · <b>the main speaker only</b></td><td class="c n">8</td></tr>
+          <tr><td class="n">5</td><td>1 interview (2 voices)</td><td class="c">8</td><td>3 written options A–C · <b>the main speaker only</b></td><td class="c n">8</td></tr>
         </tbody>
       </table>
       <div class="grid g3" style="margin-top:16px">
-        <div class="card g"><h3>16 cheap marks</h3><p>Exercises 1 and 3 test stated facts and opinions only. Aim to bank these.</p></div>
-        <div class="card o"><h3>24 harder marks</h3><p>Exercises 2, 4 and 5 also test implied meaning.</p></div>
-        <div class="card n"><h3>Every question = 1 mark</h3><p>So never spend longer than one question is worth.</p></div>
+        <div class="card"><h3>16 cheap marks</h3><p>Exercises 1 and 3 test stated facts and opinions only. Aim to bank these.</p></div>
+        <div class="card"><h3>24 harder marks</h3><p>Exercises 2, 4 and 5 also test implied meaning.</p></div>
+        <div class="card"><h3>Every question = 1 mark</h3><p>So never spend longer than one question is worth.</p></div>
       </div>`,
     notes:
       '<span class="t">3 min</span>Walk down the Ex column only, then land the three cards. The strategic message: <b>Exercises 1 and 3 are the cheapest 16 marks on the paper</b> (they test L1–L3 only), and <b>Exercise 4 is the heaviest work for the fewest marks</b> (six speakers plus eight statements for 6 marks). ' +
@@ -121,7 +121,7 @@ export const open = [
     title: 'T.A.C.O. — four beats, every question',
     body: `
       <div class="grid g4 fill" style="align-content:start">
-        <div class="card o"><div style="font-family:'Baloo 2';font-size:56px;font-weight:800;color:var(--orange);line-height:1">T</div>
+        <div class="card"><div style="font-family:'Baloo 2';font-size:56px;font-weight:800;color:var(--navy);line-height:1">T</div>
           <h3>Target</h3><p><b>Before</b> the audio: read the question and all the options. Underline the key words.</p>
           <p style="margin-top:8px;font-size:18px;color:var(--orange-dk)"><b>This is where free marks are won.</b></p></div>
         <div class="card"><div style="font-family:'Baloo 2';font-size:56px;font-weight:800;color:var(--navy-2);line-height:1">A</div>
@@ -152,7 +152,7 @@ export const open = [
           <tr><td><b>Your job</b></td><td>Understand the <b>whole recording</b> — who, what, in what order</td><td><b>Decide</b> each answer with evidence</td></tr>
           <tr><td><b>Your pen</b></td><td>A small dash by a <b>possible</b> answer</td><td>A firm circle round the <b>final</b> letter</td></tr>
           <tr><td><b>Your eyes</b></td><td>Mostly on the <b>question paper</b></td><td>Mostly <b>listening</b>, glancing at your two best options</td></tr>
-          <tr class="hl"><td><b>Never</b></td><td>Lock an answer in — it is only a draft</td><td>Re-read every option from the beginning</td></tr>
+          <tr><td><b>Never</b></td><td>Lock an answer in — it is only a draft</td><td>Re-read every option from the beginning</td></tr>
         </tbody>
       </table>
       <div class="ans hint" style="margin-top:16px"><span class="tag">Listen for</span><div><b>not · never · only · already · instead · unless · but · actually · in the end · at first</b><br><span style="font-size:18px">These words are where the answer flips. Most wrong answers are decided by one of them.</span></div></div>`,

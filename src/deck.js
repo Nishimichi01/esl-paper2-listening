@@ -44,6 +44,7 @@
   function show(i) {
     i = Math.max(0, Math.min(total - 1, i));
     if (i === cur) { update(); return; }
+    stopCurrent();
     slides[cur].classList.remove('is-active');
     cur = i;
     for (var k = 0; k < total; k++) {
@@ -119,6 +120,57 @@
   function openLb(src) { lbImg.src = src; lb.hidden = false; lbOn = true; }
   function closeLb() { lb.hidden = true; lbOn = false; }
 
+  /* ── audio players ───────────────────────────────────── */
+  var current = null;
+  function fmt(t) {
+    if (!isFinite(t)) return '0:00';
+    var m = Math.floor(t / 60), s = Math.floor(t % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  function stopCurrent() {
+    if (!current) return;
+    current.audio.pause();
+    current.el.classList.remove('playing');
+    current = null;
+  }
+  function wirePlayers() {
+    document.querySelectorAll('.player').forEach(function (el) {
+      var audio = el.querySelector('audio');
+      var btn = el.querySelector('.pp');
+      var bar = el.querySelector('.track i');
+      var dur = el.querySelector('.dur');
+      if (!audio || !btn) return;
+      audio.preload = 'metadata';
+      function setDur() { if (dur && isFinite(audio.duration)) dur.textContent = fmt(audio.duration); }
+      audio.addEventListener('loadedmetadata', setDur);
+      audio.addEventListener('durationchange', setDur);
+      audio.addEventListener('timeupdate', function () {
+        if (bar) bar.style.width = (audio.currentTime / (audio.duration || 1) * 100) + '%';
+        if (dur) dur.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+      });
+      audio.addEventListener('ended', function () {
+        el.classList.remove('playing'); el.classList.add('done');
+        if (bar) bar.style.width = '0%';
+        if (dur) dur.textContent = fmt(audio.duration);
+        if (current && current.audio === audio) current = null;
+      });
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (current && current.audio !== audio) stopCurrent();
+        if (audio.paused) {
+          audio.currentTime = 0;
+          audio.play().catch(function () {});
+          el.classList.add('playing'); el.classList.remove('done');
+          current = { audio: audio, el: el };
+        } else {
+          audio.pause();
+          el.classList.remove('playing');
+          current = null;
+        }
+      });
+    });
+  }
+
   /* ── chrome: fade when idle ───────────────────────────── */
   var idle;
   function awake() {
@@ -141,13 +193,13 @@
   lb.addEventListener('click', closeLb);
 
   canvas.addEventListener('click', function (e) {
-    if (e.target.closest('a, button')) return;
+    if (e.target.closest('a, button, .player')) return;
     var img = e.target.closest('.shot img');
     if (img) { openLb(img.getAttribute('src')); return; }
     var s = slides[cur];
     if (s.hasAttribute('data-reveal') && !s.classList.contains('revealed')) { reveal(true); return; }
-    if (e.clientX > window.innerWidth * 0.6) next();
-    else if (e.clientX < window.innerWidth * 0.4) prev();
+    if (e.clientX > window.innerWidth * 0.6) { stopCurrent(); next(); }
+    else if (e.clientX < window.innerWidth * 0.4) { stopCurrent(); prev(); }
   });
 
   document.addEventListener('mousemove', awake);
@@ -213,10 +265,11 @@
     }
     cur = idx;
     fit();
+    wirePlayers();
     update();
     awake();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })();
 
-  window.__deck = { show: show, next: next, prev: prev, total: total, reveal: reveal, fit: fit };
+  window.__deck = { show: show, next: next, prev: prev, total: total, reveal: reveal, fit: fit, stopAudio: stopCurrent };
 })();

@@ -57,3 +57,54 @@ node build.mjs      # writes dist/index.html and index.html
 
 Q1 **A** · Q9 **A** · Q10 **C** · Q13 **C** · Q14 **B** · Q19 **A** · Q20 **A** · Q21 **C** ·
 Q27 **E** · Q28 **C** · Q33 **C** · Q34 **B**
+
+---
+
+## Audio (added from the real sound file)
+
+`assets/audio/` holds ten clips cut from the authentic
+`0511_w25_sf_21` sound file (57 min). Boundaries were found by running
+`faster-whisper` over the whole recording, then cross-checked against the official
+transcript — so each clip starts on an announcement and ends in a pause, never mid-word.
+
+| clip | length | attached to |
+|---|---|---|
+| `ex1_q1` | 1:25 | Question 1 (announcement + both plays) |
+| `ex2_intro` | 0:33 | Ex 2 instructions — demonstrates the 15-second reading pause |
+| `ex2_videos` | 2:05 | Questions 9–10 |
+| `ex2_cafe` | 1:51 | Questions 13–14 |
+| `ex3_intro` | 0:54 | Ex 3 instructions — demonstrates the 40-second reading pause |
+| `ex3_sharks` | 1:52 | Questions 19–21 |
+| `ex4_intro` | 1:55 | Ex 4 instructions + statements A–H + the 30-second pause |
+| `ex4_speakers12` | 1:20 | Speakers 1 and 2 |
+| `ex5_intro` | 0:27 | Ex 5 instructions — demonstrates the 45-second reading pause |
+| `ex5_q33_34` | 1:55 | Questions 33–34 |
+
+Encoded 22 050 Hz mono MP3 at 48 kbps — 4.9 MB in total, ample for speech.
+In the deck each clip is a click-to-play button with a progress bar; starting one
+stops any other, and changing slide stops playback.
+
+Scripts: `ref/transcribe.py` (ASR over the whole recording), `ref/align.py`
+(section map), `ref/cut_clips.py` (the cut list at the top is the single source of
+truth for clip boundaries — edit there and re-run).
+
+`node build.mjs` copies the clips to `dist/audio/` and the repo-root `audio/` and
+references them relatively. Run `INLINE_AUDIO=1 node build.mjs` for a genuine
+single-file build with the audio base64-embedded instead.
+
+### Copyright — please read
+
+The deck reproduces **Cambridge question paper artwork and Cambridge listening
+audio**. The syllabus permits centres to copy its material *for internal use*, which
+covers teaching with it in class. It does **not** cover redistributing it publicly.
+
+Mitigations in place:
+
+- `noindex, nofollow, noarchive` on the page and a `robots.txt` that disallows all
+  crawlers, including AI training crawlers — so it is a shared link, not a search result.
+- If you would rather it were not on the public internet at all, delete the GitHub Pages
+  site (Settings ▸ Pages ▸ Unpublish) and present from the local folder. Everything works
+  offline: `python -m http.server` in `dist/`, or open `index.html` directly.
+
+Recommended long-term: keep the hosted version for the deck's own text and keep the
+Cambridge material in the local copy you use in class.
